@@ -18,6 +18,7 @@ import {
   CaretCircleUp,
   GithubLogo,
 } from "@phosphor-icons/react";
+import Link from "next/link";
 
 export default function Features() {
   const [tab, setTab] = useState<number>(1);
@@ -57,12 +58,10 @@ export default function Features() {
               data-aos="fade-right"
             >
               <div className="mb-8 md:mb-0">
-                <a
+                <div
                   className={`flex items-center text-md p-5 rounded border transition duration-300 ease-in-out mb-3 
                   ${tab !== 1 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg" : "bg-white border-gray-400"}`}
-                  href="#0"
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     setTab(1);
                   }}
                 >
@@ -86,11 +85,16 @@ export default function Features() {
                           different robots (eg: Franka) on different RL tasks.
                         </div>
                         <div className="mt-8 w-full flex items-center justify-center">
-                          <button className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100">
+                          <a
+                            href="https://github.com/KhaledSharif/nvidia-omniverse-examples"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100"
+                          >
                             <GithubLogo size={24} />
                             Source Code
                             <ArrowSquareOut size={24} />
-                          </button>
+                          </a>
                         </div>
                       </div>
                     )}
@@ -98,13 +102,11 @@ export default function Features() {
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <CaretCircleUp size={24} />
                   </div>
-                </a>
-                <a
+                </div>
+                <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
                   ${tab !== 2 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg" : "bg-white border-gray-400"}`}
-                  href="#0"
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     setTab(2);
                   }}
                 >
@@ -128,11 +130,16 @@ export default function Features() {
                           different robots (eg: Franka) on different RL tasks.
                         </div>
                         <div className="mt-8 w-full flex items-center justify-center">
-                          <button className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100">
+                          <a
+                            href="https://github.com/KhaledSharif/nvidia-ros-vslam"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100"
+                          >
                             <GithubLogo size={24} />
                             Source Code
                             <ArrowSquareOut size={24} />
-                          </button>
+                          </a>
                         </div>
                       </div>
                     )}
@@ -140,13 +147,11 @@ export default function Features() {
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <CaretCircleDown size={24} />
                   </div>
-                </a>
-                <a
+                </div>
+                <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
                   ${tab !== 3 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg" : "bg-white border-gray-400"}`}
-                  href="#0"
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     setTab(3);
                   }}
                 >
@@ -170,11 +175,16 @@ export default function Features() {
                           different robots (eg: Franka) on different RL tasks.
                         </div>
                         <div className="mt-8 w-full flex items-center justify-center">
-                          <button className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100">
+                          <a
+                            href="https://github.com/KhaledSharif/openrag"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100"
+                          >
                             <GithubLogo size={24} />
                             Source Code
                             <ArrowSquareOut size={24} />
-                          </button>
+                          </a>
                         </div>
                       </div>
                     )}
@@ -182,7 +192,7 @@ export default function Features() {
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <CaretCircleDown size={24} />
                   </div>
-                </a>
+                </div>
               </div>
             </div>
 

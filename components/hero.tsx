@@ -25,8 +25,8 @@ export default function Hero() {
             thumb={VideoThumb}
             thumbWidth={768}
             thumbHeight={432}
-            thumbAlt="Modal video thumbnail"
-            video="/videos/astrobee.webm"
+            thumbAlt="Watch Astrobee Map ISS"
+            video="/videos/astrobee.mp4"
             videoWidth={1920}
             videoHeight={1080}
           />
