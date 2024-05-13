@@ -148,7 +148,7 @@ export default function Features() {
                     <CaretCircleDown size={24} />
                   </div>
                 </div>
-                <div
+                {/* <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
                   ${tab !== 3 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg" : "bg-white border-gray-400"}`}
                   onClick={() => {
@@ -192,7 +192,7 @@ export default function Features() {
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <CaretCircleDown size={24} />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 

@@ -1,35 +1,36 @@
 export default function Footer() {
   return (
     <footer>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-8">
-        {/* Top area: Blocks */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-16">
         <div className="flex justify-center gap-8 py-8 md:py-12 border-t border-gray-200">
-
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
             <h6 className="text-gray-800 font-medium mb-2">Projects</h6>
             <ul className="text-sm">
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://github.com/KhaledSharif/nvidia-ros-vslam"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  Web Studio
+                  ROS VSLAM
                 </a>
               </li>
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://github.com/KhaledSharif/nvidia-omniverse-examples"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  DynamicBox Flex
+                  Omniverse
                 </a>
               </li>
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://github.com/KhaledSharif/scikit-robot-examples"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  DynamicBox Flex
+                  Scikit Robot
                 </a>
               </li>
             </ul>
@@ -40,26 +41,29 @@ export default function Footer() {
             <ul className="text-sm">
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://ieeexplore.ieee.org/document/9697672"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  Web Studio
+                  HPC For Space Robots
                 </a>
               </li>
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://ieeexplore.ieee.org/document/9843392"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  DynamicBox Flex
+                  Lunar Pit Exploration
                 </a>
               </li>
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://ieeexplore.ieee.org/document/9438401"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  DynamicBox Flex
+                  Autonomous Micro Rovers
                 </a>
               </li>
             </ul>
@@ -70,15 +74,17 @@ export default function Footer() {
             <ul className="text-sm">
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="/pdf/cv.pdf"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  Email
+                  Resume (CV)
                 </a>
               </li>
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://www.linkedin.com/in/khsharif"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   LinkedIn
@@ -86,7 +92,8 @@ export default function Footer() {
               </li>
               <li className="mb-2">
                 <a
-                  href="#0"
+                  href="https://github.com/khaledsharif"
+                  target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
                   Github
@@ -94,8 +101,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-
         </div>
       </div>
     </footer>

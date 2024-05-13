@@ -7,20 +7,18 @@ export default function Header() {
     <header className="fixed w-full z-30 bg-opacity-90 bg-gray-100">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="">
-            <button>🧑🏻‍💼 Khaled Sharif</button>
-          </div>
+          <a href="/">👦🏻 Khaled Sharif</a>
 
           <div className="flex gap-4">
-            <button>
+            <a href="/pdf/cv.pdf" target="_blank">
               <FilePdf size={24} />
-            </button>
-            <button>
+            </a>
+            <a href="https://github.com/khaledsharif" target="_blank">
               <GithubLogo size={24} />
-            </button>
-            <button>
+            </a>
+            <a href="https://www.linkedin.com/in/khsharif" target="_blank">
               <LinkedinLogo size={24} />
-            </button>
+            </a>
           </div>
         </div>
       </div>
