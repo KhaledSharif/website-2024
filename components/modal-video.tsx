@@ -30,7 +30,6 @@ export default function ModalVideo({
 
   return (
     <div>
-      {/* Video thumbnail */}
       <div className="min-h-[40vh]">
         <div className="relative flex justify-center mb-8">
           <div className="flex flex-col justify-center z-10">
@@ -44,18 +43,19 @@ export default function ModalVideo({
           <button
             className="btn absolute top-full flex items-center transform -mt-8 h-20 z-20
             rounded-full font-medium group shadow-lg
-            text-gray-800 hover:text-gray-700 hover:bg-white hover:border-gray-100 border-gray-200 bg-gray-100
+            text-sm px-4 gap-2
+            text-gray-800 hover:text-gray-700 hover:bg-white
+             hover:border-gray-100 border-gray-200 bg-gray-100
             "
             onClick={() => {
               setModalOpen(true);
             }}
           >
-              <PlayCircle size={32} />
-              Watch Astrobee map the ISS (1 min 23 sec)
+            <PlayCircle size={32} />
+            Watch Astrobee map the ISS (1 min 23 sec)
           </button>
         </div>
       </div>
-      {/* End: Video thumbnail */}
 
       <Transition
         show={modalOpen}
@@ -63,7 +63,6 @@ export default function ModalVideo({
         afterEnter={() => videoRef.current?.play()}
       >
         <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
-          {/* Modal backdrop */}
           <Transition.Child
             className="fixed inset-0 z-[99999] bg-black bg-opacity-75 transition-opacity"
             enter="transition ease-out duration-200"
@@ -74,9 +73,7 @@ export default function ModalVideo({
             leaveTo="opacity-0"
             aria-hidden="true"
           />
-          {/* End: Modal backdrop */}
 
-          {/* Modal dialog */}
           <Transition.Child
             className="fixed inset-0 z-[99999] overflow-hidden flex items-center justify-center transform px-4 sm:px-6"
             enter="transition ease-out duration-200"
@@ -101,7 +98,6 @@ export default function ModalVideo({
               </Dialog.Panel>
             </div>
           </Transition.Child>
-          {/* End: Modal dialog */}
         </Dialog>
       </Transition>
     </div>

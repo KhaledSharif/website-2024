@@ -8,7 +8,16 @@ export default function Footer() {
             <ul className="text-sm">
               <li className="mb-2">
                 <a
-                  href="https://github.com/KhaledSharif/nvidia-ros-vslam"
+                  href="https://github.com/KhaledSharif/omniverse-gym"
+                  target="_blank"
+                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
+                >
+                  Omniverse Gym
+                </a>
+              </li>
+              <li className="mb-2">
+                <a
+                  href="https://github.com/KhaledSharif/ros-vslam"
                   target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
@@ -17,20 +26,11 @@ export default function Footer() {
               </li>
               <li className="mb-2">
                 <a
-                  href="https://github.com/KhaledSharif/nvidia-omniverse-examples"
+                  href="https://github.com/KhaledSharif/robot-transformers"
                   target="_blank"
                   className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
                 >
-                  Omniverse
-                </a>
-              </li>
-              <li className="mb-2">
-                <a
-                  href="https://github.com/KhaledSharif/scikit-robot-examples"
-                  target="_blank"
-                  className="text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out"
-                >
-                  Scikit Robot
+                  Robot Transformers
                 </a>
               </li>
             </ul>

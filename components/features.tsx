@@ -9,8 +9,10 @@ import FeaturesElement4 from "@/public/images/vslam.gif";
 import FeaturesBg2 from "@/public/images/rl.jpg";
 import FeaturesElement2 from "@/public/images/rl.gif";
 
-import FeaturesBg3 from "@/public/images/openrag.jpg";
-import FeaturesElement3 from "@/public/images/openrag.gif";
+import FeaturesBg3 from "@/public/images/robots.jpg";
+import FeaturesElement3 from "@/public/images/robots.gif";
+
+import { buttonVariants } from "@/components/ui/button";
 
 import {
   ArrowSquareOut,
@@ -47,7 +49,13 @@ export default function Features() {
         <div className="pt-12 md:pt-20">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="text-3xl mb-4">Open source projects 👇🏼</h1>
+            <div className="text-3xl mb-1">Open source projects 👇🏼</div>
+            <Link
+              href="/projects"
+              className={buttonVariants({ variant: "ghost" })}
+            >
+              <div className="text-lg underline text-gray-500">View All</div>
+            </Link>
           </div>
 
           {/* Section content */}
@@ -60,7 +68,7 @@ export default function Features() {
               <div className="mb-8 md:mb-0">
                 <div
                   className={`flex items-center text-md p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 1 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg" : "bg-white border-gray-400"}`}
+                  ${tab !== 1 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg cursor-pointer" : "cursor-default bg-white border-gray-400"}`}
                   onClick={() => {
                     setTab(1);
                   }}
@@ -82,14 +90,18 @@ export default function Features() {
                           to perform tasks using Reinforcement Learning (RL) and
                           Proximal Policy Optimization (PPO). In this repo, you
                           can find examples of how to train and evaluate
-                          different robots (eg: Franka) on different RL tasks.
+                          different robots (eg: Franka) on different RL tasks
+                          (eg: opening a cabinet drawer)
                         </div>
                         <div className="mt-8 w-full flex items-center justify-center">
                           <a
-                            href="https://github.com/KhaledSharif/nvidia-omniverse-examples"
+                            href="https://github.com/KhaledSharif/omniverse-gym"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100"
+                            className="btn btn-outline btn-neutral text-gray-800 
+                            border-gray-100 hover:bg-white hover:border-gray-600 border bg-gray-100
+                            flex p-4 items-center justify-center gap-2 rounded-lg
+                            "
                           >
                             <GithubLogo size={24} />
                             Source Code
@@ -105,14 +117,14 @@ export default function Features() {
                 </div>
                 <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 2 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg" : "bg-white border-gray-400"}`}
+                  ${tab !== 2 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg cursor-pointer" : "cursor-default bg-white border-gray-400"}`}
                   onClick={() => {
                     setTab(2);
                   }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-lg">
-                      Robot Visual SLAM
+                      Robot Visual Localization
                     </div>
                     <div className="text-gray-700 text-md">
                       Quickstart Robot Operating System (ROS) code for running
@@ -122,19 +134,23 @@ export default function Features() {
                     {tab === 2 && (
                       <div className="text-gray-600 text-sm mt-8">
                         <div>
-                          The NVIDIA Omniverse Isaac Simulator (OIS) is a
-                          realistic robotic sim that can be used to train robots
-                          to perform tasks using Reinforcement Learning (RL) and
-                          Proximal Policy Optimization (PPO). In this repo, you
-                          can find examples of how to train and evaluate
-                          different robots (eg: Franka) on different RL tasks.
+                          This repository provides quickstart Robot Operating
+                          System (ROS) code for running GPU-accelerated
+                          Simultaneous Localization and Mapping (SLAM) and
+                          verifying loop closure in simulation. It includes
+                          examples for running Visual SLAM in ROS using the
+                          NVIDIA Omniverse Isaac Simulator (OIS) and persisting
+                          sim data to disk using ROS bags.
                         </div>
                         <div className="mt-8 w-full flex items-center justify-center">
                           <a
-                            href="https://github.com/KhaledSharif/nvidia-ros-vslam"
+                            href="https://github.com/KhaledSharif/ros-vslam"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100"
+                            className="btn btn-outline btn-neutral text-gray-800 
+                            border-gray-100 hover:bg-white hover:border-gray-600 border bg-gray-100
+                            flex p-4 items-center justify-center gap-2 rounded-lg
+                            "
                           >
                             <GithubLogo size={24} />
                             Source Code
@@ -148,38 +164,41 @@ export default function Features() {
                     <CaretCircleDown size={24} />
                   </div>
                 </div>
-                {/* <div
+                <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 3 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg" : "bg-white border-gray-400"}`}
+                  ${tab !== 3 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg cursor-pointer" : "cursor-default bg-white border-gray-400"}`}
                   onClick={() => {
                     setTab(3);
                   }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-lg">
-                      OpenRAG [Full Stack AI]
+                      Robot Cooperative Planning
                     </div>
                     <div className="text-gray-700 text-md">
-                      Open Retrieval Augmented Generation frontend
-                      (React/NextJS) and backend (FastAPI) full stack system for
-                      local language model development.
+                      Train and evaluate a pair of robot arms to cooperatively
+                      plan and manipulate multiple objects using an Action
+                      Chunking Transformer (ACT)
                     </div>
                     {tab === 3 && (
                       <div className="text-gray-600 text-sm mt-8">
                         <div>
-                          The NVIDIA Omniverse Isaac Simulator (OIS) is a
-                          realistic robotic sim that can be used to train robots
-                          to perform tasks using Reinforcement Learning (RL) and
-                          Proximal Policy Optimization (PPO). In this repo, you
-                          can find examples of how to train and evaluate
-                          different robots (eg: Franka) on different RL tasks.
+                          This repository contains quickstart code to train and
+                          evaluate an Action Chunking Transformer (ACT) to
+                          perform various manipulation tasks in the ALOHA gym
+                          environment. In the Insertion task, shown in the
+                          animation, both arms of the robot must coordinate to
+                          insert one object into the other.
                         </div>
                         <div className="mt-8 w-full flex items-center justify-center">
                           <a
-                            href="https://github.com/KhaledSharif/openrag"
+                            href="https://github.com/KhaledSharif/robot-transformers"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-gray-800 border-gray-300 hover:bg-white hover:border-gray-200 bg-gray-100"
+                            className="btn btn-outline btn-neutral text-gray-800 
+                            border-gray-100 hover:bg-white hover:border-gray-600 border bg-gray-100
+                            flex p-4 items-center justify-center gap-2 rounded-lg
+                            "
                           >
                             <GithubLogo size={24} />
                             Source Code
@@ -192,7 +211,7 @@ export default function Features() {
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
                     <CaretCircleDown size={24} />
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
 
