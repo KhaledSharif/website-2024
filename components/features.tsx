@@ -38,7 +38,6 @@ export default function Features() {
 
   return (
     <section className="relative">
-      {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div
         className="absolute inset-0 bg-gray-100 pointer-events-none mb-16"
         aria-hidden="true"
@@ -47,7 +46,6 @@ export default function Features() {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-12 md:pt-20">
-          {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <div className="text-3xl mb-1">Open source projects 👇🏼</div>
             <Link
@@ -58,11 +56,9 @@ export default function Features() {
             </Link>
           </div>
 
-          {/* Section content */}
           <div className="md:grid md:grid-cols-12 md:gap-6">
-            {/* Content */}
             <div
-              className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6"
+              className="max-w-lg mx-auto md:col-span-5"
               data-aos="fade-right"
             >
               <div className="mb-8 md:mb-0">
@@ -214,9 +210,7 @@ export default function Features() {
                 </div>
               </div>
             </div>
-
-            {/* Tabs items */}
-            <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1 flex justify-center items-center">
+            <div className="">
               <div className="transition-all">
                 <div
                   className="relative flex flex-col text-center lg:text-right"
@@ -242,19 +236,17 @@ export default function Features() {
                       beforeEnter={() => heightFix()}
                       unmount={false}
                     >
-                      <div className="relative inline-flex flex-col">
+                      <div className="relative inline-flex flex-col 2xl:w-[38rem] lg:w-[32rem] md:w-[25rem]  w-full">
                         <Image
-                          className="md:max-w-none mx-auto rounded"
+                          className="rounded object-contain"
                           src={x.bg}
-                          width={500}
-                          height="462"
+                          
                           alt="Features bg"
                         />
                         <Image
-                          className="md:max-w-none absolute w-full px-8 left-0 transform animate-float"
+                          className="absolute w-full px-[5rem] object-contain"
                           src={x.fg}
-                          width={500}
-                          height="44"
+                         
                           alt="Element"
                           style={{ top: "30%" }}
                         />
