@@ -96,7 +96,11 @@
     @apply text-sm text-justify mt-2 ml-2
   }
 
-  .markdown ol,ul {
+  .markdown ol {
+    @apply text-sm text-justify ml-2
+  }
+
+  .markdown ul {
     @apply text-sm text-justify ml-2
   }
 

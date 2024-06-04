@@ -13,7 +13,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import FeaturesElement3 from "@/public/images/ros-isaac-vslam.jpg";
+import FeaturesElement4 from "@/public/images/deepseqslam.jpg";
 import Image from "next/image";
 import Markdown from "react-markdown";
 
@@ -22,10 +29,11 @@ export const metadata = {
   description: "Personal Website",
 };
 
-const md = `
+const md1 = `
 In the realm of robotics and computer vision, **Visual Simultaneous Localization and Mapping** (VSLAM) emerges as a pivotal technique for estimating the position and orientation of a robot or camera in real-time. Simultaneously, it constructs a map of the surrounding environment. This dual capability makes VSLAM particularly advantageous in scenarios where GPS is either unavailable or unreliable, such as indoor environments or urban areas with significant obstructions.
-
-### Understanding Key Concepts of VSLAM
+`;
+const md2 = `
+### Key Concepts of VSLAM
 
 #### Visual Odometry (VO)
 
@@ -41,31 +49,40 @@ The ultimate goal of VSLAM is to build a map of the environment while concurrent
 
 ### Advantages of VSLAM
 
-VSLAM boasts several significant advantages that make it ideal for real-time robotic applications:
-
 - **Real-time Performance:** Leveraging GPU acceleration, VSLAM can process visual data at high speeds, facilitating real-time applications. This is particularly important for autonomous robots that require immediate feedback to navigate and interact with their environments.
   
 - **Enhanced Accuracy:** By matching a greater number of key points and incorporating IMU data, VSLAM achieves high levels of accuracy in both localization and mapping. This ensures that robots can navigate with precision, even in challenging conditions.
 
 - **Versatility:** VSLAM's ability to operate effectively in a variety of environments—ranging from GPS-denied indoor spaces to obstructed urban areas—underscores its versatility. This adaptability is crucial for deploying robots in diverse and dynamic settings.
+`;
+const md3 = `
+Sequential Place Learning (SPL) is a technique designed to improve place recognition in autonomous navigation by leveraging sequential data. It addresses the limitations of traditional heuristic-based methods by using a deep learning approach that combines convolutional neural networks (CNN) and long short-term memory networks (LSTM). Here are the key features and advantages of SPL:
 
-### Implementing VSLAM in ROS (Robot Operating System)
+1. **Joint Visual and Positional Learning**: SPL integrates visual and positional data from a single traversal of an environment. This joint learning approach allows the system to learn and recognize places using both visual and positional cues simultaneously, improving robustness against changes in viewpoint and appearance.
 
-The Robot Operating System (ROS) provides a flexible framework for developing robot software, and integrating VSLAM into ROS enables powerful real-time localization and mapping capabilities. With the advent of GPU-accelerated solutions like NVIDIA Isaac Sim, developers can harness advanced visual odometry and mapping tools to enhance the performance of robotic systems.
+2. **End-to-End Trainable Architecture**: The method employs a CNN to encode visual information and an LSTM to handle the sequential aspect of the data. The entire system is trained end-to-end using backpropagation through time (BPTT), which simplifies the training process and enhances performance compared to traditional methods.
 
-### Applications of VSLAM in ROS
+3. **Efficiency and Performance**: SPL is designed to be highly efficient, reducing the computational and storage requirements typical of classical methods. It achieves higher precision and recall rates even with short temporal windows (TWs), which are critical for real-time applications.
 
-VSLAM integrated with ROS can significantly advance various robotic applications:
+4. **Benchmark Results**: SPL has been tested on various challenging benchmark datasets, including Oxford RobotCar, Nordland Railway, St. Lucia, and Gardens Point. It has outperformed many classical methods and achieved state-of-the-art results, including a perfect 100% recall rate at 100% precision under extreme conditions like day-night transitions.
 
-- **Navigation:** By providing real-time estimates of position and orientation, VSLAM enables autonomous robots to navigate accurately and efficiently through their environments. This is essential for tasks ranging from delivery robots maneuvering through buildings to drones flying in GPS-denied areas.
+5. **Flexible Integration with Motion Estimation**: The system can use positional data from various sources, such as visual odometry, radar odometry, LiDAR, GPS, and even synthetic time-series data, making it adaptable to different types of autonomous navigation systems.
 
-- **Mapping:** VSLAM allows robots to create detailed maps of unknown environments, facilitating exploration, and subsequent localization tasks. This capability is particularly valuable for applications in search and rescue, environmental monitoring, and industrial automation.
+The architecture consists of a CNN for extracting global image descriptors and an LSTM network for sequential learning. This combination allows SPL to learn the temporal structure of the data, which is crucial for accurate place recognition in dynamic environments.
 
-- **Localization:** In environments where GPS signals are weak or nonexistent, VSLAM enhances the accuracy of robot localization. This ensures that robots can maintain precise awareness of their position, which is critical for safe and effective operation.
+DeepSeqSLAM is a method proposed to enhance sequence-based place recognition for autonomous vehicles, addressing the limitations of traditional approaches like SeqSLAM. It combines Convolutional Neural Networks (CNN) and Recurrent Neural Networks (RNN) to learn visual and positional representations from a sequence of monocular images. The key aspects of DeepSeqSLAM include:
 
-### Conclusion
+1. **Joint Learning**: Unlike classical methods that rely on separate stages for visual matching and sequential filtering, DeepSeqSLAM jointly learns visual and positional representations, improving the efficiency and accuracy of place recognition.
 
-By integrating VSLAM with ROS, developers can unlock the full potential of GPU-accelerated visual odometry and mapping capabilities. This integration enhances the performance, accuracy, and versatility of robotic systems, paving the way for advanced applications in navigation, mapping, and localization. As robotics technology continues to evolve, VSLAM stands out as a transformative tool that drives innovation and expands the horizons of autonomous systems.
+2. **Architecture**: It utilizes a CNN to extract global image descriptors and an RNN to model the temporal dependencies between these descriptors, enhancing the recognition capabilities across different environmental conditions.
+
+3. **Performance**: DeepSeqSLAM has demonstrated significant improvements over state-of-the-art methods, particularly in terms of Area Under the Curve (AUC) and deployment time. For instance, on the Nordland dataset, it achieved over 72% AUC using a sequence length of 2, compared to 27% for Delta Descriptors and 2% for SeqSLAM, while reducing the deployment time from about an hour to just a minute.
+
+4. **Datasets and Evaluation**: The method was tested on large benchmark datasets like Nordland and Oxford RobotCar, showing robust performance under varying seasonal, weather, and lighting conditions.
+
+5. **Flexibility**: DeepSeqSLAM can utilize different sources of motion estimation (e.g., visual odometry, radar odometry, LiDAR) and is designed to work with query traversals of any size without needing velocity data.
+
+Overall, DeepSeqSLAM represents an advancement in sequence-based place recognition, providing a trainable, efficient, and accurate approach suitable for real-world autonomous driving applications.
 `;
 
 export default function Home() {
@@ -109,7 +126,161 @@ export default function Home() {
                     <Image src={FeaturesElement3} alt="robots" />
                   </div>
                   <div className="markdown">
-                    <Markdown>{md}</Markdown>
+                    <Markdown>{md1}</Markdown>
+                  </div>
+                  <div className="mt-6 mb-12">
+                    <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="item-1">
+                        <AccordionTrigger>
+                          What is SLAM and why is it used in robotics?
+                        </AccordionTrigger>
+                        <AccordionContent className="text-justify flex flex-col gap-4 mx-8">
+                          <div>
+                            SLAM stands for Simultaneous Localization and
+                            Mapping. It is a technique used in robotics and
+                            autonomous systems to construct a map of an unknown
+                            environment while simultaneously tracking the
+                            position and orientation of the robot or autonomous
+                            vehicle within that environment. SLAM allows robots
+                            to create and update a map of their surroundings as
+                            they move through an unknown environment. This map
+                            can be used for navigation, path planning, and
+                            obstacle avoidance. SLAM enables robots to determine
+                            their precise location within the constructed map.
+                            This is essential for accurate navigation and
+                            decision-making.
+                          </div>
+
+                          <div>
+                            By mapping and localizing simultaneously, SLAM
+                            enables robots to operate autonomously without
+                            relying on pre-existing maps or external positioning
+                            systems like GPS, which may not be available in
+                            certain environments (e.g., indoors, underground, or
+                            in areas with limited satellite coverage). SLAM is
+                            particularly useful for robots tasked with exploring
+                            and mapping unknown environments, such as search and
+                            rescue operations, planetary exploration, or
+                            industrial inspection of complex structures.
+                          </div>
+
+                          <div>
+                            SLAM algorithms can be broadly classified into two
+                            categories: filter-based methods (e.g., Extended
+                            Kalman Filter, Particle Filter) and
+                            optimization-based methods (e.g., Graph-based SLAM,
+                            Bundle Adjustment). These algorithms differ in their
+                            mathematical formulations and computational
+                            approaches, each with its own strengths and
+                            weaknesses depending on the specific application and
+                            constraints.
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-2">
+                        <AccordionTrigger>
+                          What is the Robot Operating System (ROS)?
+                        </AccordionTrigger>
+                        <AccordionContent className="text-justify flex flex-col gap-4 mx-8">
+                          <div>
+                            SLAM stands for Simultaneous Localization and
+                            Mapping. It is a technique used in robotics and
+                            autonomous systems to construct a map of an unknown
+                            environment while simultaneously tracking the
+                            position and orientation of the robot or autonomous
+                            vehicle within that environment. SLAM allows robots
+                            to create and update a map of their surroundings as
+                            they move through an unknown environment. This map
+                            can be used for navigation, path planning, and
+                            obstacle avoidance. SLAM enables robots to determine
+                            their precise location within the constructed map.
+                            This is essential for accurate navigation and
+                            decision-making.
+                          </div>
+
+                          <div>
+                            By mapping and localizing simultaneously, SLAM
+                            enables robots to operate autonomously without
+                            relying on pre-existing maps or external positioning
+                            systems like GPS, which may not be available in
+                            certain environments (e.g., indoors, underground, or
+                            in areas with limited satellite coverage). SLAM is
+                            particularly useful for robots tasked with exploring
+                            and mapping unknown environments, such as search and
+                            rescue operations, planetary exploration, or
+                            industrial inspection of complex structures.
+                          </div>
+
+                          <div>
+                            SLAM algorithms can be broadly classified into two
+                            categories: filter-based methods (e.g., Extended
+                            Kalman Filter, Particle Filter) and
+                            optimization-based methods (e.g., Graph-based SLAM,
+                            Bundle Adjustment). These algorithms differ in their
+                            mathematical formulations and computational
+                            approaches, each with its own strengths and
+                            weaknesses depending on the specific application and
+                            constraints.
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-3">
+                        <AccordionTrigger>
+                          How does this project combine Visual SLAM and ROS?
+                        </AccordionTrigger>
+                        <AccordionContent className="text-justify flex flex-col gap-4 mx-8">
+                          <div>
+                            SLAM stands for Simultaneous Localization and
+                            Mapping. It is a technique used in robotics and
+                            autonomous systems to construct a map of an unknown
+                            environment while simultaneously tracking the
+                            position and orientation of the robot or autonomous
+                            vehicle within that environment. SLAM allows robots
+                            to create and update a map of their surroundings as
+                            they move through an unknown environment. This map
+                            can be used for navigation, path planning, and
+                            obstacle avoidance. SLAM enables robots to determine
+                            their precise location within the constructed map.
+                            This is essential for accurate navigation and
+                            decision-making.
+                          </div>
+
+                          <div>
+                            By mapping and localizing simultaneously, SLAM
+                            enables robots to operate autonomously without
+                            relying on pre-existing maps or external positioning
+                            systems like GPS, which may not be available in
+                            certain environments (e.g., indoors, underground, or
+                            in areas with limited satellite coverage). SLAM is
+                            particularly useful for robots tasked with exploring
+                            and mapping unknown environments, such as search and
+                            rescue operations, planetary exploration, or
+                            industrial inspection of complex structures.
+                          </div>
+
+                          <div>
+                            SLAM algorithms can be broadly classified into two
+                            categories: filter-based methods (e.g., Extended
+                            Kalman Filter, Particle Filter) and
+                            optimization-based methods (e.g., Graph-based SLAM,
+                            Bundle Adjustment). These algorithms differ in their
+                            mathematical formulations and computational
+                            approaches, each with its own strengths and
+                            weaknesses depending on the specific application and
+                            constraints.
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                  <div className="markdown">
+                    <Markdown>{md2}</Markdown>
+                  </div>
+                  <div className="mt-20 mb-4">
+                    <Image src={FeaturesElement4} alt="" />
+                  </div>
+                  <div className="markdown">
+                    <Markdown>{md3}</Markdown>
                   </div>
                 </CardContent>
               </Card>

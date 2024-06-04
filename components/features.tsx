@@ -44,7 +44,7 @@ export default function Features() {
       ></div>
       <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2"></div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-none lg:max-w-6xl mx-auto">
         <div className="pt-12 md:pt-20">
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <div className="text-3xl mb-1">Open source projects 👇🏼</div>
@@ -56,9 +56,9 @@ export default function Features() {
             </Link>
           </div>
 
-          <div className="md:grid md:grid-cols-12 md:gap-6">
+          <div className="md:grid md:grid-cols-12 gap-1 xl:gap-4 mx-2">
             <div
-              className="max-w-lg mx-auto md:col-span-5"
+              className="max-w-lg mx-auto col-span-6"
               data-aos="fade-right"
             >
               <div className="mb-8 md:mb-0">
@@ -210,50 +210,47 @@ export default function Features() {
                 </div>
               </div>
             </div>
+
             <div className="">
-              <div className="transition-all">
-                <div
-                  className="relative flex flex-col text-center lg:text-right"
-                  data-aos="zoom-y-out"
-                  ref={tabs}
-                >
-                  {[
-                    { bg: FeaturesBg2, fg: FeaturesElement2 },
-                    { bg: FeaturesBg4, fg: FeaturesElement4 },
-                    { bg: FeaturesBg3, fg: FeaturesElement3 },
-                  ].map((x, i) => (
-                    <Transition
-                      show={tab === i + 1}
-                      key={i}
-                      appear={true}
-                      className="w-full"
-                      enter="transition ease-in-out duration-700 transform order-first"
-                      enterFrom="opacity-0 translate-y-16"
-                      enterTo="opacity-100 translate-y-0"
-                      leave="transition ease-in-out duration-300 transform absolute"
-                      leaveFrom="opacity-100 translate-y-0"
-                      leaveTo="opacity-0 -translate-y-16"
-                      beforeEnter={() => heightFix()}
-                      unmount={false}
-                    >
-                      <div className="relative inline-flex flex-col 2xl:w-[38rem] lg:w-[32rem] md:w-[25rem]  w-full">
-                        <Image
-                          className="rounded object-contain"
-                          src={x.bg}
-                          
-                          alt="Features bg"
-                        />
-                        <Image
-                          className="absolute w-full px-[5rem] object-contain"
-                          src={x.fg}
-                         
-                          alt="Element"
-                          style={{ top: "30%" }}
-                        />
-                      </div>
-                    </Transition>
-                  ))}
-                </div>
+              <div
+                className="relative flex flex-col text-center lg:text-right col-span-6"
+                data-aos="zoom-y-out"
+                ref={tabs}
+              >
+                {[
+                  { bg: FeaturesBg2, fg: FeaturesElement2 },
+                  { bg: FeaturesBg4, fg: FeaturesElement4 },
+                  { bg: FeaturesBg3, fg: FeaturesElement3 },
+                ].map((x, i) => (
+                  <Transition
+                    show={tab === i + 1}
+                    key={i}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-first"
+                    enterFrom="opacity-0 translate-y-16"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 -translate-y-16"
+                    beforeEnter={() => heightFix()}
+                    unmount={false}
+                  >
+                    <div className="relative inline-flex flex-col 2xl:w-[38rem] lg:w-[32rem] md:w-[25rem]  w-full">
+                      <Image
+                        className="rounded object-contain"
+                        src={x.bg}
+                        alt="Features bg"
+                      />
+                      <Image
+                        className="absolute w-full px-[5rem] object-contain"
+                        src={x.fg}
+                        alt="Element"
+                        style={{ top: "30%" }}
+                      />
+                    </div>
+                  </Transition>
+                ))}
               </div>
             </div>
           </div>

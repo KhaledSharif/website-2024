@@ -13,6 +13,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+
 import Link from "next/link";
 
 export const metadata = {
@@ -30,16 +31,16 @@ function Project({
   link: string;
 }) {
   return (
-    <Card className="pt-4 cursor-pointer hover:bg-white bg-gray-50">
-      <CardContent>
-        <Link href={link}>
+    <Link href={link}>
+      <Card className="pt-4 cursor-pointer hover:bg-white bg-gray-50">
+        <CardContent>
           <div className="space-y-1 text-left">
             <div className="text-lg font-medium text-gray-800">{name}</div>
             <div className="text-sm text-gray-600">{description}</div>
           </div>
-        </Link>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 
