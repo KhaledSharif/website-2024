@@ -134,7 +134,7 @@ export default function Home() {
                         <AccordionTrigger>
                           What is SLAM and why is it used in robotics?
                         </AccordionTrigger>
-                        <AccordionContent className="text-justify flex flex-col gap-4 mx-8">
+                        <AccordionContent className="text-justify flex flex-col gap-4 ml-4 mr-8">
                           <div>
                             SLAM stands for Simultaneous Localization and
                             Mapping. It is a technique used in robotics and
@@ -181,93 +181,63 @@ export default function Home() {
                         <AccordionTrigger>
                           What is the Robot Operating System (ROS)?
                         </AccordionTrigger>
-                        <AccordionContent className="text-justify flex flex-col gap-4 mx-8">
+                        <AccordionContent className="text-justify flex flex-col gap-4 ml-4 mr-8">
                           <div>
-                            SLAM stands for Simultaneous Localization and
-                            Mapping. It is a technique used in robotics and
-                            autonomous systems to construct a map of an unknown
-                            environment while simultaneously tracking the
-                            position and orientation of the robot or autonomous
-                            vehicle within that environment. SLAM allows robots
-                            to create and update a map of their surroundings as
-                            they move through an unknown environment. This map
-                            can be used for navigation, path planning, and
-                            obstacle avoidance. SLAM enables robots to determine
-                            their precise location within the constructed map.
-                            This is essential for accurate navigation and
-                            decision-making.
+                            The Robot Operating System (ROS) is an open-source
+                            robotics framework that provides a set of software
+                            libraries and tools for building robotic
+                            applications. It is designed to simplify the task of
+                            creating complex and robust robot behavior across a
+                            wide variety of robotic platforms.
                           </div>
 
                           <div>
-                            By mapping and localizing simultaneously, SLAM
-                            enables robots to operate autonomously without
-                            relying on pre-existing maps or external positioning
-                            systems like GPS, which may not be available in
-                            certain environments (e.g., indoors, underground, or
-                            in areas with limited satellite coverage). SLAM is
-                            particularly useful for robots tasked with exploring
-                            and mapping unknown environments, such as search and
-                            rescue operations, planetary exploration, or
-                            industrial inspection of complex structures.
-                          </div>
-
-                          <div>
-                            SLAM algorithms can be broadly classified into two
-                            categories: filter-based methods (e.g., Extended
-                            Kalman Filter, Particle Filter) and
-                            optimization-based methods (e.g., Graph-based SLAM,
-                            Bundle Adjustment). These algorithms differ in their
-                            mathematical formulations and computational
-                            approaches, each with its own strengths and
-                            weaknesses depending on the specific application and
-                            constraints.
+                            ROS is widely used in both academic and industrial
+                            robotics applications, and is supported by a variety
+                            of robot hardware platforms and sensors. It is
+                            particularly popular in the research and development
+                            of mobile robots, manipulator arms, and other
+                            robotic systems.
                           </div>
                         </AccordionContent>
                       </AccordionItem>
                       <AccordionItem value="item-3">
                         <AccordionTrigger>
-                          How does this project combine Visual SLAM and ROS?
+                          What makes Visual SLAM special?
                         </AccordionTrigger>
-                        <AccordionContent className="text-justify flex flex-col gap-4 mx-8">
+                        <AccordionContent className="text-justify flex flex-col gap-4 ml-4 mr-8">
                           <div>
-                            SLAM stands for Simultaneous Localization and
-                            Mapping. It is a technique used in robotics and
-                            autonomous systems to construct a map of an unknown
-                            environment while simultaneously tracking the
-                            position and orientation of the robot or autonomous
-                            vehicle within that environment. SLAM allows robots
-                            to create and update a map of their surroundings as
-                            they move through an unknown environment. This map
-                            can be used for navigation, path planning, and
-                            obstacle avoidance. SLAM enables robots to determine
-                            their precise location within the constructed map.
-                            This is essential for accurate navigation and
-                            decision-making.
+                            Visual SLAM is appealing due to its use of low-cost,
+                            lightweight cameras as the primary sensor. This
+                            provides rich visual information about the
+                            environment, enabling enhanced mapping and object
+                            recognition. However, visual SLAM can be affected by
+                            lighting conditions, camera quality, and visual
+                            texture, and it is prone to drift and scale
+                            ambiguity issues, especially in large-scale
+                            environments.
                           </div>
 
                           <div>
-                            By mapping and localizing simultaneously, SLAM
-                            enables robots to operate autonomously without
-                            relying on pre-existing maps or external positioning
-                            systems like GPS, which may not be available in
-                            certain environments (e.g., indoors, underground, or
-                            in areas with limited satellite coverage). SLAM is
-                            particularly useful for robots tasked with exploring
-                            and mapping unknown environments, such as search and
-                            rescue operations, planetary exploration, or
-                            industrial inspection of complex structures.
+                            Lidar-based SLAM, on the other hand, provides
+                            accurate 3D point cloud data for precise mapping and
+                            localization. It is more robust to changes in
+                            lighting and visual textures, but requires
+                            specialized and more expensive Lidar sensors, which
+                            have higher power consumption compared to visual
+                            SLAM. Lidar-based SLAM may also struggle in dynamic
+                            environments with moving obstacles.
                           </div>
 
                           <div>
-                            SLAM algorithms can be broadly classified into two
-                            categories: filter-based methods (e.g., Extended
-                            Kalman Filter, Particle Filter) and
-                            optimization-based methods (e.g., Graph-based SLAM,
-                            Bundle Adjustment). These algorithms differ in their
-                            mathematical formulations and computational
-                            approaches, each with its own strengths and
-                            weaknesses depending on the specific application and
-                            constraints.
+                            Combining multiple sensor modalities, as in sensor
+                            fusion SLAM, can leverage the strengths of different
+                            sensors to improve robustness and accuracy. This
+                            approach provides more comprehensive and reliable
+                            mapping and localization, but it also adds
+                            complexity and cost due to the need for sensor
+                            integration, synchronization, and advanced data
+                            fusion algorithms.
                           </div>
                         </AccordionContent>
                       </AccordionItem>
