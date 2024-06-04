@@ -121,9 +121,8 @@ Astrobee uses a ROS (Robot Operating System) node to process images and localize
 
 ### Enhancing and Maintaining Maps
 
-- **Extract Sub-maps**: Use \`extract_submap\` to create smaller maps from a larger map.
-- **Merge Maps**: Combine multiple maps using \`merge_maps\`.
-- **Efficient Map Building**: Build maps incrementally and merge smaller maps to create a comprehensive map.
+- **Extract Sub-maps**: Use \`extract_submap.py\` to create smaller maps from a larger map.
+- **Merge Maps**: Combine multiple maps using \`merge_maps.py\`.
 - **Growing Maps**: Add new images to an existing map using \`grow_map.py\`.
 - **Reducing Map Size**: Use \`reduce_map.py\` to eliminate redundant images without sacrificing map quality.
 

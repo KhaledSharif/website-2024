@@ -93,10 +93,18 @@
   }
 
   .markdown li {
-    @apply text-sm text-justify mt-2
+    @apply text-sm text-justify mt-2 ml-2
+  }
+
+  .markdown ol,ul {
+    @apply text-sm text-justify ml-2
   }
 
   .markdown code {
-    @apply text-[0.75rem]
+    @apply text-[0.75rem] tracking-tighter bg-gray-100 mx-1 px-1 py-1
+  }
+
+  .markdown strong {
+    @apply tracking-tight bg-blue-100 bg-opacity-25 font-medium rounded-sm
   }
 }
