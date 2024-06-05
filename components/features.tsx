@@ -57,10 +57,7 @@ export default function Features() {
           </div>
 
           <div className="md:grid md:grid-cols-12 gap-1 xl:gap-4 mx-2">
-            <div
-              className="max-w-lg mx-auto col-span-6"
-              data-aos="fade-right"
-            >
+            <div className="max-w-lg mx-auto col-span-6" data-aos="fade-right">
               <div className="mb-8 md:mb-0">
                 <div
                   className={`flex items-center text-md p-5 rounded border transition duration-300 ease-in-out mb-3 
@@ -108,7 +105,11 @@ export default function Features() {
                     )}
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
-                    <CaretCircleUp size={24} />
+                    {tab === 1 ? (
+                      <CaretCircleUp size={24} />
+                    ) : (
+                      <CaretCircleDown size={24} />
+                    )}
                   </div>
                 </div>
                 <div
@@ -157,7 +158,11 @@ export default function Features() {
                     )}
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
-                    <CaretCircleDown size={24} />
+                    {tab === 2 ? (
+                      <CaretCircleUp size={24} />
+                    ) : (
+                      <CaretCircleDown size={24} />
+                    )}
                   </div>
                 </div>
                 <div
@@ -205,7 +210,11 @@ export default function Features() {
                     )}
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
-                    <CaretCircleDown size={24} />
+                    {tab === 3 ? (
+                      <CaretCircleUp size={24} />
+                    ) : (
+                      <CaretCircleDown size={24} />
+                    )}
                   </div>
                 </div>
               </div>
