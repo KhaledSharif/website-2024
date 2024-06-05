@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import React, { forwardRef, useRef } from "react";
-import { GithubLogo } from "@phosphor-icons/react";
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -13,7 +12,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        `z-10 flex h-12 w-12 items-center justify-center 
+        `z-10 flex h-12 w-[6rem] items-center justify-center gap-1
         rounded-full border-2 border-border bg-white p-3`,
         className
       )}
@@ -36,9 +35,9 @@ export function AnimatedBeamMultipleInputDemo() {
   return (
     <div
       className="
-      relative flex h-full w-full max-w-[32rem] 
+      relative flex h-full w-full  
       items-center justify-center overflow-hidden 
-      rounded-lg border bg-background p-10 shadow-md
+      rounded-lg border bg-gray-50 py-6 px-12 shadow-md
       "
       ref={containerRef}
     >
@@ -48,31 +47,33 @@ export function AnimatedBeamMultipleInputDemo() {
       items-stretch justify-between gap-10
       "
       >
-        <div className="flex flex-col justify-center gap-2">
+        <div className="flex flex-col justify-center gap-2 text-sm">
           <Circle ref={div1Ref}>
-            <GithubLogo />
+            <div>📷</div>
+            Left
           </Circle>
+
           <Circle ref={div2Ref}>
-            <GithubLogo />
+            <div>📷</div>
+            Right
           </Circle>
-          <Circle ref={div3Ref}>
-            <GithubLogo />
-          </Circle>
+
           <Circle ref={div4Ref}>
-            <GithubLogo />
+            <div>🧭</div>
+            IMU
           </Circle>
+        </div>
+        <div className="flex flex-col justify-center">
+          <Circle ref={div6Ref}>
+            <div>🧠</div>VSLAM
+          </Circle>
+        </div>
+        <div className="flex flex-col justify-center gap-2">
           <Circle ref={div5Ref}>
-            <GithubLogo />
+            <div>📍</div>Pose
           </Circle>
-        </div>
-        <div className="flex flex-col justify-center">
-          <Circle ref={div6Ref} className="h-16 w-16">
-            <GithubLogo />
-          </Circle>
-        </div>
-        <div className="flex flex-col justify-center">
           <Circle ref={div7Ref}>
-            <GithubLogo />
+            <div>🗺️</div>Map
           </Circle>
         </div>
       </div>
@@ -87,11 +88,7 @@ export function AnimatedBeamMultipleInputDemo() {
         fromRef={div2Ref}
         toRef={div6Ref}
       />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div3Ref}
-        toRef={div6Ref}
-      />
+
       <AnimatedBeam
         containerRef={containerRef}
         fromRef={div4Ref}
@@ -99,8 +96,8 @@ export function AnimatedBeamMultipleInputDemo() {
       />
       <AnimatedBeam
         containerRef={containerRef}
-        fromRef={div5Ref}
-        toRef={div6Ref}
+        fromRef={div6Ref}
+        toRef={div5Ref}
       />
       <AnimatedBeam
         containerRef={containerRef}
