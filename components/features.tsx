@@ -4,13 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import FeaturesBg4 from "@/public/images/vslam.jpg";
-import FeaturesElement4 from "@/public/images/vslam.gif";
-
 import FeaturesBg2 from "@/public/images/rl.jpg";
-import FeaturesElement2 from "@/public/images/rl.gif";
-
 import FeaturesBg3 from "@/public/images/robots.jpg";
-import FeaturesElement3 from "@/public/images/robots.gif";
 
 import { buttonVariants } from "@/components/ui/button";
 
@@ -227,9 +222,9 @@ export default function Features() {
                 ref={tabs}
               >
                 {[
-                  { bg: FeaturesBg2, fg: FeaturesElement2 },
-                  { bg: FeaturesBg4, fg: FeaturesElement4 },
-                  { bg: FeaturesBg3, fg: FeaturesElement3 },
+                  { bg: FeaturesBg2, fg: "/videos/omniverse-gym.webm" },
+                  { bg: FeaturesBg4, fg: "/videos/ros-vslam.webm" },
+                  { bg: FeaturesBg3, fg: "/videos/robot-transformers.webm" },
                 ].map((x, i) => (
                   <Transition
                     show={tab === i + 1}
@@ -245,16 +240,18 @@ export default function Features() {
                     beforeEnter={() => heightFix()}
                     unmount={false}
                   >
-                    <div className="relative inline-flex flex-col 2xl:w-[38rem] lg:w-[32rem] md:w-[25rem]  w-full">
+                    <div className="relative inline-flex flex-col 2xl:w-[38rem] lg:w-[32rem] md:w-[25rem] w-full">
                       <Image
                         className="rounded object-contain"
                         src={x.bg}
                         alt="Features bg"
                       />
-                      <Image
-                        className="absolute w-full px-[5rem] object-contain"
+                      <video
+                        autoPlay
+                        muted
+                        loop
+                        className="absolute w-full px-3 object-contain"
                         src={x.fg}
-                        alt="Element"
                         style={{ top: "30%" }}
                       />
                     </div>

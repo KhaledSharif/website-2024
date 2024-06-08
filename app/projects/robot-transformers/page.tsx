@@ -13,7 +13,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import FeaturesElement3 from "@/public/images/robots.gif";
 import Image from "next/image";
 import Markdown from "react-markdown";
 
@@ -123,7 +122,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex w-full items-center justify-center pb-8">
-                    <Image src={FeaturesElement3} alt="robots" />
+                    <video src={"/videos/robot-transformers.webm"} autoPlay muted loop className="w-full" />
                   </div>
                   <div className="markdown">
                     <Markdown>{md}</Markdown>
