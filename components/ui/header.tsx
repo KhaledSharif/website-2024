@@ -70,10 +70,10 @@ const components2: componentType[] = [
 ];
 const components3: componentType[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "📖 SLAM Overview",
+    href: "/notes/slam-sota",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "An overview of the state of the art in SLAM research",
   },
   {
     title: "Hover Card",
