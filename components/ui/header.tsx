@@ -17,6 +17,7 @@ import {
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
+import { SearchSheet } from "@/components/search-sheet";
 
 type componentType = { title: string; href: string; description: string };
 const components1: componentType[] = [
@@ -72,8 +73,7 @@ const components3: componentType[] = [
   {
     title: "📖 SLAM Overview",
     href: "/notes/slam-sota",
-    description:
-      "An overview of the state of the art in SLAM research",
+    description: "An overview of the state of the art in SLAM research",
   },
   {
     title: "Hover Card",
@@ -100,7 +100,7 @@ function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[250px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components1.map((component) => (
                 <ListItem
                   key={component.title}
@@ -123,7 +123,7 @@ function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Guides</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[250px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components2.map((component) => (
                 <ListItem
                   key={component.title}
@@ -144,7 +144,7 @@ function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Notes</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[250px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components3.map((component) => (
                 <ListItem
                   key={component.title}
@@ -196,7 +196,7 @@ const ListItem = React.forwardRef<
 export default function Header() {
   return (
     <header className="fixed w-full z-30 bg-opacity-90 bg-gray-100 shadow-md shadow-slate-200">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+      <div className="max-w-6xl mx-auto px-1 md:px-5 sm:px-6">
         <div className="flex items-center justify-between h-12 md:h-16 text-gray-700">
           <a href="/" className="">
             <Button variant={"outline"} className="bg-gray-100 hover:bg-white">
@@ -207,12 +207,7 @@ export default function Header() {
             <NavigationMenuDemo />
           </div>
           <div className="flex gap-4 items-center justify-end">
-            <Button
-              variant={"outline"}
-              className="bg-gray-100 hover:bg-white gap-2"
-            >
-              🔍 Search
-            </Button>
+            <SearchSheet />
           </div>
         </div>
       </div>
