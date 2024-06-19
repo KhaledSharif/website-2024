@@ -1,6 +1,11 @@
 "use client";
 
-import { GithubLogo, LinkedinLogo, FilePdf, MagnifyingGlass } from "@phosphor-icons/react";
+import {
+  GithubLogo,
+  LinkedinLogo,
+  FilePdf,
+  MagnifyingGlass,
+} from "@phosphor-icons/react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,21 +21,20 @@ import { Button } from "./button";
 type componentType = { title: string; href: string; description: string };
 const components1: componentType[] = [
   {
-    title: "Reinforcement Learning",
+    title: "🦾 Reinforcement Learning",
     href: "/projects/omniverse-gym",
     description:
-      "A modal dialog that interrupts the user with important content",
+      "Train robots to perform tasks in sim with reinforcement learning",
   },
   {
-    title: "Visual Localization",
+    title: "🗺️ Visual SLAM",
     href: "/projects/ros-vslam",
-    description: "Learn how robots can map unknown worlds visually",
+    description: "Learn how robots can localize & map unknown worlds visually",
   },
   {
-    title: "Co-op Planning",
+    title: "💭 Co-op Planning",
     href: "/projects/robot-transformers",
-    description:
-      "Displays an indicator showing the completion progress of a task",
+    description: "Train robots to plan and cooperatively manipulate objects",
   },
   {
     title: "🐝 Astrobee",
@@ -108,9 +112,11 @@ function NavigationMenuDemo() {
               ))}
             </ul>
             <div className="w-full flex items-center justify-center pb-2">
-              <Button variant={"ghost"} className="text-sm font-medium">
-                View All Projects
-              </Button>
+              <a href="/projects">
+                <Button variant={"ghost"} className="text-sm font-medium">
+                  View All Projects
+                </Button>
+              </a>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -189,18 +195,18 @@ const ListItem = React.forwardRef<
 
 export default function Header() {
   return (
-    <header className="fixed w-full z-30 bg-opacity-90 bg-gray-100">
+    <header className="fixed w-full z-30 bg-opacity-90 bg-gray-100 shadow-md shadow-slate-200">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
-        <div className="hidden md:flex items-center justify-between h-16 md:h-20">
-          <a href="/">
+        <div className="hidden md:flex items-center justify-start h-16 md:h-20">
+          <a href="/" className="w-1/3">
             <Button variant={"outline"} className="bg-gray-100 hover:bg-white">
               👦🏻 Khaled S.
             </Button>
           </a>
-
-          <NavigationMenuDemo />
-
-          <div className="flex gap-4 items-center justify-center">
+          <div className="w-1/3 flex items-center justify-center">
+            <NavigationMenuDemo />
+          </div>
+          <div className="w-1/3 flex gap-4 items-center justify-end">
             <a href="/pdf/cv.pdf" target="_blank">
               <FilePdf size={24} />
             </a>
@@ -210,7 +216,10 @@ export default function Header() {
             <a href="https://www.linkedin.com/in/khsharif" target="_blank">
               <LinkedinLogo size={24} />
             </a>
-            <Button variant={"outline"} className="bg-gray-100 hover:bg-white gap-2">
+            <Button
+              variant={"outline"}
+              className="bg-gray-100 hover:bg-white gap-2"
+            >
               <MagnifyingGlass size={16} />
               Search
             </Button>

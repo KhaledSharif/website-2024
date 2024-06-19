@@ -42,7 +42,7 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
   `
-  bg-gray-200 hover:bg-gray-100 border border-gray-100 hover:border-gray-300
+  bg-gray-100 hover:bg-gray-50 border border-gray-100 hover:border-gray-300
   group inline-flex h-10 w-max items-center justify-center 
   rounded-md px-3 text-sm font-medium 
   transition-colors

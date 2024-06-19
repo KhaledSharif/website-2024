@@ -14,6 +14,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Markdown from "react-markdown";
+import SourceCodeButton from "@/components/source-code";
 
 export const metadata = {
   title: "Projects",
@@ -124,7 +125,8 @@ export default function Home() {
                   <div className="flex w-full items-center justify-center pb-8">
                   <video src={"/videos/omniverse-gym.webm"} autoPlay muted loop className="w-full"/>
                   </div>
-                  <div className="markdown">
+                  <SourceCodeButton url={"https://github.com/khaledsharif/omniverse-gym"}/>
+                  <div className="markdown mt-6">
                     <Markdown>{md}</Markdown>
                   </div>
                 </CardContent>

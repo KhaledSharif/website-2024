@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import Image from "next/image";
 import Markdown from "react-markdown";
+import SourceCodeButton from "@/components/source-code";
 
 export const metadata = {
   title: "Projects",
@@ -124,7 +125,8 @@ export default function Home() {
                   <div className="flex w-full items-center justify-center pb-8">
                     <video src={"/videos/robot-transformers.webm"} autoPlay muted loop className="w-full" />
                   </div>
-                  <div className="markdown">
+                  <SourceCodeButton url={"https://github.com/khaledsharif/robot-transformers"}/>
+                  <div className="markdown mt-6">
                     <Markdown>{md}</Markdown>
                   </div>
                 </CardContent>

@@ -23,6 +23,7 @@ import FeaturesElement3 from "@/public/images/ros-isaac-vslam.jpg";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import { AnimatedBeamMultipleInputDemo } from "@/components/flow";
+import SourceCodeButton from "@/components/source-code";
 
 export const metadata = {
   title: "Projects",
@@ -183,7 +184,8 @@ export default function Home() {
                   <div className="flex w-full items-center justify-center pb-8">
                     <Image src={FeaturesElement3} alt="robots" />
                   </div>
-                  <div className="markdown">
+                  <SourceCodeButton url={"https://github.com/khaledsharif/ros-vslam"}/>
+                  <div className="markdown mt-6">
                     <Markdown>{md1}</Markdown>
                   </div>
                   <div className="mt-6 mb-12">
