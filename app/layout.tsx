@@ -1,16 +1,7 @@
 import "./css/style.css";
 
-import { Inter } from "next/font/google";
-
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
-
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata = {
   title: "Khaled Sharif",
@@ -25,9 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}
+        className={`bg-white dark:bg-gray-200`}
       >
-        <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
+        <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
           {children}
           <Footer />

@@ -16,17 +16,25 @@ import {
 import FeaturesElement3 from "@/public/images/astrobee.jpg";
 import Image from "next/image";
 import Markdown from "react-markdown";
+import SourceCodeButton from "@/components/source-code";
 
 export const metadata = {
   title: "Projects",
   description: "Personal Website",
 };
 const md = `
-Astrobee is a collection of free-flying robots developed by NASA to operate inside the International Space Station (ISS). These robots are designed to assist astronauts with routine tasks, conduct experiments, and perform inspections. The software and tools that enable these capabilities are part of the Astrobee Robot Software package, which includes components for autonomous navigation, vision-based localization, and human-robot interaction.
+Astrobee is a collection of free-flying robots developed by NASA to operate inside the International 
+Space Station (ISS). These robots are designed to assist astronauts with routine tasks, conduct 
+experiments, and perform inspections. The software and tools that enable these capabilities are 
+part of the Astrobee Robot Software package, which includes components for autonomous navigation, 
+vision-based localization, and human-robot interaction.
 
 ### Sparse Mapping in Astrobee
 
-**Sparse mapping** is a technique used to create a map of an environment by identifying and storing distinctive visual features and their associated 3D positions. This map is used by Astrobee for accurate localization within the ISS. Here’s an overview of how sparse mapping is performed by Astrobee:
+**Sparse mapping** is a technique used to create a map of an environment by identifying and 
+storing distinctive visual features and their associated 3D positions. This map is used by 
+Astrobee for accurate localization within the ISS. Here's an overview of how sparse mapping 
+is performed by Astrobee:
 
 #### Components of a Sparse Map
 1. **Feature Descriptors**: Unique visual features detected in images.
@@ -37,7 +45,9 @@ Astrobee is a collection of free-flying robots developed by NASA to operate insi
 ### Vocabulary Database in Sparse Mapping
 
 
-A **Vocabulary Database** is a structured collection of visual features that allows for rapid comparison and matching of images. It is derived from a technique called **Bag of Words (BoW)**, which is commonly used in computer vision and robotics for visual recognition and localization.
+A **Vocabulary Database** is a structured collection of visual features that allows for rapid comparison and matching of images. 
+It is derived from a technique called **Bag of Words (BoW)**, which is commonly used in computer vision 
+and robotics for visual recognition and localization.
 
 #### How It Works
 
@@ -87,32 +97,6 @@ Astrobee uses a ROS (Robot Operating System) node to process images and localize
   - **/localization/mapped_landmarks/features**: Detected visual features in the image.
   - **/localization/mapped_landmarks/registration**: The 3D coordinates of the detected features.
 
-### Tools and Procedures for Map Building
-
-1. **Record a Bag**:
-   - Launch the camera node and record images on the robot.
-   - Ensure neighboring images have enough overlap and reduced motion blur.
-   - Command: \`rosbag record /hw/cam_nav\`
-
-2. **Filter the Bag**:
-   - Reduce the frame rate to manage data size.
-   - Command: \`rosbag filter input.bag output.bag "(topic == '/hw/cam_nav') and (float(t.nsecs)/1e+9 <= 0.1)"\`
-
-3. **Copy the Bag from the Robot**:
-   - Use \`rsync\` to transfer the bag file to a local machine.
-
-4. **Merge Bags**:
-   - Combine smaller bag files for easier processing.
-   - Command: \`$ASTROBEE_BUILD_PATH/devel/lib/localization_node/merge_bags -output_bag <output bag> <input bags>\`
-
-5. **Extract Images**:
-   - Extract images from the bag file for map building.
-   - Command: \`$ASTROBEE_BUILD_PATH/devel/lib/localization_node/extract_image_bag <bagfile.bag> -use_timestamp_as_image_name -image_topic /hw/cam_nav -output_directory <output dir>\`
-
-6. **Build a Map**:
-   - Construct a map using \`build_map\` tools.
-   - Command: \`build_map -feature_detection -feature_matching -track_building -incremental_ba -bundle_adjustment -histogram_equalization -num_subsequent_images 100 images/*jpg -output_map <map file>\`
-
 ### Map Visualization and Localization
 
 - **Visualization**: Use \`nvm_visualize\` to view the map and images in 3D.
@@ -132,8 +116,6 @@ Astrobee employs a strategy for creating and maintaining maps on the ISS:
 - **Create a Large SURF Map**: For robust feature detection.
 - **Create a Smaller BRISK Map**: For faster processing and localization.
 - **Regularly Update Maps**: By acquiring new images and integrating them into existing maps while pruning redundant data.
-
-By following these procedures and utilizing the available tools, Astrobee can effectively perform sparse mapping and localization within the dynamic environment of the ISS, ensuring reliable operation and assistance for astronauts.
 `;
 export default function Home() {
   return (
@@ -166,14 +148,18 @@ export default function Home() {
                     <div>🐝 Astrobee</div>
                   </CardTitle>
                   <CardDescription>
-                    <div>Learn about the code running on free-flying robots on the Space Station</div>
+                    <div>
+                      Learn about the code running on free-flying robots on the
+                      Space Station
+                    </div>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex w-full items-center justify-center pb-8">
                     <Image src={FeaturesElement3} alt="robots" />
                   </div>
-                  <div className="markdown">
+                  <SourceCodeButton url={"https://github.com/nasa/astrobee"}/>
+                  <div className="markdown mt-6">
                     <Markdown>{md}</Markdown>
                   </div>
                 </CardContent>
