@@ -18,7 +18,7 @@ export function SearchSheet() {
           variant={"outline"}
           className="bg-gray-100 hover:bg-white gap-2"
         >
-          🔍 Search
+          <div>🔍</div><div className="hidden md:block">Search</div>
         </Button>
       </SheetTrigger>
       <SheetContent>

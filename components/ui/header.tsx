@@ -199,8 +199,8 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-1 md:px-5 sm:px-6">
         <div className="flex items-center justify-between h-12 md:h-16 text-gray-700">
           <a href="/" className="">
-            <Button variant={"outline"} className="bg-gray-100 hover:bg-white">
-              👦🏻 Khaled S.
+            <Button variant={"outline"} className="bg-gray-100 hover:bg-white gap-1">
+              <div>👦🏻</div><div className="text-[0.85rem] hidden sm:block">Khaled S.</div>
             </Button>
           </a>
           <div className="flex items-center justify-center">
