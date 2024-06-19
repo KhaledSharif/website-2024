@@ -27,11 +27,11 @@ The following group of documents discusses advancements in Simultaneous Localiza
 These documents collectively showcase a range of approaches and advancements in SLAM technology, from real-time multi-object mapping to leveraging environmental structure and deep learning techniques. They highlight the importance of semantic information, efficient algorithms, and robustness across different platforms for enhancing localization and mapping capabilities in dynamic environments.
 
 
-
+---
 
 
 ### Review of Robust Visual SLAM Systems
-##### (arXiv 2209.10710)
+##### arXiv 2209.10710
 
 #### Introduction
 
@@ -68,10 +68,13 @@ Robust visual SLAM systems have made significant strides in addressing the chall
 This review highlights the ongoing advancements in visual SLAM technology, emphasizing the importance of continuous innovation in addressing emerging challenges and expanding the capabilities of autonomous robots.
 
 
+---
+
+
 
 
 ### Optimal Camera Placement for Visual Sensor Networks
-##### (arXiv 2309.10698)
+##### arXiv 2309.10698
 
 
 
@@ -112,12 +115,13 @@ This paper demonstrates that by leveraging Schur convexity properties, an effici
 - Future work could explore integrating more complex constraints or adapting the approach to dynamic environments.
 
 
+---
 
 
 
 
 ### Panoramic Camera-Based Visual SLAM System
-##### (arXiv 2401.10560)
+##### arXiv 2401.10560
 
 #### Introduction
 
@@ -143,12 +147,13 @@ This paper introduces an innovative panoramic camera-based visual Simultaneous L
 The proposed panoramic camera-based SLAM system demonstrates superior performance in feature detection, depth estimation, and localization compared to traditional methods. Key findings include enhanced stability and robustness due to increased feature observation, accurate dense depth maps for improved pose estimation, and effective resolution of scale ambiguity issues. Future work could focus on further optimizing the depth completion network and exploring real-world applications with more complex environments.
 
 
+---
 
 
 
 
 ### Global Optimization Techniques for Relative Pose Estimation
-##### (arXiv 2302.11614)
+##### arXiv 2302.11614
 
 #### Introduction
 
@@ -178,12 +183,13 @@ The document concludes with a summary of key findings:
 
 
 
+---
 
 
 
 
-### Deep Patch Visual Odometry: A Comprehensive Overview
-##### (arXiv 2301.08930)
+### Deep Patch Visual Odometry
+##### arXiv 2301.08930
 
 #### Introduction
 
@@ -192,13 +198,13 @@ This document provides an overview of recent advancements in deep patch visual o
 #### Feature Volume Initialization
 - **Initialization Strategy**: Parameters of feature volumes are initialized under a normal distribution with mean 0 and standard deviation 0.001.
   
-#### Post Optimization in Ours (One Thread)
+#### Post Optimization
 - **Module Description**: An optional post-optimization module is introduced to refine the implicit scene representation, fixing camera poses using all keyframes for enhanced geometry and color consistency.
 
 #### Ablation on Warping Loss
 - **Configuration Comparison**: Evaluates different configurations of patch-wise warping loss to determine optimal parameters for depth map initialization.
   
-#### Two Threads for Tracking and Mapping (Ours(Two Threads))
+#### Two Threads for Tracking and Mapping
 - **Thread Configuration**:
   - **Tracking Thread**: Optimizes camera poses with a focus on high gradient pixels.
   - **Mapping Thread**: Simultaneously optimizes cameras, scene parameters, and applies smoothness regularization.
@@ -214,6 +220,7 @@ The methodologies presented in this document significantly advance the state-of-
 
 
 
+---
 
 
 
@@ -221,7 +228,7 @@ The methodologies presented in this document significantly advance the state-of-
 
 
 ### Dense Neural-Based SLAM for Large-Scale Environments
-##### (arXiv 2209.09357)
+##### arXiv 2209.09357
 
 #### Introduction
 
@@ -248,13 +255,14 @@ This paper introduces MeSLAM, a novel dense neural-based Simultaneous Localizati
 This paper demonstrates MeSLAM as an effective solution for dense SLAM tasks, particularly suited for applications requiring high accuracy with limited computational resources. Future advancements aim to improve the system's scalability and robustness further.
 
 
+---
 
 
 
 
 
 ### Review of Efficient Dense SLAM Systems
-##### (arXiv 2311.11700)
+##### arXiv 2311.11700
 
 #### Introduction
 
@@ -289,12 +297,13 @@ This review highlights the ongoing evolution in SLAM technology, emphasizing the
 
 
 
+---
 
 
 
 
 ### Object Feature Utilization in SLAM Framework
-##### (arXiv 2310.13256)
+##### arXiv 2310.13256
 
 #### Introduction
 
@@ -329,14 +338,12 @@ Object features offer significant potential for enhancing SLAM systems, particul
 
 
 
----
-
 
 
 
 
 ### Temporal Masking: Enhancing Dynamic SLAM Algorithms
-##### (arXiv 2210.08350)
+##### arXiv 2210.08350
 
 #### Introduction
 
@@ -364,14 +371,12 @@ This approach not only improves existing SLAM systems but also has potential app
 
 
 
----
-
 
 
 
 
 ### Anti-Dynamics Two-Stage SLAM Based on Vision and Geometry
-##### (arXiv 2302.11747)
+##### arXiv 2302.11747
 
 #### Introduction
 

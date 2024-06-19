@@ -111,4 +111,8 @@
   .markdown strong {
     @apply tracking-tight bg-blue-100 bg-opacity-25 font-medium rounded-sm
   }
+
+  .markdown hr {
+    @apply my-8
+  }
 }

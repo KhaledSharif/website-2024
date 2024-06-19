@@ -73,13 +73,13 @@ const components3: componentType[] = [
   {
     title: "📖 SLAM Overview",
     href: "/notes/slam-sota",
-    description: "An overview of the state of the art in SLAM research",
+    description: "Review of recent research in localization & mapping",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "🧭 Autonomous Navigation",
+    href: "/notes/auto-nav",
     description:
-      "For sighted users to preview content available behind a link.",
+      "An overview of scene understanding for Lidar-based navigation",
   },
   {
     title: "Progress",
