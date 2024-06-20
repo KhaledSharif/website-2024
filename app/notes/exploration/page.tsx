@@ -338,7 +338,7 @@ export default function Home() {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <BreadcrumbPage>Autonomous Navigation</BreadcrumbPage>
+                      <BreadcrumbPage>Planetary Exploration</BreadcrumbPage>
                     </BreadcrumbItem>
                   </BreadcrumbList>
                 </Breadcrumb>
@@ -347,7 +347,7 @@ export default function Home() {
               <Card className="pt-4">
                 <CardHeader>
                   <CardTitle>
-                    <div>🧭 Autonomous Navigation</div>
+                    <div>🪐 Planetary Exploration</div>
                   </CardTitle>
                   <CardDescription>
                     <div>

@@ -46,27 +46,25 @@ const components1: componentType[] = [
 ];
 const components2: componentType[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content",
+    title: "📖 SLAM Overview",
+    href: "/notes/slam-sota",
+    description: "Review of recent research in localization & mapping",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
+    title: "🧭 Autonomous Navigation",
+    href: "/notes/auto-nav",
+    description: "Review of recent research in autonomous navigation",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "🐦 Birds Eye View",
+    href: "/notes/bev",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Review of recent research in Birds Eye View (BEV) for sensor fusion",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "🪐 Planetary Exploration",
+    href: "/notes/exploration",
+    description: "Review of recent research in planetary exploration robotics",
   },
 ];
 const components3: componentType[] = [
@@ -78,19 +76,18 @@ const components3: componentType[] = [
   {
     title: "🧭 Autonomous Navigation",
     href: "/notes/auto-nav",
-    description:
-      "An overview of scene understanding for Lidar-based navigation",
+    description: "Review of recent research in autonomous navigation",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "🐦 Birds Eye View",
+    href: "/notes/bev",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Review of recent research in Birds Eye View (BEV) for sensor fusion",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "🪐 Planetary Exploration",
+    href: "/notes/exploration",
+    description: "Review of recent research in planetary exploration robotics",
   },
 ];
 function NavigationMenuDemo() {
@@ -199,8 +196,12 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-1 md:px-5 sm:px-6">
         <div className="flex items-center justify-between h-12 md:h-16 text-gray-700">
           <a href="/" className="">
-            <Button variant={"outline"} className="bg-gray-100 hover:bg-white gap-1">
-              <div>👦🏻</div><div className="text-[0.85rem] hidden sm:block">Khaled S.</div>
+            <Button
+              variant={"outline"}
+              className="bg-gray-100 hover:bg-white gap-1"
+            >
+              <div>👦🏻</div>
+              <div className="text-[0.85rem] hidden sm:block">Khaled S.</div>
             </Button>
           </a>
           <div className="flex items-center justify-center">
