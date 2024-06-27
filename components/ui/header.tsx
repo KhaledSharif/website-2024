@@ -46,25 +46,26 @@ const components1: componentType[] = [
 ];
 const components2: componentType[] = [
   {
-    title: "📖 SLAM Overview",
-    href: "/notes/slam-sota",
-    description: "Review of recent research in localization & mapping",
-  },
-  {
-    title: "🧭 Autonomous Navigation",
-    href: "/notes/auto-nav",
-    description: "Review of recent research in autonomous navigation",
-  },
-  {
-    title: "🐦 Birds Eye View",
-    href: "/notes/bev",
+    title: "🦾 111",
+    href: "/projects/omniverse-gym",
     description:
-      "Review of recent research in Birds Eye View (BEV) for sensor fusion",
+      "Train robots to perform tasks in sim with reinforcement learning",
   },
   {
-    title: "🪐 Planetary Exploration",
-    href: "/notes/exploration",
-    description: "Review of recent research in planetary exploration robotics",
+    title: "🗺️ 222",
+    href: "/projects/ros-vslam",
+    description: "Learn how robots can localize & map unknown worlds visually",
+  },
+  {
+    title: "💭 333",
+    href: "/projects/robot-transformers",
+    description: "Train robots to plan and cooperatively manipulate objects",
+  },
+  {
+    title: "🐝 444",
+    href: "/projects/astrobee",
+    description:
+      "Learn about the code running on free-flying robots on the Space Station",
   },
 ];
 const components3: componentType[] = [
@@ -85,9 +86,9 @@ const components3: componentType[] = [
       "Review of recent research in Birds Eye View (BEV) for sensor fusion",
   },
   {
-    title: "🪐 Planetary Exploration",
-    href: "/notes/exploration",
-    description: "Review of recent research in planetary exploration robotics",
+    title: "🪐 NeRFs",
+    href: "/notes/nerfs",
+    description: "Intro to Neural Radiance Fields and their uses in robotics",
   },
 ];
 function NavigationMenuDemo() {
@@ -117,8 +118,8 @@ function NavigationMenuDemo() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Guides</NavigationMenuTrigger>
+        {/* <NavigationMenuItem>
+          <NavigationMenuTrigger>Galleries</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[250px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components2.map((component) => (
@@ -133,11 +134,11 @@ function NavigationMenuDemo() {
             </ul>
             <div className="w-full flex items-center justify-center pb-2">
               <Button variant={"ghost"} className="text-sm font-medium">
-                View All Guides
+                View All Galleries
               </Button>
             </div>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <NavigationMenuTrigger>Notes</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -153,9 +154,11 @@ function NavigationMenuDemo() {
               ))}
             </ul>
             <div className="w-full flex items-center justify-center pb-2">
-              <Button variant={"ghost"} className="text-sm font-medium">
-                View All Notes
-              </Button>
+              <a href="/notes">
+                <Button variant={"ghost"} className="text-sm font-medium">
+                  View All Notes
+                </Button>
+              </a>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>

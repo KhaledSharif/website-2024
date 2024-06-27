@@ -23,18 +23,14 @@ export function SearchSheet() {
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Edit profile</SheetTitle>
+          <SheetTitle>🚧 Under Construction</SheetTitle>
           <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
+            Search functionality is currently under construction, please come back later!
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">123</div>
-          <div className="grid grid-cols-4 items-center gap-4">456</div>
-        </div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit" variant={"ghost"}>❎ Close</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

@@ -351,7 +351,7 @@ export default function Home() {
                   </CardTitle>
                   <CardDescription>
                     <div>
-                      An overview of the state of the art in SLAM research
+                      Review of recent research in autonomous robot navigation
                     </div>
                   </CardDescription>
                 </CardHeader>

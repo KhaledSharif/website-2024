@@ -79,7 +79,7 @@ export default function Home() {
                     <Project
                       link="/projects/ros-vslam"
                       name="Visual SLAM"
-                      description="This project has code for running VSLAM in ROS with GPU acceleration and testing in a ray traced simulation"
+                      description="This project has code for running Visual SLAM in the Robot Operating System (ROS) with GPU acceleration and testing in a ray traced simulation"
                     />
                   </CardContent>
                 </Card>
@@ -98,12 +98,12 @@ export default function Home() {
                     <Project
                       link="/projects/omniverse-gym"
                       name="Omniverse Gym"
-                      description="This project shows how to use Omniverse Isaac Sim to solve robot reinforcement learning tasks using PPO"
+                      description="This project shows how to use NVIDIA Omniverse Isaac Simulator to solve robot reinforcement learning tasks using Proximal Policy Optimization (PPO)"
                     />
                     <Project
                       link="/projects/robot-transformers"
                       name="Robot Transformers"
-                      description="This project trains and evaluates an Action Chunking Transformer (ACT) for coordinated robot manipulation"
+                      description="This project trains and evaluates an Action Chunking Transformer (ACT) for coordinated robot manipulation using HuggingFace LeRobot library"
                     />
                   </CardContent>
                 </Card>
@@ -120,7 +120,7 @@ export default function Home() {
                     <Project
                       link="/projects/astrobee"
                       name="Astrobee"
-                      description="This project has code for new robotic teammates working alongside astronauts on the ISS"
+                      description="This project goes over the C++ code for new robots (Astrobees) working alongside astronauts on the International Space Station (ISS)"
                     />
                   </CardContent>
                 </Card>

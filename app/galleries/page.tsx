@@ -17,7 +17,7 @@ import {
 import Link from "next/link";
 
 export const metadata = {
-  title: "Projects",
+  title: "Galleries",
   description: "Personal Website",
 };
 
