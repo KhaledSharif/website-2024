@@ -13,10 +13,63 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import FeaturesElement3 from "@/public/images/astrobee.jpg";
+import FeaturesElement1 from "@/public/images/astrobee-001.jpg";
+import FeaturesElement2 from "@/public/images/astrobee-002.webp";
+import FeaturesElement4 from "@/public/images/astrobee-004.jpg";
+import FeaturesElement5 from "@/public/images/astrobee-005.jpg";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import SourceCodeButton from "@/components/source-code";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+function CarouselDemo() {
+  return (
+    <Carousel className="w-full md:w-5/6 flex items-center justify-center">
+      <CarouselContent>
+        {[
+          {
+            img: FeaturesElement1,
+            desc: "An Astrobee (Bumble) attached to 1 of 2 ports on the charging dock",
+          },
+          {
+            img: FeaturesElement2,
+            desc: "Expedition 63 Commander Chris Cassidy with two Astrobees (Bumble & Honey)",
+          },
+          {
+            img: FeaturesElement5,
+            desc: "Each Astrobee has 3 cameras on its front: Nav, Sci, & Haz cams",
+          },
+          {
+            img: FeaturesElement4,
+            desc: "Astrobee (Bumble) flying autonomously during a mapping session",
+          },
+        ].map((element, index) => (
+          <CarouselItem key={index}>
+            <div
+              className="flex flex-col gap-4 aspect-square 
+                items-center justify-center p-0
+                 bg-gray-50 
+                 rounded-3xl m-4"
+            >
+              <div><Image src={element.img} className="object-cover" alt="robots" /></div>
+              <div className="text-sm font-medium">{element.desc}</div>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <div>
+      <CarouselPrevious />
+      <CarouselNext />
+      </div>
+    </Carousel>
+  );
+}
 
 export const metadata = {
   title: "Projects",
@@ -156,9 +209,9 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex w-full items-center justify-center pb-8">
-                    <Image src={FeaturesElement3} alt="robots" />
+                    <CarouselDemo />
                   </div>
-                  <SourceCodeButton url={"https://github.com/nasa/astrobee"}/>
+                  <SourceCodeButton url={"https://github.com/nasa/astrobee"} />
                   <div className="markdown mt-6">
                     <Markdown>{md}</Markdown>
                   </div>

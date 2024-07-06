@@ -22,6 +22,12 @@ import { SearchSheet } from "@/components/search-sheet";
 type componentType = { title: string; href: string; description: string };
 const components1: componentType[] = [
   {
+    title: "🐝 Astrobee",
+    href: "/projects/astrobee",
+    description:
+      "Learn about the code running on free-flying robots on the Space Station",
+  },
+  {
     title: "🦾 Reinforcement Learning",
     href: "/projects/omniverse-gym",
     description:
@@ -36,12 +42,6 @@ const components1: componentType[] = [
     title: "💭 Co-op Planning",
     href: "/projects/robot-transformers",
     description: "Train robots to plan and cooperatively manipulate objects",
-  },
-  {
-    title: "🐝 Astrobee",
-    href: "/projects/astrobee",
-    description:
-      "Learn about the code running on free-flying robots on the Space Station",
   },
 ];
 const components2: componentType[] = [

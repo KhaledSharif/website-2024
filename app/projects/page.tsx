@@ -69,58 +69,43 @@ export default function Home() {
                 <Card className="pt-4">
                   <CardHeader>
                     <CardTitle>
-                      <div>🤖 Robotics</div>
-                    </CardTitle>
-                    <CardDescription>
-                      <div>Projects related to Robot Vision and Mapping</div>
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Project
-                      link="/projects/ros-vslam"
-                      name="Visual SLAM"
-                      description="This project has code for running Visual SLAM in the Robot Operating System (ROS) with GPU acceleration and testing in a ray traced simulation"
-                    />
-                  </CardContent>
-                </Card>
-                <Card className="pt-4">
-                  <CardHeader>
-                    <CardTitle>
-                      <div>🧠 Artificial Intelligence</div>
+                      <div>🚀 Projects</div>
                     </CardTitle>
                     <CardDescription>
                       <div>
-                        Projects related to AI and Reinforcement Learning
+                        My open source projects related to Robotics, Vision,
+                        Mapping, and more
                       </div>
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-col gap-4">
+                  <Project
+                      link="/projects/astrobee"
+                      name="🐝 Astrobee"
+                      description="This project goes over the Computer Vision (C++) code for
+                       new robots (Astrobees) working alongside astronauts on the 
+                       International Space Station (ISS)"
+                    />
+                    <Project
+                      link="/projects/ros-vslam"
+                      name="🗺️ Visual SLAM"
+                      description="This project has code for running Visual SLAM in the 
+                      Robot Operating System (ROS) with GPU acceleration and testing in 
+                      a ray traced simulation"
+                    />
                     <Project
                       link="/projects/omniverse-gym"
-                      name="Omniverse Gym"
-                      description="This project shows how to use NVIDIA Omniverse Isaac Simulator to solve robot reinforcement learning tasks using Proximal Policy Optimization (PPO)"
+                      name="🦾 Omniverse Gym"
+                      description="This project shows how to use NVIDIA Omniverse Isaac 
+                      Simulator to solve robot reinforcement learning tasks using Proximal 
+                      Policy Optimization (PPO)"
                     />
                     <Project
                       link="/projects/robot-transformers"
-                      name="Robot Transformers"
-                      description="This project trains and evaluates an Action Chunking Transformer (ACT) for coordinated robot manipulation using HuggingFace LeRobot library"
-                    />
-                  </CardContent>
-                </Card>
-                <Card className="pt-4">
-                  <CardHeader>
-                    <CardTitle>
-                      <div>🚀 Space Exploration</div>
-                    </CardTitle>
-                    <CardDescription>
-                      <div>Projects related to Astronomy and Space Robots</div>
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Project
-                      link="/projects/astrobee"
-                      name="Astrobee"
-                      description="This project goes over the C++ code for new robots (Astrobees) working alongside astronauts on the International Space Station (ISS)"
+                      name="💭 Robot Transformers"
+                      description="This project trains and evaluates an Action Chunking 
+                      Transformer (ACT) for coordinated robot manipulation using 
+                      HuggingFace LeRobot library"
                     />
                   </CardContent>
                 </Card>
