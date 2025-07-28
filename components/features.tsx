@@ -34,10 +34,10 @@ export default function Features() {
   return (
     <section className="relative">
       <div
-        className="absolute inset-0 bg-gray-100 pointer-events-none mb-16"
+        className="absolute inset-0 bg-background pointer-events-none mb-16"
         aria-hidden="true"
       ></div>
-      <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2"></div>
+      <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-border transform -translate-y-1/2"></div>
 
       <div className="relative max-w-none lg:max-w-6xl mx-auto">
         <div className="pt-12 md:pt-20">
@@ -47,7 +47,7 @@ export default function Features() {
               href="/projects"
               className={buttonVariants({ variant: "ghost" })}
             >
-              <div className="text-lg underline text-gray-500">View All</div>
+              <div className="text-lg underline text-muted-foreground">View All</div>
             </Link>
           </div>
 
@@ -56,7 +56,7 @@ export default function Features() {
               <div className="mb-8 md:mb-0">
                 <div
                   className={`flex items-center text-md p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 1 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg cursor-pointer" : "cursor-default bg-white border-gray-400"}`}
+                  ${tab !== 1 ? "bg-background shadow-md border-border hover:shadow-lg cursor-pointer" : "cursor-default bg-background border-border"}`}
                   onClick={() => {
                     setTab(1);
                   }}
@@ -65,7 +65,7 @@ export default function Features() {
                     <div className="font-bold leading-snug tracking-tight mb-1 text-lg">
                       Robot Reinforcement Learning
                     </div>
-                    <div className="text-gray-700 text-md">
+                    <div className="text-foreground text-md">
                       This repo has examples of how to use NVIDIA Omniverse
                       Isaac Simulator to train robots to perform tasks using
                       Reinforcement Learning (RL)
@@ -109,7 +109,7 @@ export default function Features() {
                 </div>
                 <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 2 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg cursor-pointer" : "cursor-default bg-white border-gray-400"}`}
+                  ${tab !== 2 ? "bg-background shadow-md border-border hover:shadow-lg cursor-pointer" : "cursor-default bg-background border-border"}`}
                   onClick={() => {
                     setTab(2);
                   }}
@@ -118,7 +118,7 @@ export default function Features() {
                     <div className="font-bold leading-snug tracking-tight mb-1 text-lg">
                       Robot Visual Localization
                     </div>
-                    <div className="text-gray-700 text-md">
+                    <div className="text-foreground text-md">
                       Quickstart Robot Operating System (ROS) code for running
                       GPU accelerated Simultaneous Localization and Mapping
                       (SLAM) and verifying loop closure in sim
@@ -162,7 +162,7 @@ export default function Features() {
                 </div>
                 <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 3 ? "bg-gray-100 shadow-md border-gray-200 hover:shadow-lg cursor-pointer" : "cursor-default bg-white border-gray-400"}`}
+                  ${tab !== 3 ? "bg-background shadow-md border-border hover:shadow-lg cursor-pointer" : "cursor-default bg-background border-border"}`}
                   onClick={() => {
                     setTab(3);
                   }}
@@ -171,7 +171,7 @@ export default function Features() {
                     <div className="font-bold leading-snug tracking-tight mb-1 text-lg">
                       Robot Cooperative Planning
                     </div>
-                    <div className="text-gray-700 text-md">
+                    <div className="text-foreground text-md">
                       Train and evaluate a pair of robot arms to cooperatively
                       plan and manipulate multiple objects using an Action
                       Chunking Transformer (ACT)

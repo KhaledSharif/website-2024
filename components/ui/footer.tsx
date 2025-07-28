@@ -10,12 +10,12 @@ export default function Footer() {
     <footer>
       <Section className="mt-0 xl:mt-32">
         <Container className="flex w-full justify-between">
-          <div className="w-48 lg:w-72 text-gray-700">
+          <div className="w-48 lg:w-72 text-foreground">
             kldsrf.com is a collection of my projects, publications, and notes
             to share with the world my passion for robotics
           </div>
 
-          <div className="flex flex-col gap-2 text-right text-gray-600">
+          <div className="flex flex-col gap-2 text-right text-muted-foreground">
             <Link href="/">Privacy Policy</Link>
             <Link href="/">Terms of Service</Link>
           </div>
@@ -25,7 +25,7 @@ export default function Footer() {
             <a href="https://github.com/khaledsharif" target="_blank">
               <Button
                 variant="outline"
-                className="flex gap-1 justify-center text-sm font-light hover:bg-white bg-gray-50"
+                className="flex gap-1 justify-center text-sm font-light hover:bg-accent bg-background"
               >
                 <GithubLogo />
                 @khaledsharif
@@ -34,14 +34,14 @@ export default function Footer() {
             <a href="https://www.linkedin.com/in/khsharif" target="_blank">
               <Button
                 variant="outline"
-                className="flex gap-1 justify-center text-sm font-light hover:bg-white bg-gray-50"
+                className="flex gap-1 justify-center text-sm font-light hover:bg-accent bg-background"
               >
                 <LinkedinLogo />
                 @khsharif
               </Button>
             </a>
           </div>
-          <p className="text-gray-600">👨🏽‍💻 Designed & coded by me</p>
+          <p className="text-muted-foreground">👨🏽‍💻 Designed & coded by me</p>
         </Container>
       </Section>
     </footer>

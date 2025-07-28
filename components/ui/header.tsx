@@ -14,7 +14,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { SearchSheet } from "@/components/search-sheet";
@@ -194,8 +194,38 @@ const ListItem = React.forwardRef<
 });
 
 export default function Header() {
+  // Dark mode state and effect
+  const [isDark, setIsDark] = useState(false);
+
+  // On mount, set theme from localStorage or system preference
+  useEffect(() => {
+    const root = window.document.documentElement;
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      root.classList.add("dark");
+      setIsDark(true);
+    } else {
+      root.classList.remove("dark");
+      setIsDark(false);
+    }
+  }, []);
+
+  // Toggle handler
+  const toggleTheme = () => {
+    const root = window.document.documentElement;
+    if (root.classList.contains("dark")) {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setIsDark(false);
+    } else {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setIsDark(true);
+    }
+  };
+
   return (
-    <header className="fixed w-full z-30 bg-opacity-90 bg-gray-100 shadow-md shadow-slate-200">
+    <header className="fixed w-full z-30 bg-opacity-90 bg-background text-foreground shadow-md shadow-slate-200">
       <div className="max-w-6xl mx-auto px-1 md:px-5 sm:px-6">
         <div className="flex items-center justify-between h-12 md:h-16 text-gray-700">
           <a href="/" className="">
@@ -212,6 +242,14 @@ export default function Header() {
           </div>
           <div className="flex gap-4 items-center justify-end">
             <SearchSheet />
+            <Button
+              variant={"ghost"}
+              aria-label="Toggle dark mode"
+              onClick={toggleTheme}
+              className="text-xl px-2"
+            >
+              {isDark ? "🌙" : "☀️"}
+            </Button>
           </div>
         </div>
       </div>

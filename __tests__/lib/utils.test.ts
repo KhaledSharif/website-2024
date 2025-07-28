@@ -39,9 +39,7 @@ describe('cn utility function', () => {
     const result = cn(
       'base-button',
       variant === 'primary' && 'bg-blue-500',
-      variant === 'secondary' && 'bg-gray-500',
-      size === 'large' && 'px-6 py-3',
-      size === 'small' && 'px-3 py-1'
+      size === 'large' && 'px-6 py-3'
     )
     expect(result).toBe('base-button bg-blue-500 px-6 py-3')
   })

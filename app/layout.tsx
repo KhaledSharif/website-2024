@@ -15,9 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`bg-white dark:bg-gray-200`}
-      >
+      <body>
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
           {children}

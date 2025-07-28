@@ -13,7 +13,7 @@ const Circle = forwardRef<
       ref={ref}
       className={cn(
         `z-10 flex h-[2rem] md:h-12 w-[4rem] md:w-[6rem] items-center justify-center gap-1 text-[0.5rem] md:text-sm
-        rounded-full border-2 border-border bg-white p-1 md:p-3`,
+        rounded-full border-2 border-border bg-background p-1 md:p-3`,
         className
       )}
     >
@@ -37,7 +37,7 @@ export function AnimatedBeamMultipleInputDemo() {
       className="
       relative flex h-full w-full  
       items-center justify-center overflow-hidden 
-      rounded-lg border bg-gray-50 py-6 px-12 shadow-md
+      rounded-lg border bg-background py-6 px-12 shadow-md
       "
       ref={containerRef}
     >
