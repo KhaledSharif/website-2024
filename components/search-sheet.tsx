@@ -1,38 +1,217 @@
+"use client";
+
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { searchItems, type SearchItem } from "@/lib/search-data";
+import { useRouter } from "next/navigation";
+import { MagnifyingGlass, ArrowUpRight, FolderOpen, FileText } from "@phosphor-icons/react";
 
 export function SearchSheet() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState<SearchItem[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  const handleResultClick = useCallback((item: SearchItem) => {
+    router.push(item.url);
+    setIsOpen(false);
+  }, [router]);
+
+  // Search with debouncing
+  useEffect(() => {
+    if (!query.trim()) {
+      setResults([]);
+      setSelectedIndex(0);
+      return;
+    }
+
+    setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      const searchResults = searchItems(query);
+      setResults(searchResults);
+      setSelectedIndex(0);
+      setIsLoading(false);
+    }, 150);
+
+    return () => clearTimeout(timeoutId);
+  }, [query]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+
+      switch (e.key) {
+        case "ArrowDown":
+          e.preventDefault();
+          setSelectedIndex(prev => 
+            prev < results.length - 1 ? prev + 1 : prev
+          );
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          setSelectedIndex(prev => prev > 0 ? prev - 1 : 0);
+          break;
+        case "Enter":
+          e.preventDefault();
+          if (results[selectedIndex]) {
+            handleResultClick(results[selectedIndex]);
+          }
+          break;
+        case "Escape":
+          setIsOpen(false);
+          break;
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, results, selectedIndex, handleResultClick]);
+
+  // Focus input when sheet opens
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    } else {
+      setQuery("");
+      setResults([]);
+      setSelectedIndex(0);
+    }
+  }, [isOpen]);
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'project':
+        return <FolderOpen className="w-4 h-4" />;
+      case 'note':
+        return <FileText className="w-4 h-4" />;
+      default:
+        return <FileText className="w-4 h-4" />;
+    }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case 'project':
+        return 'Project';
+      case 'note':
+        return 'Note';
+      default:
+        return 'Other';
+    }
+  };
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
           variant={"outline"}
           className="bg-gray-100 hover:bg-white gap-2"
         >
-          <div>🔍</div><div className="hidden md:block">Search</div>
+          <MagnifyingGlass className="w-4 h-4" />
+          <div className="hidden md:block">Search</div>
         </Button>
       </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>🚧 Under Construction</SheetTitle>
-          <SheetDescription>
-            Search functionality is currently under construction, please come back later!
-          </SheetDescription>
+      <SheetContent className="w-full sm:max-w-lg">
+        <SheetHeader className="space-y-4">
+          <SheetTitle className="text-left">Search</SheetTitle>
+          <div className="relative">
+            <MagnifyingGlass className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Input
+              ref={inputRef}
+              placeholder="Search projects, notes, and more..."
+              value={query}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+              className="pl-10 pr-4"
+            />
+          </div>
         </SheetHeader>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit" variant={"ghost"}>❎ Close</Button>
-          </SheetClose>
-        </SheetFooter>
+        
+        <div className="mt-6 space-y-2">
+          {isLoading && (
+            <div className="flex items-center justify-center py-8">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+            </div>
+          )}
+          
+          {!isLoading && query && results.length === 0 && (
+            <div className="text-center py-8 text-gray-500">
+              <p>No results found for "{query}"</p>
+              <p className="text-sm mt-2">Try different keywords or check spelling</p>
+            </div>
+          )}
+          
+          {!isLoading && !query && (
+            <div className="text-center py-8 text-gray-500">
+              <p>Start typing to search...</p>
+              <p className="text-sm mt-2">Search through projects and notes</p>
+            </div>
+          )}
+          
+          {!isLoading && results.length > 0 && (
+            <div className="space-y-1">
+              <p className="text-sm text-gray-500 mb-3">
+                {results.length} result{results.length !== 1 ? 's' : ''} found
+              </p>
+              {results.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                    index === selectedIndex
+                      ? 'bg-gray-100 border border-gray-200'
+                      : 'hover:bg-gray-50'
+                  }`}
+                  onClick={() => handleResultClick(item)}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <span className="text-lg">{item.emoji}</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-medium text-gray-900 truncate">
+                          {item.title}
+                        </h3>
+                        <div className="flex items-center gap-1 text-xs text-gray-500">
+                          {getCategoryIcon(item.category)}
+                          <span>{getCategoryLabel(item.category)}</span>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 line-clamp-2">
+                        {item.description}
+                      </p>
+                      <div className="flex items-center gap-1 mt-2">
+                        <ArrowUpRight className="w-3 h-3 text-gray-400" />
+                        <span className="text-xs text-gray-500">{item.url}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        <div className="mt-6 pt-4 border-t border-gray-200">
+          <p className="text-xs text-gray-500 text-center">
+            Use ↑↓ to navigate, Enter to select, Esc to close
+          </p>
+        </div>
       </SheetContent>
     </Sheet>
   );
