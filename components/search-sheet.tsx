@@ -3,6 +3,7 @@
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -128,6 +129,9 @@ export function SearchSheet() {
       <SheetContent className="w-full sm:max-w-lg">
         <SheetHeader className="space-y-4">
           <SheetTitle className="text-left">Search</SheetTitle>
+          <SheetDescription className="text-left">
+            Search through projects, notes, and more
+          </SheetDescription>
           <div className="relative">
             <MagnifyingGlass className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
