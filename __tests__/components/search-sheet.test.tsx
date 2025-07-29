@@ -133,12 +133,12 @@ describe('SearchSheet Component', () => {
       expect(screen.getByText('Visual SLAM')).toBeInTheDocument()
     })
     
-    // Test arrow key navigation - find the outer container that should have bg-gray-100 class
+    // Test arrow key navigation - find the outer container that should have bg-muted class
     await act(async () => {
       await user.keyboard('{ArrowDown}')
     })
-    const resultContainer = screen.getByText('Visual SLAM').closest('div[class*="bg-gray-100"]')
-    expect(resultContainer).toHaveClass('bg-gray-100')
+    const resultContainer = screen.getByText('Visual SLAM').closest('div[class*="bg-muted"]')
+    expect(resultContainer).toHaveClass('bg-muted')
   })
 
   it('should close sheet on escape key', async () => {
