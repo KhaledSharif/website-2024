@@ -77,7 +77,7 @@
 
 @layer components {
   .markdown {
-    @apply text-gray-800 flex flex-col w-full items-start justify-start text-justify 
+    @apply text-foreground flex flex-col w-full items-start justify-start text-justify 
   }
 
   .markdown h3 {
@@ -105,7 +105,7 @@
   }
 
   .markdown code {
-    @apply text-[0.75rem] tracking-tighter bg-gray-100 mx-1 px-1 py-1 truncate
+    @apply text-[0.75rem] tracking-tighter bg-muted mx-1 px-1 py-1 truncate
   }
 
   .markdown strong {

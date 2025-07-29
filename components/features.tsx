@@ -71,7 +71,7 @@ export default function Features() {
                       Reinforcement Learning (RL)
                     </div>
                     {tab === 1 && (
-                      <div className="text-gray-600 text-sm mt-8">
+                      <div className="text-muted-foreground text-sm mt-8">
                         <div>
                           The NVIDIA Omniverse Isaac Simulator (OIS) is a
                           realistic robotic sim that can be used to train robots
@@ -86,8 +86,8 @@ export default function Features() {
                             href="https://github.com/KhaledSharif/omniverse-gym"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-gray-800 
-                            border-gray-100 hover:bg-white hover:border-gray-600 border bg-gray-100
+                            className="btn btn-outline btn-neutral text-foreground 
+                            border-border hover:bg-background hover:border-border border bg-muted
                             flex p-4 items-center justify-center gap-2 rounded-lg
                             "
                           >
@@ -99,7 +99,7 @@ export default function Features() {
                       </div>
                     )}
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="flex justify-center items-center w-8 h-8 bg-background rounded-full shadow flex-shrink-0 ml-3">
                     {tab === 1 ? (
                       <CaretCircleUp size={24} />
                     ) : (
@@ -124,7 +124,7 @@ export default function Features() {
                       (SLAM) and verifying loop closure in sim
                     </div>
                     {tab === 2 && (
-                      <div className="text-gray-600 text-sm mt-8">
+                      <div className="text-muted-foreground text-sm mt-8">
                         <div>
                           This repository provides quickstart Robot Operating
                           System (ROS) code for running GPU-accelerated
@@ -139,8 +139,8 @@ export default function Features() {
                             href="https://github.com/KhaledSharif/ros-vslam"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-gray-800 
-                            border-gray-100 hover:bg-white hover:border-gray-600 border bg-gray-100
+                            className="btn btn-outline btn-neutral text-foreground 
+                            border-border hover:bg-background hover:border-border border bg-muted
                             flex p-4 items-center justify-center gap-2 rounded-lg
                             "
                           >
@@ -152,7 +152,7 @@ export default function Features() {
                       </div>
                     )}
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="flex justify-center items-center w-8 h-8 bg-background rounded-full shadow flex-shrink-0 ml-3">
                     {tab === 2 ? (
                       <CaretCircleUp size={24} />
                     ) : (
@@ -177,7 +177,7 @@ export default function Features() {
                       Chunking Transformer (ACT)
                     </div>
                     {tab === 3 && (
-                      <div className="text-gray-600 text-sm mt-8">
+                      <div className="text-muted-foreground text-sm mt-8">
                         <div>
                           This repository contains quickstart code to train and
                           evaluate an Action Chunking Transformer (ACT) to
@@ -191,8 +191,8 @@ export default function Features() {
                             href="https://github.com/KhaledSharif/robot-transformers"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-gray-800 
-                            border-gray-100 hover:bg-white hover:border-gray-600 border bg-gray-100
+                            className="btn btn-outline btn-neutral text-foreground 
+                            border-border hover:bg-background hover:border-border border bg-muted
                             flex p-4 items-center justify-center gap-2 rounded-lg
                             "
                           >
@@ -204,7 +204,7 @@ export default function Features() {
                       </div>
                     )}
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="flex justify-center items-center w-8 h-8 bg-background rounded-full shadow flex-shrink-0 ml-3">
                     {tab === 3 ? (
                       <CaretCircleUp size={24} />
                     ) : (

@@ -32,11 +32,11 @@ function Project({
 }) {
   return (
     <Link href={link}>
-      <Card className="pt-4 cursor-pointer hover:bg-white bg-gray-50">
+      <Card className="pt-4 cursor-pointer hover:bg-background bg-muted">
         <CardContent>
           <div className="space-y-1 text-left">
-            <div className="text-lg font-medium text-gray-800">{name}</div>
-            <div className="text-sm text-gray-600">{description}</div>
+            <div className="text-lg font-medium text-foreground">{name}</div>
+            <div className="text-sm text-muted-foreground">{description}</div>
           </div>
         </CardContent>
       </Card>

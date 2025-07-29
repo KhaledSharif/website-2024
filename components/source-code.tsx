@@ -12,8 +12,8 @@ export default function SourceCodeButton(props: propsType) {
         href={props.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="btn btn-outline btn-neutral text-gray-800 
-                            border-gray-100 hover:bg-white hover:border-gray-600 border bg-gray-100
+        className="btn btn-outline btn-neutral text-foreground
+border-border hover:bg-background hover:border-border border bg-muted
                             flex p-4 items-center justify-center gap-2 rounded-lg
                             "
       >

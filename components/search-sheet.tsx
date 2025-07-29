@@ -120,7 +120,7 @@ export function SearchSheet() {
       <SheetTrigger asChild>
         <Button
           variant={"outline"}
-          className="bg-gray-100 hover:bg-white gap-2"
+          className="bg-muted hover:bg-background gap-2"
         >
           <MagnifyingGlass className="w-4 h-4" />
           <div className="hidden md:block">Search</div>
@@ -133,7 +133,7 @@ export function SearchSheet() {
             Search through projects, notes, and more
           </SheetDescription>
           <div className="relative">
-            <MagnifyingGlass className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <MagnifyingGlass className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
               ref={inputRef}
               placeholder="Search projects, notes, and more..."
@@ -152,14 +152,14 @@ export function SearchSheet() {
           )}
           
           {!isLoading && query && results.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-muted-foreground">
               <p>No results found for "{query}"</p>
               <p className="text-sm mt-2">Try different keywords or check spelling</p>
             </div>
           )}
           
           {!isLoading && !query && (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-muted-foreground">
               <p>Start typing to search...</p>
               <p className="text-sm mt-2">Search through projects and notes</p>
             </div>
@@ -167,7 +167,7 @@ export function SearchSheet() {
           
           {!isLoading && results.length > 0 && (
             <div className="space-y-1">
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-sm text-muted-foreground mb-3">
                 {results.length} result{results.length !== 1 ? 's' : ''} found
               </p>
               {results.map((item, index) => (
@@ -175,33 +175,33 @@ export function SearchSheet() {
                   key={item.id}
                   className={`p-3 rounded-lg cursor-pointer transition-colors ${
                     index === selectedIndex
-                      ? 'bg-gray-100 border border-gray-200'
-                      : 'hover:bg-gray-50'
+                      ? 'bg-muted border border-border'
+                      : 'hover:bg-muted/50'
                   }`}
                   onClick={() => handleResultClick(item)}
                 >
                   <div className="flex items-start gap-3">
                     <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
                         <span className="text-lg">{item.emoji}</span>
                       </div>
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-medium text-gray-900 truncate">
+                        <h3 className="font-medium text-foreground truncate">
                           {item.title}
                         </h3>
-                        <div className="flex items-center gap-1 text-xs text-gray-500">
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
                           {getCategoryIcon(item.category)}
                           <span>{getCategoryLabel(item.category)}</span>
                         </div>
                       </div>
-                      <p className="text-sm text-gray-600 line-clamp-2">
+                      <p className="text-sm text-muted-foreground line-clamp-2">
                         {item.description}
                       </p>
                       <div className="flex items-center gap-1 mt-2">
-                        <ArrowUpRight className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-500">{item.url}</span>
+                        <ArrowUpRight className="w-3 h-3 text-muted-foreground" />
+                        <span className="text-xs text-muted-foreground">{item.url}</span>
                       </div>
                     </div>
                   </div>
@@ -211,8 +211,8 @@ export function SearchSheet() {
           )}
         </div>
         
-        <div className="mt-6 pt-4 border-t border-gray-200">
-          <p className="text-xs text-gray-500 text-center">
+        <div className="mt-6 pt-4 border-t border-border">
+          <p className="text-xs text-muted-foreground text-center">
             Use ↑↓ to navigate, Enter to select, Esc to close
           </p>
         </div>

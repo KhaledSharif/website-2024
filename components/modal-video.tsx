@@ -44,8 +44,8 @@ export default function ModalVideo({
             className="btn absolute top-full flex items-center transform -mt-8 h-20 z-20
             rounded-full font-medium group shadow-lg
             text-sm px-4 gap-2
-            text-gray-800 hover:text-gray-700 hover:bg-white
-             hover:border-gray-100 border-gray-200 bg-gray-100
+            text-foreground hover:text-foreground/80 hover:bg-background
+hover:border-border border-border bg-muted
             "
             onClick={() => {
               setModalOpen(true);
@@ -64,7 +64,7 @@ export default function ModalVideo({
       >
         <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
           <Transition.Child
-            className="fixed inset-0 z-[99999] bg-black bg-opacity-75 transition-opacity"
+            className="fixed inset-0 z-[99999] bg-background bg-opacity-75 transition-opacity"
             enter="transition ease-out duration-200"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -84,7 +84,7 @@ export default function ModalVideo({
             leaveTo="opacity-0 scale-95"
           >
             <div className="max-w-6xl mx-auto h-full flex items-center">
-              <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
+              <Dialog.Panel className="w-full max-h-full aspect-video bg-background overflow-hidden">
                 <video
                   ref={videoRef}
                   width={videoWidth}

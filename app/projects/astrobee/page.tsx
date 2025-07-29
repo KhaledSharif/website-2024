@@ -50,7 +50,7 @@ function CarouselDemo() {
             <div
               className="flex flex-col gap-4 aspect-square 
                 items-center justify-center p-0
-                 bg-gray-50 
+                 bg-muted 
                  rounded-3xl m-4"
             >
               <div><Image src={element.img} className="object-cover" alt="robots" /></div>
