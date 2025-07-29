@@ -197,17 +197,10 @@ export default function Header() {
   // Dark mode state and effect
   const [isDark, setIsDark] = useState(false);
 
-  // On mount, set theme from localStorage or system preference
+  // Initialize state on mount
   useEffect(() => {
     const root = window.document.documentElement;
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      root.classList.add("dark");
-      setIsDark(true);
-    } else {
-      root.classList.remove("dark");
-      setIsDark(false);
-    }
+    setIsDark(root.classList.contains("dark"));
   }, []);
 
   // Toggle handler
@@ -225,7 +218,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full z-30 bg-opacity-90 bg-background text-foreground shadow-md shadow-slate-200">
+    <header className="fixed w-full z-30 bg-opacity-90 bg-background text-foreground shadow-lg shadow-black/10 backdrop-blur-sm border-b border-border/50">
       <div className="max-w-6xl mx-auto px-1 md:px-5 sm:px-6">
         <div className="flex items-center justify-between h-12 md:h-16 text-foreground">
           <a href="/" className="">
