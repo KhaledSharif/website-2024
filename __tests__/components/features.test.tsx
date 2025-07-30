@@ -16,8 +16,13 @@ jest.mock('next/link', () => {
 
 // Mock @headlessui/react Transition
 jest.mock('@headlessui/react', () => ({
-  Transition: ({ children, show, ...props }: any) => {
-    return show ? <div {...props}>{children}</div> : null;
+  Transition: ({ children, show, unmount, appear, beforeEnter, ...props }: any) => {
+    // Filter out Transition-specific props that shouldn't be passed to DOM
+    const { 
+      enter, enterFrom, enterTo, leave, leaveFrom, leaveTo, 
+      className, ...domProps 
+    } = props;
+    return show ? <div className={className} {...domProps}>{children}</div> : null;
   },
 }));
 
