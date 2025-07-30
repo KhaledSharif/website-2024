@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/breadcrumb";
 
 import Link from "next/link";
+import { getAllProjects } from "@/lib/projects-data";
 
 export const metadata = {
   title: "Projects",
@@ -45,6 +46,8 @@ function Project({
 }
 
 export default function Home() {
+  const projects = getAllProjects();
+
   return (
     <section className="relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -79,34 +82,14 @@ export default function Home() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-col gap-4">
-                  <Project
-                      link="/projects/astrobee"
-                      name="🐝 Astrobee"
-                      description="This project goes over the Computer Vision (C++) code for
-                       new robots (Astrobees) working alongside astronauts on the 
-                       International Space Station (ISS)"
-                    />
-                    <Project
-                      link="/projects/ros-vslam"
-                      name="🗺️ Visual SLAM"
-                      description="This project has code for running Visual SLAM in the 
-                      Robot Operating System (ROS) with GPU acceleration and testing in 
-                      a ray traced simulation"
-                    />
-                    <Project
-                      link="/projects/omniverse-gym"
-                      name="🦾 Omniverse Gym"
-                      description="This project shows how to use NVIDIA Omniverse Isaac 
-                      Simulator to solve robot reinforcement learning tasks using Proximal 
-                      Policy Optimization (PPO)"
-                    />
-                    <Project
-                      link="/projects/robot-transformers"
-                      name="💭 Robot Transformers"
-                      description="This project trains and evaluates an Action Chunking 
-                      Transformer (ACT) for coordinated robot manipulation using 
-                      HuggingFace LeRobot library"
-                    />
+                    {projects.map((project) => (
+                      <Project
+                        key={project.slug}
+                        link={`/projects/${project.slug}`}
+                        name={project.name}
+                        description={project.description}
+                      />
+                    ))}
                   </CardContent>
                 </Card>
               </div>

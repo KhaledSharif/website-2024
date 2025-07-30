@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/breadcrumb";
 
 import Link from "next/link";
+import { getAllNotes } from "@/lib/notes-data";
 
 export const metadata = {
   title: "Notes",
@@ -45,6 +46,8 @@ function Project({
 }
 
 export default function Home() {
+  const notes = getAllNotes();
+
   return (
     <section className="relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -76,26 +79,14 @@ export default function Home() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex flex-col gap-4">
-                    <Project
-                      link="/notes/slam-sota"
-                      name="📖 SLAM Overview"
-                      description="Recent research related to simultaneous localization and mapping"
-                    />
-                    <Project
-                      link="/notes/auto-nav"
-                      name="🧭 Autonomous Navigation"
-                      description="Overview of state of the art in autonomous robot navigation"
-                    />
-                    <Project
-                      link="/notes/bev"
-                      name="🐦 Birds Eye View"
-                      description="Introduction to birds eye view perception for robotics"
-                    />
-                    <Project
-                      link="/notes/nerfs"
-                      name="🪐 Neural Radiance Fields"
-                      description="Introduction to NeRFs and their uses in robotics"
-                    />
+                    {notes.map((note) => (
+                      <Project
+                        key={note.slug}
+                        link={`/notes/${note.slug}`}
+                        name={note.name}
+                        description={note.description}
+                      />
+                    ))}
                   </CardContent>
                 </Card>
               </div>
