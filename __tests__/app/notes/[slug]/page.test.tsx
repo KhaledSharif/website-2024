@@ -95,6 +95,22 @@ describe('NotePage', () => {
       expect(screen.getByTestId('header-image')).toHaveAttribute('alt', 'robots');
     });
 
+    it('should render nerfs note with header image including width and height properties', async () => {
+      const note = getNoteBySlug('nerfs');
+      expect(note).toBeDefined();
+      expect(note?.hasHeaderImage).toBe(true);
+      expect(note?.headerImageSrc).toBe('/images/nerf.png');
+      expect(note?.headerImageAlt).toBe('robots');
+
+      const { default: NotePageComponent } = await import('@/app/notes/[slug]/page');
+      const { container } = render(await NotePageComponent({ params: { slug: 'nerfs' } }));
+
+      expect(screen.getByText('🪐 Neural Radiance Fields (NeRFs)')).toBeInTheDocument();
+      expect(screen.getByTestId('header-image')).toBeInTheDocument();
+      expect(screen.getByTestId('header-image')).toHaveAttribute('src', '/images/nerf.png');
+      expect(screen.getByTestId('header-image')).toHaveAttribute('alt', 'robots');
+    });
+
     it('should render bev note without header image', async () => {
       const note = getNoteBySlug('bev');
       expect(note).toBeDefined();

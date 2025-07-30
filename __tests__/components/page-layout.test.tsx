@@ -128,6 +128,142 @@ describe('PageLayout Component', () => {
     expect(image).toBeInTheDocument()
     expect(image).toHaveAttribute('src', '/test-image.jpg')
     expect(image).toHaveAttribute('alt', 'Test image alt text')
+    expect(image).toHaveAttribute('width', '800')
+    expect(image).toHaveAttribute('height', '400')
+    expect(image).toHaveClass('max-w-full', 'h-auto')
+  })
+
+  it('should not render header image when not provided', () => {
+    render(<PageLayout {...mockProps} />)
+    
+    const images = screen.queryAllByRole('img')
+    expect(images).toHaveLength(0)
+  })
+
+  it('should render header image with correct container styling', () => {
+    const propsWithImage = {
+      ...mockProps,
+      headerImage: {
+        src: '/test-image.jpg',
+        alt: 'Test image alt text',
+      },
+    }
+    
+    render(<PageLayout {...propsWithImage} />)
+    
+    const imageContainer = screen.getByRole('img').closest('div')
+    expect(imageContainer).toHaveClass('flex', 'w-full', 'items-center', 'justify-center', 'pb-8')
+  })
+
+  it('should handle header image with different file types', () => {
+    const testCases = [
+      { src: '/image.png', alt: 'PNG image' },
+      { src: '/image.jpg', alt: 'JPG image' },
+      { src: '/image.webp', alt: 'WebP image' },
+      { src: '/image.svg', alt: 'SVG image' },
+    ]
+
+    testCases.forEach(({ src, alt }) => {
+      const { unmount } = render(
+        <PageLayout
+          {...mockProps}
+          headerImage={{ src, alt }}
+        />
+      )
+      
+      const image = screen.getByRole('img')
+      expect(image).toHaveAttribute('src', src)
+      expect(image).toHaveAttribute('alt', alt)
+      expect(image).toHaveAttribute('width', '800')
+      expect(image).toHaveAttribute('height', '400')
+      
+      unmount()
+    })
+  })
+
+  it('should render header image with empty alt text', () => {
+    const propsWithImage = {
+      ...mockProps,
+      headerImage: {
+        src: '/test-image.jpg',
+        alt: '',
+      },
+    }
+    
+    render(<PageLayout {...propsWithImage} />)
+    
+    const image = screen.getByRole('img')
+    expect(image).toHaveAttribute('alt', '')
+    expect(image).toHaveAttribute('width', '800')
+    expect(image).toHaveAttribute('height', '400')
+  })
+
+  it('should integrate correctly with Next.js Image component properties', () => {
+    const propsWithImage = {
+      ...mockProps,
+      headerImage: {
+        src: '/images/nerf.png',
+        alt: 'NeRF visualization',
+      },
+    }
+    
+    render(<PageLayout {...propsWithImage} />)
+    
+    const image = screen.getByRole('img')
+    // Test that all required Next.js Image properties are present
+    expect(image).toHaveAttribute('src', '/images/nerf.png')
+    expect(image).toHaveAttribute('alt', 'NeRF visualization')
+    expect(image).toHaveAttribute('width', '800')
+    expect(image).toHaveAttribute('height', '400')
+    expect(image).toHaveClass('max-w-full', 'h-auto')
+    
+    // Test that the container has proper styling
+    const imageContainer = image.closest('div')
+    expect(imageContainer).toHaveClass('flex', 'w-full', 'items-center', 'justify-center', 'pb-8')
+  })
+
+  it('should handle header image with different aspect ratios', () => {
+    const testCases = [
+      { src: '/wide-image.jpg', alt: 'Wide image', expectedWidth: '800', expectedHeight: '400' },
+      { src: '/square-image.png', alt: 'Square image', expectedWidth: '800', expectedHeight: '400' },
+      { src: '/tall-image.webp', alt: 'Tall image', expectedWidth: '800', expectedHeight: '400' },
+    ]
+
+    testCases.forEach(({ src, alt, expectedWidth, expectedHeight }) => {
+      const { unmount } = render(
+        <PageLayout
+          {...mockProps}
+          headerImage={{ src, alt }}
+        />
+      )
+      
+      const image = screen.getByRole('img')
+      expect(image).toHaveAttribute('src', src)
+      expect(image).toHaveAttribute('alt', alt)
+      expect(image).toHaveAttribute('width', expectedWidth)
+      expect(image).toHaveAttribute('height', expectedHeight)
+      expect(image).toHaveClass('max-w-full', 'h-auto')
+      
+      unmount()
+    })
+  })
+
+  it('should ensure header image is responsive with CSS classes', () => {
+    const propsWithImage = {
+      ...mockProps,
+      headerImage: {
+        src: '/test-image.jpg',
+        alt: 'Test image',
+      },
+    }
+    
+    render(<PageLayout {...propsWithImage} />)
+    
+    const image = screen.getByRole('img')
+    // max-w-full ensures the image doesn't overflow its container
+    expect(image).toHaveClass('max-w-full')
+    // h-auto maintains aspect ratio
+    expect(image).toHaveClass('h-auto')
   })
 
   it('should render children when provided', () => {

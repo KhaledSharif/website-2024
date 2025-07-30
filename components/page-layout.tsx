@@ -90,7 +90,13 @@ export default function PageLayout({
                 <CardContent>
                   {headerImage && (
                     <div className="flex w-full items-center justify-center pb-8">
-                      <Image src={headerImage.src} alt={headerImage.alt} />
+                      <Image 
+                        src={headerImage.src} 
+                        alt={headerImage.alt} 
+                        width={800}
+                        height={400}
+                        className="max-w-full h-auto"
+                      />
                     </div>
                   )}
                   {children}
