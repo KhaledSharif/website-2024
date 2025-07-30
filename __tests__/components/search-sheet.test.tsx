@@ -28,6 +28,50 @@ jest.mock('@/lib/search-data', () => ({
         emoji: '🗺️'
       }]
     }
+    if (query.toLowerCase().includes('note')) {
+      return [{
+        id: 'test-note',
+        title: 'Test Note',
+        description: 'A test note',
+        url: '/notes/test',
+        category: 'note',
+        tags: ['notes'],
+        emoji: '📝'
+      }]
+    }
+    if (query.toLowerCase().includes('unknown')) {
+      return [{
+        id: 'unknown',
+        title: 'Unknown Category',
+        description: 'Something with unknown category',
+        url: '/unknown',
+        category: 'unknown',
+        tags: ['unknown'],
+        emoji: '❓'
+      }]
+    }
+    if (query.toLowerCase().includes('multiple')) {
+      return [
+        {
+          id: 'item1',
+          title: 'First Item',
+          description: 'First description',
+          url: '/item1',
+          category: 'project',
+          tags: ['test'],
+          emoji: '1️⃣'
+        },
+        {
+          id: 'item2',
+          title: 'Second Item',
+          description: 'Second description',
+          url: '/item2',
+          category: 'project',
+          tags: ['test'],
+          emoji: '2️⃣'
+        }
+      ]
+    }
     return []
   })
 }))
@@ -269,5 +313,244 @@ describe('SearchSheet Component', () => {
     // Input should be empty
     const newInput = screen.getByPlaceholderText(/search/i)
     expect(newInput).toHaveValue('')
+  })
+
+  it('should handle ArrowUp when already at first result', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get results
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'multiple')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('First Item')).toBeInTheDocument()
+    })
+    
+    // Arrow up from first item should stay at first item
+    await act(async () => {
+      await user.keyboard('{ArrowUp}')
+    })
+    
+    // First item should still be selected
+    const firstResult = screen.getByText('First Item').closest('div[class*="bg-muted"]')
+    expect(firstResult).toHaveClass('bg-muted')
+  })
+
+  it('should handle ArrowDown at last result', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get results
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'multiple')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('First Item')).toBeInTheDocument()
+      expect(screen.getByText('Second Item')).toBeInTheDocument()
+    })
+    
+    // Navigate to last item
+    await act(async () => {
+      await user.keyboard('{ArrowDown}')
+    })
+    
+    // Try to go past last item - should stay at last item
+    await act(async () => {
+      await user.keyboard('{ArrowDown}')
+    })
+    
+    // Second item should still be selected
+    const secondResult = screen.getByText('Second Item').closest('div[class*="bg-muted"]')
+    expect(secondResult).toHaveClass('bg-muted')
+  })
+
+  it('should click on search result to navigate', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get results
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'astrobee')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('Astrobee')).toBeInTheDocument()
+    })
+    
+    // Click on the result
+    const resultDiv = screen.getByText('Astrobee').closest('div[class*="cursor-pointer"]')
+    await act(async () => {
+      await user.click(resultDiv!)
+    })
+    
+    // Sheet should close after navigation
+    expect(screen.queryByPlaceholderText(/search/i)).not.toBeInTheDocument()
+  })
+
+  it('should show "Note" category for note items', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get note results
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'note')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('Test Note')).toBeInTheDocument()
+      expect(screen.getByText('Note')).toBeInTheDocument()
+    })
+  })
+
+  it('should show "Other" category for unknown categories', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get unknown category results
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'unknown')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('Unknown Category')).toBeInTheDocument()
+      expect(screen.getByText('Other')).toBeInTheDocument()
+    })
+  })
+
+  it('should show singular "result" for single result', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get single result
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'astrobee')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('1 result found')).toBeInTheDocument()
+    })
+  })
+
+  it('should show plural "results" for multiple results', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get multiple results
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'multiple')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('2 results found')).toBeInTheDocument()
+    })
+  })
+
+  it('should show no results message', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type query with no results
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'nonexistent')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('No results found for "nonexistent"')).toBeInTheDocument()
+      expect(screen.getByText('Try different keywords or check spelling')).toBeInTheDocument()
+    })
+  })
+
+  it('should show loading state', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to trigger search
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'a')
+    })
+    
+    // Loading spinner should appear briefly - look for it by class instead
+    expect(document.querySelector('.animate-spin')).toBeInTheDocument()
+  })
+
+  it('should show empty state message', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Should show empty state when no query
+    expect(screen.getByText('Start typing to search...')).toBeInTheDocument()
+    expect(screen.getByText('Search through projects and notes')).toBeInTheDocument()
   })
 }) 
