@@ -26,7 +26,7 @@ describe('Notes Data', () => {
       const result = getNoteBySlug('slam-sota');
       expect(result).toBeDefined();
       expect(result?.slug).toBe('slam-sota');
-      expect(result?.name).toBe('📖 SLAM Overview');
+      expect(result?.name).toBe('SLAM Overview');
     });
 
     it('should return undefined for invalid slug', () => {

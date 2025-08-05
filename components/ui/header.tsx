@@ -18,32 +18,11 @@ import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { SearchSheet } from "@/components/search-sheet";
+import { getAllNotes } from "@/lib/notes-data";
+import { getAllProjects } from "@/lib/projects-data";
 
 type componentType = { title: string; href: string; description: string };
-const components1: componentType[] = [
-  {
-    title: "🐝 Astrobee",
-    href: "/projects/astrobee",
-    description:
-      "Learn about the code running on free-flying robots on the Space Station",
-  },
-  {
-    title: "🦾 Reinforcement Learning",
-    href: "/projects/omniverse-gym",
-    description:
-      "Train robots to perform tasks in sim with reinforcement learning",
-  },
-  {
-    title: "🗺️ Visual SLAM",
-    href: "/projects/ros-vslam",
-    description: "Learn how robots can localize & map unknown worlds visually",
-  },
-  {
-    title: "💭 Co-op Planning",
-    href: "/projects/robot-transformers",
-    description: "Train robots to plan and cooperatively manipulate objects",
-  },
-];
+
 const components2: componentType[] = [
   {
     title: "🦾 111",
@@ -68,30 +47,11 @@ const components2: componentType[] = [
       "Learn about the code running on free-flying robots on the Space Station",
   },
 ];
-const components3: componentType[] = [
-  {
-    title: "📖 SLAM Overview",
-    href: "/notes/slam-sota",
-    description: "Review of recent research in localization & mapping",
-  },
-  {
-    title: "🧭 Autonomous Navigation",
-    href: "/notes/auto-nav",
-    description: "Review of recent research in autonomous navigation",
-  },
-  {
-    title: "🐦 Birds Eye View",
-    href: "/notes/bev",
-    description:
-      "Review of recent research in Birds Eye View (BEV) for sensor fusion",
-  },
-  {
-    title: "🪐 NeRFs",
-    href: "/notes/nerfs",
-    description: "Intro to Neural Radiance Fields and their uses in robotics",
-  },
-];
+
 function NavigationMenuDemo() {
+  const notes = getAllNotes();
+  const projects = getAllProjects();
+  
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -99,13 +59,13 @@ function NavigationMenuDemo() {
           <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[250px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components1.map((component) => (
+              {projects.map((project) => (
                 <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
+                  key={project.slug}
+                  title={`${project.titleIcon} ${project.name}`}
+                  href={`/projects/${project.slug}`}
                 >
-                  {component.description}
+                  {project.description}
                 </ListItem>
               ))}
             </ul>
@@ -143,13 +103,13 @@ function NavigationMenuDemo() {
           <NavigationMenuTrigger>Notes</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[250px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components3.map((component) => (
+              {notes.map((note) => (
                 <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
+                  key={note.slug}
+                  title={`${note.titleIcon} ${note.name}`}
+                  href={`/notes/${note.slug}`}
                 >
-                  {component.description}
+                  {note.description}
                 </ListItem>
               ))}
             </ul>

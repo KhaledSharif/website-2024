@@ -268,14 +268,14 @@ describe('ListItem Component', () => {
   it('should render project descriptions', () => {
     render(<Header />)
     
-    expect(screen.getByText(/Learn about the code running on free-flying robots/)).toBeInTheDocument()
-    expect(screen.getByText(/Train robots to perform tasks in sim/)).toBeInTheDocument()
+    expect(screen.getByText(/Computer Vision \(C\+\+\) code for new robots/)).toBeInTheDocument()
+    expect(screen.getByText(/code for running Visual SLAM in the Robot Operating System/)).toBeInTheDocument()
   })
 
   it('should render note descriptions', () => {
     render(<Header />)
     
-    expect(screen.getByText(/Review of recent research in localization/)).toBeInTheDocument()
-    expect(screen.getByText(/Review of recent research in autonomous navigation/)).toBeInTheDocument()
+    expect(screen.getByText(/Recent research related to simultaneous localization and mapping/)).toBeInTheDocument()
+    expect(screen.getByText(/Overview of state of the art in autonomous robot navigation/)).toBeInTheDocument()
   })
 })

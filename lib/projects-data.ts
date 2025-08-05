@@ -19,7 +19,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "astrobee",
-    name: "🐝 Astrobee",
+    name: "Astrobee",
     description: "This project goes over the Computer Vision (C++) code for new robots (Astrobees) working alongside astronauts on the International Space Station (ISS)",
     title: "Astrobee",
     titleIcon: "🐝",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ros-vslam",
-    name: "🗺️ Visual SLAM",
+    name: "Visual SLAM",
     description: "This project has code for running Visual SLAM in the Robot Operating System (ROS) with GPU acceleration and testing in a ray traced simulation",
     title: "Visual SLAM",
     titleIcon: "🗺️",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
   },
   {
     slug: "omniverse-gym",
-    name: "🦾 Omniverse Gym",
+    name: "Omniverse Gym",
     description: "This project shows how to use NVIDIA Omniverse Isaac Simulator to solve robot reinforcement learning tasks using Proximal Policy Optimization (PPO)",
     title: "Omniverse Gym",
     titleIcon: "🦾",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
   },
   {
     slug: "robot-transformers",
-    name: "💭 Robot Transformers",
+    name: "Robot Transformers",
     description: "This project trains and evaluates an Action Chunking Transformer (ACT) for coordinated robot manipulation using HuggingFace LeRobot library",
     title: "Robot Transformers",
     titleIcon: "💭",

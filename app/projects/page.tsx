@@ -24,10 +24,12 @@ export const metadata = {
 
 function Project({
   name,
+  titleIcon,
   description,
   link,
 }: {
   name: string;
+  titleIcon: string;
   description: string;
   link: string;
 }) {
@@ -36,7 +38,9 @@ function Project({
       <Card className="pt-4 cursor-pointer hover:bg-background bg-muted">
         <CardContent>
           <div className="space-y-1 text-left">
-            <div className="text-lg font-medium text-foreground">{name}</div>
+            <div className="text-lg font-medium text-foreground">
+              {titleIcon} {name}
+            </div>
             <div className="text-sm text-muted-foreground">{description}</div>
           </div>
         </CardContent>
@@ -87,6 +91,7 @@ export default function Home() {
                         key={project.slug}
                         link={`/projects/${project.slug}`}
                         name={project.name}
+                        titleIcon={project.titleIcon}
                         description={project.description}
                       />
                     ))}

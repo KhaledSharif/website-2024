@@ -13,7 +13,7 @@ export interface Note {
 export const notes: Note[] = [
   {
     slug: "slam-sota",
-    name: "📖 SLAM Overview",
+    name: "SLAM Overview",
     description: "Recent research related to simultaneous localization and mapping",
     title: "SLAM Overview",
     titleIcon: "📖",
@@ -21,7 +21,7 @@ export const notes: Note[] = [
   },
   {
     slug: "auto-nav",
-    name: "🧭 Autonomous Navigation",
+    name: "Autonomous Navigation",
     description: "Overview of state of the art in autonomous robot navigation",
     title: "Autonomous Navigation",
     titleIcon: "🧭",
@@ -32,7 +32,7 @@ export const notes: Note[] = [
   },
   {
     slug: "bev",
-    name: "🐦 Birds Eye View",
+    name: "Birds Eye View",
     description: "Introduction to birds eye view perception for robotics",
     title: "Birds Eye View",
     titleIcon: "🐦",
@@ -40,7 +40,7 @@ export const notes: Note[] = [
   },
   {
     slug: "nerfs",
-    name: "🪐 Neural Radiance Fields",
+    name: "Neural Radiance Fields",
     description: "Introduction to NeRFs and their uses in robotics",
     title: "Neural Radiance Fields (NeRFs)",
     titleIcon: "🪐",

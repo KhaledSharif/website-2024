@@ -18,7 +18,7 @@ describe('ProjectsPage', () => {
     mockGetAllProjects.mockReturnValue([
       {
         slug: 'test-project',
-        name: '🚀 Test Project',
+        name: 'Test Project',
         description: 'A test project description',
         title: 'Test Project',
         titleIcon: '🚀',
@@ -36,7 +36,7 @@ describe('ProjectsPage', () => {
     const mockProjects = [
       {
         slug: 'project-1',
-        name: '🐝 Project 1',
+        name: 'Project 1',
         description: 'First project description',
         title: 'Project 1',
         titleIcon: '🐝',
@@ -44,7 +44,7 @@ describe('ProjectsPage', () => {
       },
       {
         slug: 'project-2',
-        name: '🗺️ Project 2',
+        name: 'Project 2',
         description: 'Second project description',
         title: 'Project 2',
         titleIcon: '🗺️',
@@ -66,7 +66,7 @@ describe('ProjectsPage', () => {
     const mockProjects = [
       {
         slug: 'test-project',
-        name: '🚀 Test Project',
+        name: 'Test Project',
         description: 'A test project description',
         title: 'Test Project',
         titleIcon: '🚀',

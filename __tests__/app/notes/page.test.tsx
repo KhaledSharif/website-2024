@@ -18,7 +18,7 @@ describe('NotesPage', () => {
     mockGetAllNotes.mockReturnValue([
       {
         slug: 'test-note',
-        name: '📖 Test Note',
+        name: 'Test Note',
         description: 'A test note description',
         title: 'Test Note',
         titleIcon: '📖',
@@ -36,7 +36,7 @@ describe('NotesPage', () => {
     const mockNotes = [
       {
         slug: 'note-1',
-        name: '📖 Note 1',
+        name: 'Note 1',
         description: 'First note description',
         title: 'Note 1',
         titleIcon: '📖',
@@ -44,7 +44,7 @@ describe('NotesPage', () => {
       },
       {
         slug: 'note-2',
-        name: '🧭 Note 2',
+        name: 'Note 2',
         description: 'Second note description',
         title: 'Note 2',
         titleIcon: '🧭',
@@ -66,7 +66,7 @@ describe('NotesPage', () => {
     const mockNotes = [
       {
         slug: 'test-note',
-        name: '📖 Test Note',
+        name: 'Test Note',
         description: 'A test note description',
         title: 'Test Note',
         titleIcon: '📖',

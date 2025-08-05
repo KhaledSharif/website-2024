@@ -26,7 +26,7 @@ describe('Projects Data', () => {
       const result = getProjectBySlug('astrobee');
       expect(result).toBeDefined();
       expect(result?.slug).toBe('astrobee');
-      expect(result?.name).toBe('🐝 Astrobee');
+      expect(result?.name).toBe('Astrobee');
     });
 
     it('should return undefined for invalid slug', () => {
