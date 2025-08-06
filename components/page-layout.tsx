@@ -15,7 +15,15 @@ import {
 } from "@/components/ui/breadcrumb";
 import Image from "next/image";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import React, { ReactNode } from "react";
+
+// Custom table component to handle horizontal scrolling
+const TableWrapper = ({ children }: { children: React.ReactNode }) => (
+  <div className="table-wrapper">
+    {children}
+  </div>
+);
 
 interface BreadcrumbSegment {
   label: string;
@@ -102,7 +110,14 @@ export default function PageLayout({
                   {children}
                   {markdownContent && (
                     <div className="markdown">
-                      <Markdown>{markdownContent}</Markdown>
+                      <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                          table: ({ children }) => <TableWrapper>{children}</TableWrapper>
+                        }}
+                      >
+                        {markdownContent}
+                      </Markdown>
                     </div>
                   )}
                   {additionalContent}

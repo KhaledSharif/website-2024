@@ -5,7 +5,7 @@ describe('Notes Data', () => {
     it('should return all notes', () => {
       const result = getAllNotes();
       expect(result).toBe(notes);
-      expect(result).toHaveLength(4);
+      expect(result).toHaveLength(notes.length);
     });
 
     it('should return notes with correct structure', () => {

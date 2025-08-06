@@ -12,6 +12,14 @@ export interface Note {
 
 export const notes: Note[] = [
   {
+    slug: "sensor-fusion",
+    name: "Sensor Fusion",
+    description: "Overview of sensor fusion and its applications",
+    title: "Sensor Fusion",
+    titleIcon: "🤖",
+    breadcrumbLabel: "Sensor Fusion"
+  },
+  {
     slug: "slam-sota",
     name: "SLAM Overview",
     description: "Recent research related to simultaneous localization and mapping",

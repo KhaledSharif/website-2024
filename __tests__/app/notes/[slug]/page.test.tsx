@@ -43,14 +43,13 @@ describe('NotePage', () => {
   describe('generateStaticParams', () => {
     it('should generate static params for all notes', async () => {
       const { generateStaticParams } = await import('@/app/notes/[slug]/page');
+      const { getAllNotes } = await import('@/lib/notes-data');
       const params = await generateStaticParams();
+      const notes = getAllNotes();
       
-      expect(params).toEqual([
-        { slug: 'slam-sota' },
-        { slug: 'auto-nav' },
-        { slug: 'bev' },
-        { slug: 'nerfs' },
-      ]);
+      expect(params).toEqual(
+        notes.map(note => ({ slug: note.slug }))
+      );
     });
   });
 

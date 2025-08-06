@@ -16,6 +16,12 @@ jest.mock('react-markdown', () => ({
   default: ({ children }: any) => <div data-testid="markdown">{children}</div>,
 }))
 
+// Mock remark-gfm
+jest.mock('remark-gfm', () => ({
+  __esModule: true,
+  default: () => () => {},
+}))
+
 // Mock UI components
 jest.mock('@/components/ui/card', () => ({
   Card: ({ children, className }: any) => (

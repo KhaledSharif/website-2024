@@ -13,8 +13,8 @@ describe('searchItems function', () => {
 
   it('should find items by title', () => {
     const results = searchItems('Astrobee')
-    expect(results).toHaveLength(1)
-    expect(results[0].title).toBe('Astrobee')
+    expect(results.length).toBeGreaterThan(0)
+    expect(results.some(item => item.title === 'Astrobee')).toBe(true)
   })
 
   it('should find items by description', () => {

@@ -115,4 +115,48 @@
   .markdown hr {
     @apply my-8
   }
+
+  .markdown table {
+    @apply w-full border-collapse border border-border my-4 text-sm overflow-x-auto
+  }
+
+  .markdown table {
+    @apply min-w-full table-auto
+  }
+
+  .markdown th {
+    @apply border border-border bg-muted px-3 py-2 text-left font-medium whitespace-nowrap
+  }
+
+  .markdown td {
+    @apply border border-border px-3 py-2 text-left break-words
+  }
+
+  .markdown tr:nth-child(even) {
+    @apply bg-muted/25
+  }
+
+  .markdown tr:hover {
+    @apply bg-muted/50
+  }
+
+  /* Table wrapper for horizontal scrolling */
+  .markdown .table-wrapper {
+    @apply w-full overflow-x-auto my-4
+  }
+
+  .markdown .table-wrapper table {
+    @apply min-w-full
+  }
+
+  /* Ensure table content doesn't break layout */
+  .markdown .table-wrapper table td,
+  .markdown .table-wrapper table th {
+    @apply max-w-xs break-words
+  }
+
+  /* Add some padding to the table wrapper for better visual separation */
+  .markdown .table-wrapper {
+    @apply border border-border rounded-md p-0
+  }
 }
