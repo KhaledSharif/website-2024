@@ -240,4 +240,67 @@ describe('AnimatedBeam', () => {
     expect(id2).toBeDefined();
     // IDs should be different for different instances
   });
+
+  it('handles ResizeObserver callback', () => {
+    let resizeCallback: (entries: ResizeObserverEntry[]) => void;
+    
+    // Mock ResizeObserver to capture the callback
+    const mockObserve = jest.fn();
+    const mockDisconnect = jest.fn();
+    
+    global.ResizeObserver = jest.fn().mockImplementation((callback) => {
+      resizeCallback = callback;
+      return {
+        observe: mockObserve,
+        unobserve: jest.fn(),
+        disconnect: mockDisconnect,
+      };
+    });
+
+    render(<AnimatedBeam {...defaultProps} />);
+    
+    expect(global.ResizeObserver).toHaveBeenCalledWith(expect.any(Function));
+    expect(mockObserve).toHaveBeenCalledWith(containerRef.current);
+
+    // Simulate resize observer callback
+    const mockEntries = [
+      {
+        target: containerRef.current,
+        contentRect: { width: 500, height: 400 },
+      },
+      {
+        target: containerRef.current,
+        contentRect: { width: 600, height: 500 },
+      },
+    ] as ResizeObserverEntry[];
+
+    // Call the callback with multiple entries to trigger the loop
+    if (resizeCallback) {
+      resizeCallback(mockEntries);
+    }
+
+    // Path should be updated when resize occurs
+    const paths = document.querySelectorAll('path');
+    expect(paths).toHaveLength(2);
+  });
+
+  it('disconnects ResizeObserver on unmount', () => {
+    let resizeCallback: (entries: ResizeObserverEntry[]) => void;
+    const mockDisconnect = jest.fn();
+    
+    global.ResizeObserver = jest.fn().mockImplementation((callback) => {
+      resizeCallback = callback;
+      return {
+        observe: jest.fn(),
+        unobserve: jest.fn(),
+        disconnect: mockDisconnect,
+      };
+    });
+
+    const { unmount } = render(<AnimatedBeam {...defaultProps} />);
+    
+    unmount();
+    
+    expect(mockDisconnect).toHaveBeenCalled();
+  });
 });

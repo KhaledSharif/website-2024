@@ -446,6 +446,98 @@ describe('Carousel Components', () => {
     })
   })
 
+  describe('useCarousel hook edge cases', () => {
+    it('should handle onSelect callback when api is null', () => {
+      // Mock embla-carousel-react to return [null, null]
+      const mockCarouselRef = { current: null };
+      const mockApi = null;
+      
+      require('embla-carousel-react').default.mockReturnValue([mockCarouselRef, mockApi]);
+      
+      // This should not throw error when api is null
+      expect(() => render(
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem>Item 1</CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      )).not.toThrow();
+    });
+
+    it('should handle useEffect when api is null', () => {
+      // Mock to return null api initially
+      const mockCarouselRef = { current: null };
+      let mockApi = null;
+      
+      require('embla-carousel-react').default.mockReturnValue([mockCarouselRef, mockApi]);
+      
+      const { rerender } = render(
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem>Item 1</CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      );
+      
+      // Now update to have a valid api
+      mockApi = {
+        scrollPrev: jest.fn(),
+        scrollNext: jest.fn(),
+        canScrollPrev: jest.fn(() => true),
+        canScrollNext: jest.fn(() => true),
+        on: jest.fn(),
+        off: jest.fn(),
+      };
+      
+      require('embla-carousel-react').default.mockReturnValue([mockCarouselRef, mockApi]);
+      
+      // Rerender with valid api - should not throw
+      expect(() => rerender(
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem>Item 1</CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      )).not.toThrow();
+    });
+
+    it('should handle setApi external callback', () => {
+      const setApiMock = jest.fn();
+      
+      render(
+        <Carousel setApi={setApiMock}>
+          <CarouselContent>
+            <CarouselItem>Item 1</CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      );
+      
+      expect(setApiMock).toHaveBeenCalledWith(mockApi);
+    });
+
+    it('should handle api event listeners cleanup', () => {
+      const mockOff = jest.fn();
+      const apiWithOff = {
+        ...mockApi,
+        off: mockOff,
+      };
+      
+      require('embla-carousel-react').default.mockReturnValue([mockCarouselRef, apiWithOff]);
+      
+      const { unmount } = render(
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem>Item 1</CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      );
+      
+      unmount();
+      
+      expect(mockOff).toHaveBeenCalled();
+    });
+  })
+
   describe('Full carousel integration', () => {
     it('should render complete carousel with all components', () => {
       render(

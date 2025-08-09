@@ -50,6 +50,38 @@ describe('searchItems function', () => {
     const results = searchItems('vis')
     expect(results.some(item => item.title === 'Visual SLAM')).toBe(true)
   })
+
+  it('should prioritize projects over notes in search results', () => {
+    // Create a search that returns both projects and notes
+    const results = searchItems('robot')
+    
+    // Find indices of first project and first note
+    const firstProjectIndex = results.findIndex(item => item.category === 'project')
+    const firstNoteIndex = results.findIndex(item => item.category === 'note')
+    
+    // If both exist, project should come before note
+    if (firstProjectIndex !== -1 && firstNoteIndex !== -1) {
+      expect(firstProjectIndex).toBeLessThan(firstNoteIndex)
+    }
+  })
+
+  it('should prioritize title matches over other matches', () => {
+    // Search for something that appears in both title and description
+    const results = searchItems('slam')
+    
+    // Items with title matches should come first
+    let foundNonTitleMatch = false
+    for (const item of results) {
+      const titleMatch = item.title.toLowerCase().includes('slam')
+      
+      if (!titleMatch) {
+        foundNonTitleMatch = true
+      } else if (foundNonTitleMatch) {
+        // If we found a title match after a non-title match, ordering is wrong
+        fail('Title matches should come before non-title matches')
+      }
+    }
+  })
 })
 
 describe('searchData structure', () => {

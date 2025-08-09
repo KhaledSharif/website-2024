@@ -539,6 +539,75 @@ describe('SearchSheet Component', () => {
     expect(document.querySelector('.animate-spin')).toBeInTheDocument()
   })
 
+  it('should handle Enter key when no result is selected', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Press enter without any results or selection
+    await act(async () => {
+      await user.keyboard('{Enter}')
+    })
+    
+    // Sheet should remain open since no result was selected
+    expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument()
+  })
+
+  it('should handle Enter key when selectedIndex is invalid', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Open search sheet
+    const searchButton = screen.getByRole('button', { name: /search/i })
+    await act(async () => {
+      await user.click(searchButton)
+    })
+    
+    // Type to get results but don't navigate
+    const input = screen.getByPlaceholderText(/search/i)
+    await act(async () => {
+      await user.type(input, 'astrobee')
+    })
+    
+    await waitFor(() => {
+      expect(screen.getByText('Astrobee')).toBeInTheDocument()
+    })
+    
+    // Clear results to make selectedIndex invalid
+    await act(async () => {
+      await user.clear(input)
+    })
+    
+    // Press enter with invalid selectedIndex
+    await act(async () => {
+      await user.keyboard('{Enter}')
+    })
+    
+    // Sheet should remain open
+    expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument()
+  })
+
+  it('should handle keyboard events when sheet is closed', async () => {
+    const user = userEvent.setup()
+    render(<SearchSheet />)
+    
+    // Don't open the sheet, just try keyboard navigation
+    await act(async () => {
+      await user.keyboard('{ArrowDown}')
+      await user.keyboard('{ArrowUp}')
+      await user.keyboard('{Enter}')
+      await user.keyboard('{Escape}')
+    })
+    
+    // Sheet should remain closed
+    expect(screen.queryByPlaceholderText(/search/i)).not.toBeInTheDocument()
+  })
+
   it('should show empty state message', async () => {
     const user = userEvent.setup()
     render(<SearchSheet />)

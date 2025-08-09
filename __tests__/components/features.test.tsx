@@ -143,4 +143,108 @@ describe('Features', () => {
     expect(screen.getByTestId('github-logo')).toBeInTheDocument();
     expect(screen.getByTestId('arrow-square-out')).toBeInTheDocument();
   });
+
+  it('should trigger heightFix function on component mount', () => {
+    // Mock the style property
+    const mockStyle = { height: '' };
+    const mockParentElement = {
+      style: mockStyle,
+    };
+    const mockElement = {
+      clientHeight: 500,
+      parentElement: mockParentElement,
+    };
+
+    // Mock the useRef to return our mock element
+    jest.spyOn(React, 'useRef').mockImplementation(() => ({
+      current: mockElement,
+    }));
+
+    render(<Features />);
+    
+    // The heightFix function should have been called and set the height
+    expect(mockStyle.height).toBe('500px');
+    
+    // Restore the original useRef
+    jest.restoreAllMocks();
+  });
+
+  it('should handle heightFix when tabs.current is null', () => {
+    // Mock useRef to return null
+    jest.spyOn(React, 'useRef').mockImplementation(() => ({
+      current: null,
+    }));
+
+    // This should not throw an error
+    expect(() => render(<Features />)).not.toThrow();
+    
+    // Restore the original useRef
+    jest.restoreAllMocks();
+  });
+
+  it('should handle heightFix when parentElement is null', () => {
+    const mockElement = {
+      clientHeight: 500,
+      parentElement: null,
+    };
+
+    // Mock useRef to return element without parent
+    jest.spyOn(React, 'useRef').mockImplementation(() => ({
+      current: mockElement,
+    }));
+
+    // This should not throw an error
+    expect(() => render(<Features />)).not.toThrow();
+    
+    // Restore the original useRef
+    jest.restoreAllMocks();
+  });
+
+  it('should call heightFix on beforeEnter transition callback', () => {
+    const heightFixSpy = jest.fn();
+    
+    // Mock the style property for heightFix
+    const mockStyle = { height: '' };
+    const mockParentElement = {
+      style: mockStyle,
+    };
+    const mockElement = {
+      clientHeight: 600,
+      parentElement: mockParentElement,
+    };
+
+    jest.spyOn(React, 'useRef').mockImplementation(() => ({
+      current: mockElement,
+    }));
+
+    render(<Features />);
+    
+    // Switch to a different tab to trigger the Transition beforeEnter
+    const secondTab = screen.getByText('Robot Visual Localization').closest('div');
+    fireEvent.click(secondTab!);
+    
+    // The heightFix should have been called during transition
+    expect(mockStyle.height).toBe('600px');
+    
+    jest.restoreAllMocks();
+  });
+
+  it('should handle setTab click for all tabs', () => {
+    render(<Features />);
+    
+    // Test clicking on tab 1 (already active)
+    const firstTab = screen.getByText('Robot Reinforcement Learning').closest('div');
+    fireEvent.click(firstTab!);
+    expect(screen.getByText(/The NVIDIA Omniverse Isaac Simulator/)).toBeInTheDocument();
+    
+    // Test clicking on tab 2
+    const secondTab = screen.getByText('Robot Visual Localization').closest('div');
+    fireEvent.click(secondTab!);
+    expect(screen.getByText(/This repository provides quickstart Robot Operating/)).toBeInTheDocument();
+    
+    // Test clicking on tab 3
+    const thirdTab = screen.getByText('Robot Cooperative Planning').closest('div');
+    fireEvent.click(thirdTab!);
+    expect(screen.getByText(/This repository contains quickstart code to train/)).toBeInTheDocument();
+  });
 });
