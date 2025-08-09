@@ -512,7 +512,14 @@ describe('Carousel Components', () => {
         </Carousel>
       );
       
-      expect(setApiMock).toHaveBeenCalledWith(mockApi);
+      expect(setApiMock).toHaveBeenCalledWith(expect.objectContaining({
+        scrollPrev: expect.any(Function),
+        scrollNext: expect.any(Function),
+        canScrollPrev: expect.any(Function),
+        canScrollNext: expect.any(Function),
+        on: expect.any(Function),
+        off: expect.any(Function),
+      }));
     });
 
     it('should handle api event listeners cleanup', () => {

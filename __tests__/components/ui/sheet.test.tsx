@@ -405,7 +405,7 @@ describe('Sheet Components', () => {
       expect(screen.getByText('Sheet Title')).toBeInTheDocument();
       expect(screen.getByText('Sheet Description')).toBeInTheDocument();
       expect(screen.getByText('Main content')).toBeInTheDocument();
-      expect(screen.getByText('Close')).toBeInTheDocument();
+      expect(screen.getAllByText('Close')).toHaveLength(2);
     });
   });
 });
