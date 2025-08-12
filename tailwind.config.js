@@ -20,7 +20,7 @@ module.exports = {
       fontFamily: {
         sans: ["'Neuton'", "serif"],
         display: ["'Domine'", "serif"],
-        accent: ["'Playpen Sans'", "cursive"],
+        accent: ["'Quicksand'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

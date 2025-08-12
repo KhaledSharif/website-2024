@@ -42,7 +42,7 @@ export default function ModalVideo({
           </div>
           <button
             className="btn absolute top-full flex items-center transform -mt-8 h-20 z-20
-            rounded-full font-medium group shadow-lg
+            rounded-full font-medium font-accent group shadow-lg
             text-sm px-4 gap-2
             text-foreground hover:text-foreground/80 hover:bg-background
 hover:border-border border-border bg-muted

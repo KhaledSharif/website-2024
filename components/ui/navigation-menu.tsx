@@ -44,7 +44,7 @@ const navigationMenuTriggerStyle = cva(
   `
   bg-muted hover:bg-muted/50 border border-border hover:border-border
   group inline-flex h-10 w-max items-center justify-center 
-  rounded-md px-1 md:px-3 text-sm font-medium 
+  rounded-md px-1 md:px-3 text-sm font-medium font-accent
   transition-colors
   `
 )

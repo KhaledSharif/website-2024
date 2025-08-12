@@ -179,7 +179,7 @@ describe('Typography Font System', () => {
       // Verify the font families are correctly configured
       expect(tailwindConfig.theme.extend.fontFamily.sans).toContain("'Neuton'");
       expect(tailwindConfig.theme.extend.fontFamily.display).toContain("'Domine'");
-      expect(tailwindConfig.theme.extend.fontFamily.accent).toContain("'Playpen Sans'");
+      expect(tailwindConfig.theme.extend.fontFamily.accent).toContain("'Quicksand'");
     });
   });
 
