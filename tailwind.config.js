@@ -17,6 +17,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["'Neuton'", "serif"],
+        display: ["'Domine'", "serif"],
+        accent: ["'Playpen Sans'", "cursive"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

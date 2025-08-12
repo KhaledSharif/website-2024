@@ -38,10 +38,10 @@ function Project({
       <Card className="pt-4 cursor-pointer hover:bg-background bg-muted">
         <CardContent>
           <div className="space-y-1 text-left">
-            <div className="text-lg font-medium text-foreground">
+            <div className="text-lg font-medium text-foreground font-display">
               {titleIcon} {name}
             </div>
-            <div className="text-sm text-muted-foreground">{description}</div>
+            <div className="text-sm text-muted-foreground font-sans">{description}</div>
           </div>
         </CardContent>
       </Card>

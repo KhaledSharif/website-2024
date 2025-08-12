@@ -10,7 +10,7 @@ export default function Footer() {
     <footer>
       <Section className="mt-0 xl:mt-32">
         <Container className="flex w-full justify-between">
-          <div className="w-48 lg:w-72 text-foreground">
+          <div className="w-48 lg:w-72 text-foreground font-sans">
             kldsrf.com is a collection of my projects, publications, and notes
             to share with the world my passion for robotics
           </div>
@@ -41,7 +41,7 @@ export default function Footer() {
               </Button>
             </a>
           </div>
-          <p className="text-muted-foreground">👨🏽‍💻 Designed & coded by me</p>
+          <p className="text-muted-foreground font-sans">👨🏽‍💻 Designed & coded by me</p>
         </Container>
       </Section>
     </footer>

@@ -18,7 +18,7 @@ border-border hover:bg-background hover:border-border border bg-muted
                             "
       >
         <GithubLogo size={24} />
-        Source Code
+        <span className="font-accent">Source Code</span>
         <ArrowSquareOut size={24} />
       </a>
     </div>

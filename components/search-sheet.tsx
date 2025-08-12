@@ -154,20 +154,20 @@ export function SearchSheet() {
           {!isLoading && query && results.length === 0 && (
             <div className="text-center py-8 text-muted-foreground">
               <p>No results found for "{query}"</p>
-              <p className="text-sm mt-2">Try different keywords or check spelling</p>
+              <p className="text-sm mt-2 font-sans">Try different keywords or check spelling</p>
             </div>
           )}
           
           {!isLoading && !query && (
             <div className="text-center py-8 text-muted-foreground">
               <p>Start typing to search...</p>
-              <p className="text-sm mt-2">Search through projects and notes</p>
+              <p className="text-sm mt-2 font-sans">Search through projects and notes</p>
             </div>
           )}
           
           {!isLoading && results.length > 0 && (
             <div className="space-y-1">
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-sm text-muted-foreground mb-3 font-sans">
                 {results.length} result{results.length !== 1 ? 's' : ''} found
               </p>
               {results.map((item, index) => (
@@ -188,7 +188,7 @@ export function SearchSheet() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-medium text-foreground truncate">
+                        <h3 className="font-medium text-foreground truncate font-display">
                           {item.title}
                         </h3>
                         <div className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -196,7 +196,7 @@ export function SearchSheet() {
                           <span>{getCategoryLabel(item.category)}</span>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
+                      <p className="text-sm text-muted-foreground line-clamp-2 font-sans">
                         {item.description}
                       </p>
                       <div className="flex items-center gap-1 mt-2">
@@ -212,7 +212,7 @@ export function SearchSheet() {
         </div>
         
         <div className="mt-6 pt-4 border-t border-border">
-          <p className="text-xs text-muted-foreground text-center">
+          <p className="text-xs text-muted-foreground text-center font-sans">
             Use ↑↓ to navigate, Enter to select, Esc to close
           </p>
         </div>
