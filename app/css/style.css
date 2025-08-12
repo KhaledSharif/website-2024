@@ -105,7 +105,7 @@
   }
 
   .markdown p {
-    @apply text-sm text-justify mt-2
+    @apply text-[1.1rem] text-justify mt-2
   }
 
   .markdown li {
@@ -125,7 +125,7 @@
   }
 
   .markdown strong {
-    @apply bg-blue-100 bg-opacity-20 rounded-sm px-[0.15rem] py-[0.25rem] font-accent text-[0.65rem]
+    @apply bg-blue-100 bg-opacity-20 rounded-sm px-[0.15rem] py-[0.25rem] font-accent text-[0.85rem]
   }
 
   .markdown hr {

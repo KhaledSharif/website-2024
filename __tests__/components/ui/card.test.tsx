@@ -8,6 +8,7 @@ import {
   CardDescription,
   CardContent,
 } from '@/components/ui/card';
+import { testClassNameMerging, testRefForwarding, testPropForwarding } from '../../utils/assertions';
 
 describe('Card Components', () => {
   describe('Card', () => {
@@ -26,39 +27,18 @@ describe('Card Components', () => {
       expect(screen.getByText('Card content')).toBeInTheDocument();
     });
 
-    it('merges custom className with default classes', () => {
-      render(
-        <Card data-testid="card" className="custom-card">
-          <div>Card content</div>
-        </Card>
-      );
-      
-      const card = screen.getByTestId('card');
-      expect(card).toHaveClass('custom-card');
-      expect(card).toHaveClass('rounded-lg', 'border', 'bg-card');
-    });
-
-    it('forwards ref correctly', () => {
+    it('merges custom className and forwards ref', () => {
       const ref = React.createRef<HTMLDivElement>();
       render(
-        <Card ref={ref}>
-          <div>Card content</div>
-        </Card>
-      );
-      
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
-    });
-
-    it('forwards props correctly', () => {
-      render(
-        <Card data-testid="card" id="test-card" role="region">
+        <Card data-testid="card" className="custom-card" ref={ref} id="test-card">
           <div>Card content</div>
         </Card>
       );
       
       const card = screen.getByTestId('card');
-      expect(card).toHaveAttribute('id', 'test-card');
-      expect(card).toHaveAttribute('role', 'region');
+      testClassNameMerging(card, 'custom-card', ['rounded-lg', 'border', 'bg-card']);
+      testRefForwarding(ref, HTMLDivElement);
+      testPropForwarding(card, 'id', 'test-card');
     });
   });
 
@@ -76,38 +56,18 @@ describe('Card Components', () => {
       expect(screen.getByText('Header content')).toBeInTheDocument();
     });
 
-    it('merges custom className with default classes', () => {
-      render(
-        <CardHeader data-testid="card-header" className="custom-header">
-          <div>Header content</div>
-        </CardHeader>
-      );
-      
-      const header = screen.getByTestId('card-header');
-      expect(header).toHaveClass('custom-header');
-      expect(header).toHaveClass('flex', 'flex-col', 'space-y-1.5', 'p-6');
-    });
-
-    it('forwards ref correctly', () => {
+    it('merges custom className and forwards ref', () => {
       const ref = React.createRef<HTMLDivElement>();
       render(
-        <CardHeader ref={ref}>
-          <div>Header content</div>
-        </CardHeader>
-      );
-      
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
-    });
-
-    it('forwards props correctly', () => {
-      render(
-        <CardHeader data-testid="card-header" data-custom="test">
+        <CardHeader data-testid="card-header" className="custom-header" ref={ref} data-custom="test">
           <div>Header content</div>
         </CardHeader>
       );
       
       const header = screen.getByTestId('card-header');
-      expect(header).toHaveAttribute('data-custom', 'test');
+      testClassNameMerging(header, 'custom-header', ['flex', 'flex-col', 'space-y-1.5']);
+      testRefForwarding(ref, HTMLDivElement);
+      testPropForwarding(header, 'data-custom', 'test');
     });
   });
 
@@ -123,173 +83,68 @@ describe('Card Components', () => {
       expect(title).toHaveTextContent('Card Title');
     });
 
-    it('merges custom className with default classes', () => {
-      render(<CardTitle className="custom-title">Card Title</CardTitle>);
-      
-      const title = screen.getByRole('heading', { level: 3 });
-      expect(title).toHaveClass('custom-title');
-      expect(title).toHaveClass('text-2xl', 'font-semibold');
-    });
-
-    it('forwards ref correctly', () => {
+    it('merges custom className and forwards ref', () => {
       const ref = React.createRef<HTMLParagraphElement>();
-      render(<CardTitle ref={ref}>Card Title</CardTitle>);
-      
-      expect(ref.current).toBeInstanceOf(HTMLHeadingElement);
-    });
-
-    it('forwards props correctly', () => {
-      render(<CardTitle data-custom="test">Card Title</CardTitle>);
+      render(<CardTitle className="custom-title" ref={ref} data-custom="test">Card Title</CardTitle>);
       
       const title = screen.getByRole('heading', { level: 3 });
-      expect(title).toHaveAttribute('data-custom', 'test');
+      testClassNameMerging(title, 'custom-title', ['text-2xl', 'font-semibold']);
+      testRefForwarding(ref, HTMLHeadingElement);
+      testPropForwarding(title, 'data-custom', 'test');
     });
   });
 
   describe('CardDescription', () => {
-    it('renders with default classes', () => {
+    it('renders with all properties correctly', () => {
+      const ref = React.createRef<HTMLParagraphElement>();
       render(
-        <CardDescription data-testid="card-description">
+        <CardDescription data-testid="card-description" className="custom-description" ref={ref} data-custom="test">
           Card description text
         </CardDescription>
       );
       
       const description = screen.getByTestId('card-description');
       expect(description).toBeInTheDocument();
-      expect(description).toHaveClass('text-sm', 'text-muted-foreground');
       expect(description).toHaveTextContent('Card description text');
-    });
-
-    it('merges custom className with default classes', () => {
-      render(
-        <CardDescription data-testid="card-description" className="custom-description">
-          Card description text
-        </CardDescription>
-      );
-      
-      const description = screen.getByTestId('card-description');
-      expect(description).toHaveClass('custom-description');
-      expect(description).toHaveClass('text-sm', 'text-muted-foreground');
-    });
-
-    it('forwards ref correctly', () => {
-      const ref = React.createRef<HTMLParagraphElement>();
-      render(
-        <CardDescription ref={ref}>
-          Card description text
-        </CardDescription>
-      );
-      
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
-    });
-
-    it('forwards props correctly', () => {
-      render(
-        <CardDescription data-testid="card-description" data-custom="test">
-          Card description text
-        </CardDescription>
-      );
-      
-      const description = screen.getByTestId('card-description');
-      expect(description).toHaveAttribute('data-custom', 'test');
+      testClassNameMerging(description, 'custom-description', ['text-[1.05rem]', 'text-muted-foreground']);
+      testRefForwarding(ref, HTMLDivElement);
+      testPropForwarding(description, 'data-custom', 'test');
     });
   });
 
   describe('CardContent', () => {
-    it('renders with default classes', () => {
+    it('renders with all properties correctly', () => {
+      const ref = React.createRef<HTMLDivElement>();
       render(
-        <CardContent data-testid="card-content">
+        <CardContent data-testid="card-content" className="custom-content" ref={ref} data-custom="test">
           <div>Content text</div>
         </CardContent>
       );
       
       const content = screen.getByTestId('card-content');
       expect(content).toBeInTheDocument();
-      expect(content).toHaveClass('p-6', 'pt-0');
       expect(screen.getByText('Content text')).toBeInTheDocument();
-    });
-
-    it('merges custom className with default classes', () => {
-      render(
-        <CardContent data-testid="card-content" className="custom-content">
-          <div>Content text</div>
-        </CardContent>
-      );
-      
-      const content = screen.getByTestId('card-content');
-      expect(content).toHaveClass('custom-content');
-      expect(content).toHaveClass('p-6', 'pt-0');
-    });
-
-    it('forwards ref correctly', () => {
-      const ref = React.createRef<HTMLDivElement>();
-      render(
-        <CardContent ref={ref}>
-          <div>Content text</div>
-        </CardContent>
-      );
-      
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
-    });
-
-    it('forwards props correctly', () => {
-      render(
-        <CardContent data-testid="card-content" data-custom="test">
-          <div>Content text</div>
-        </CardContent>
-      );
-      
-      const content = screen.getByTestId('card-content');
-      expect(content).toHaveAttribute('data-custom', 'test');
+      testClassNameMerging(content, 'custom-content', ['p-6', 'pt-0']);
+      testRefForwarding(ref, HTMLDivElement);
+      testPropForwarding(content, 'data-custom', 'test');
     });
   });
 
   describe('CardFooter', () => {
-    it('renders with default classes', () => {
+    it('renders with all properties correctly', () => {
+      const ref = React.createRef<HTMLDivElement>();
       render(
-        <CardFooter data-testid="card-footer">
+        <CardFooter data-testid="card-footer" className="custom-footer" ref={ref} data-custom="test">
           <div>Footer content</div>
         </CardFooter>
       );
       
       const footer = screen.getByTestId('card-footer');
       expect(footer).toBeInTheDocument();
-      expect(footer).toHaveClass('flex', 'items-center', 'p-6', 'pt-0');
       expect(screen.getByText('Footer content')).toBeInTheDocument();
-    });
-
-    it('merges custom className with default classes', () => {
-      render(
-        <CardFooter data-testid="card-footer" className="custom-footer">
-          <div>Footer content</div>
-        </CardFooter>
-      );
-      
-      const footer = screen.getByTestId('card-footer');
-      expect(footer).toHaveClass('custom-footer');
-      expect(footer).toHaveClass('flex', 'items-center', 'p-6', 'pt-0');
-    });
-
-    it('forwards ref correctly', () => {
-      const ref = React.createRef<HTMLDivElement>();
-      render(
-        <CardFooter ref={ref}>
-          <div>Footer content</div>
-        </CardFooter>
-      );
-      
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
-    });
-
-    it('forwards props correctly', () => {
-      render(
-        <CardFooter data-testid="card-footer" data-custom="test">
-          <div>Footer content</div>
-        </CardFooter>
-      );
-      
-      const footer = screen.getByTestId('card-footer');
-      expect(footer).toHaveAttribute('data-custom', 'test');
+      testClassNameMerging(footer, 'custom-footer', ['flex', 'items-center', 'p-6', 'pt-0']);
+      testRefForwarding(ref, HTMLDivElement);
+      testPropForwarding(footer, 'data-custom', 'test');
     });
   });
 

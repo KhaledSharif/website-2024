@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Button } from '@/components/ui/button'
+import { testClassNameMerging, testRefForwarding, testDisabledState } from '../../utils/assertions'
 
 describe('Button Component', () => {
   it('should render with default props', () => {
@@ -58,7 +59,7 @@ describe('Button Component', () => {
   it('should be disabled when disabled prop is true', () => {
     render(<Button disabled>Disabled</Button>)
     const button = screen.getByRole('button')
-    expect(button).toBeDisabled()
+    testDisabledState(button, true)
   })
 
   it('should render as child when asChild is true', () => {
@@ -75,13 +76,13 @@ describe('Button Component', () => {
   it('should apply custom className', () => {
     render(<Button className="custom-class">Custom</Button>)
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('custom-class')
+    testClassNameMerging(button, 'custom-class', ['inline-flex', 'items-center'])
   })
 
   it('should forward ref', () => {
     const ref = React.createRef<HTMLButtonElement>()
     render(<Button ref={ref}>Ref Button</Button>)
-    expect(ref.current).toBeInstanceOf(HTMLButtonElement)
+    testRefForwarding(ref, HTMLButtonElement)
   })
 
   it('should handle keyboard events', async () => {

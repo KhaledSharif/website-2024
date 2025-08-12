@@ -45,25 +45,8 @@ describe('Footer Component', () => {
 
   it('should render main description text', () => {
     render(<Footer />)
-    
     expect(screen.getByText(/kldsrf.com is a collection of my projects/)).toBeInTheDocument()
     expect(screen.getByText(/passion for robotics/)).toBeInTheDocument()
-  })
-
-  it('should render Privacy Policy link', () => {
-    render(<Footer />)
-    
-    const privacyLink = screen.getByText('Privacy Policy')
-    expect(privacyLink).toBeInTheDocument()
-    expect(privacyLink.closest('a')).toHaveAttribute('href', '/')
-  })
-
-  it('should render Terms of Service link', () => {
-    render(<Footer />)
-    
-    const termsLink = screen.getByText('Terms of Service')
-    expect(termsLink).toBeInTheDocument()
-    expect(termsLink.closest('a')).toHaveAttribute('href', '/')
   })
 
   it('should render GitHub social link', () => {
@@ -147,10 +130,6 @@ describe('Footer Component', () => {
     
     // Main description
     expect(screen.getByText(/kldsrf.com is a collection/)).toBeInTheDocument()
-    
-    // Navigation links
-    expect(screen.getByText('Privacy Policy')).toBeInTheDocument()
-    expect(screen.getByText('Terms of Service')).toBeInTheDocument()
     
     // Social media handles
     expect(screen.getByText('@khaledsharif')).toBeInTheDocument()

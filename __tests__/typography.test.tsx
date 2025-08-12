@@ -7,87 +7,17 @@ import SourceCodeButton from '@/components/source-code';
 import ProjectsPage from '@/app/projects/page';
 import NotesPage from '@/app/notes/page';
 import PageLayout from '@/components/page-layout';
+import { testFontClasses } from './utils/assertions';
 
-// Mock react-markdown
-jest.mock('react-markdown', () => {
-  return function MockMarkdown({ children }: { children: string }) {
-    return <div>{children}</div>;
-  };
-});
-
-jest.mock('remark-gfm', () => () => {});
-
-// Mock Transition from headlessui
-jest.mock('@headlessui/react', () => ({
-  Transition: ({ children, show }: any) => show ? <>{children}</> : null,
-}));
-
-// Mock Next.js Image
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ src, alt, ...props }: any) => <img src={src} alt={alt} {...props} />,
-}));
-
-// Mock Next.js Link
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: ({ children, href }: any) => <a href={href}>{children}</a>,
-}));
-
-// Mock phosphor-icons
-jest.mock('@phosphor-icons/react', () => ({
-  ArrowSquareOut: () => <span>ArrowSquareOut</span>,
-  CaretCircleDown: () => <span>CaretCircleDown</span>,
-  CaretCircleUp: () => <span>CaretCircleUp</span>,
-  GithubLogo: () => <span>GithubLogo</span>,
-  MagnifyingGlass: () => <span>MagnifyingGlass</span>,
-  X: () => <span>X</span>,
-  House: () => <span>House</span>,
-  FolderOpen: () => <span>FolderOpen</span>,
-  Notebook: () => <span>Notebook</span>,
-  Plus: () => <span>Plus</span>,
-  ArchiveBox: () => <span>ArchiveBox</span>,
-  Moon: () => <span>Moon</span>,
-  Sun: () => <span>Sun</span>,
-  List: () => <span>List</span>,
-  PlayCircle: () => <span>PlayCircle</span>,
-}));
-
-// Mock headlessui Dialog
-jest.mock('@headlessui/react', () => ({
-  Transition: Object.assign(
-    ({ children, show }: any) => show ? <>{children}</> : null,
-    { Child: ({ children }: any) => <>{children}</> }
-  ),
-  Dialog: Object.assign(
-    ({ children, open }: any) => open ? <div>{children}</div> : null,
-    { Panel: ({ children }: any) => <div>{children}</div> }
-  ),
-}));
-
-
-// Mock the data functions
-jest.mock('@/lib/projects-data', () => ({
-  getAllProjects: () => [
-    {
-      slug: 'test-project',
-      name: 'Test Project',
-      titleIcon: '🚀',
-      description: 'Test description',
-    },
-  ],
-}));
-
-jest.mock('@/lib/notes-data', () => ({
-  getAllNotes: () => [
-    {
-      slug: 'test-note',
-      name: 'Test Note',
-      titleIcon: '📝',
-      description: 'Test description',
-    },
-  ],
-}));
+// Use centralized mocks
+jest.mock('react-markdown', () => require('./utils/mocks').reactMarkdownMock());
+jest.mock('remark-gfm', () => require('./utils/mocks').remarkGfmMock());
+jest.mock('@headlessui/react', () => require('./utils/mocks').headlessUIMock());
+jest.mock('next/image', () => require('./utils/mocks').nextImageMock());
+jest.mock('next/link', () => require('./utils/mocks').nextLinkMock());
+jest.mock('@phosphor-icons/react', () => require('./utils/mocks').phosphorIconsMock());
+jest.mock('@/lib/projects-data', () => require('./utils/mocks').projectsDataMock());
+jest.mock('@/lib/notes-data', () => require('./utils/mocks').notesDataMock());
 
 describe('Typography Font System', () => {
   describe('Font Display Usage', () => {
@@ -96,16 +26,16 @@ describe('Typography Font System', () => {
       
       // Check specific headings
       const projectsHeading = screen.getByText(/Open source projects/);
-      expect(projectsHeading).toHaveClass('font-display');
+      testFontClasses(projectsHeading, 'font-display');
       
       const rlHeading = screen.getByText('Robot Reinforcement Learning');
-      expect(rlHeading).toHaveClass('font-display');
+      testFontClasses(rlHeading, 'font-display');
       
       const vslamHeading = screen.getByText('Robot Visual Localization');
-      expect(vslamHeading).toHaveClass('font-display');
+      testFontClasses(vslamHeading, 'font-display');
       
       const coopHeading = screen.getByText('Robot Cooperative Planning');
-      expect(coopHeading).toHaveClass('font-display');
+      testFontClasses(coopHeading, 'font-display');
     });
 
     it('should apply font-display to Projects page titles', () => {
@@ -127,13 +57,13 @@ describe('Typography Font System', () => {
       
       // Check specific description text
       const rlDescription = screen.getByText(/This repo has examples of how to use NVIDIA Omniverse/);
-      expect(rlDescription).toHaveClass('font-sans');
+      testFontClasses(rlDescription, 'font-sans');
     });
 
     it('should apply font-sans to Hero component paragraph', () => {
       render(<Hero />);
       const paragraph = screen.getByText(/Hi there! 👋🏼 I'm Khaled/);
-      expect(paragraph).toHaveClass('font-sans');
+      testFontClasses(paragraph, 'font-sans');
     });
 
     it('should apply font-sans to Projects page descriptions', () => {
@@ -155,14 +85,14 @@ describe('Typography Font System', () => {
         <SourceCodeButton url="https://github.com/test/repo" />
       );
       const buttonText = screen.getByText('Source Code');
-      expect(buttonText).toHaveClass('font-accent');
+      testFontClasses(buttonText, 'font-accent');
     });
 
     it('should apply font-accent to all Source Code buttons in Features', () => {
       render(<Features />);
       const sourceCodeButtons = screen.getAllByText('Source Code');
       sourceCodeButtons.forEach(button => {
-        expect(button).toHaveClass('font-accent');
+        testFontClasses(button, 'font-accent');
       });
     });
   });

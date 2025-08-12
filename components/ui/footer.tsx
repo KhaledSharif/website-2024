@@ -14,11 +14,6 @@ export default function Footer() {
             kldsrf.com is a collection of my projects, publications, and notes
             to share with the world my passion for robotics
           </div>
-
-          <div className="flex flex-col gap-2 text-right text-muted-foreground">
-            <Link href="/">Privacy Policy</Link>
-            <Link href="/">Terms of Service</Link>
-          </div>
         </Container>
         <Container className="border-t flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
           <div className="flex gap-2">
@@ -41,7 +36,7 @@ export default function Footer() {
               </Button>
             </a>
           </div>
-          <p className="text-muted-foreground font-sans">👨🏽‍💻 Designed & coded by me</p>
+          <p className="text-muted-foreground font-accent">👨🏽‍💻 Designed & coded by me</p>
         </Container>
       </Section>
     </footer>

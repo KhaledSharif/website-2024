@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { AnimatedBeam, AnimatedBeamProps } from '@/components/ui/animated-beam';
 import { RefObject, createRef } from 'react';
 
@@ -276,7 +276,9 @@ describe('AnimatedBeam', () => {
 
     // Call the callback with multiple entries to trigger the loop
     if (resizeCallback) {
-      resizeCallback(mockEntries);
+      act(() => {
+        resizeCallback(mockEntries);
+      });
     }
 
     // Path should be updated when resize occurs
