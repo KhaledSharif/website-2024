@@ -26,38 +26,14 @@ A modern, responsive portfolio website built with Next.js 14, TypeScript, and Ta
 
 ## 📋 Prerequisites
 
-- Node.js 18+ (see `.nvmrc`)
-- npm or yarn package manager
-- Git
-
-## 🔧 Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/khaledsharif/website-2024.git
-cd website-2024
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Run the development server:
-
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+- Node.js 20.17+ (see `.nvmrc`)
 
 ## 📦 Available Scripts
 
 ### Development
 
 ```bash
+npm install
 npm run dev          # Start development server on localhost:3000
 npm run build        # Build for production
 npm run start        # Start production server
@@ -180,7 +156,7 @@ All UI components use Shadcn/ui with CSS variables. Customize in:
 
 ## 🧪 Testing
 
-The project maintains 70% code coverage across all metrics:
+The project maintains ~93% branch code coverage and ~99% line coverage.
 
 ```bash
 # Run tests
@@ -238,10 +214,10 @@ You can test the site's performance using Google Lighthouse:
    - Click "Analyze page load"
 
 2. **Command Line**:
+
    ```bash
    # Install Lighthouse CLI
    npm install -g lighthouse
-   
    # Run against production build
    npm run build && npm run start
    # In another terminal:
@@ -249,7 +225,7 @@ You can test the site's performance using Google Lighthouse:
    ```
 
 3. **PageSpeed Insights** (for live sites):
-   - Visit https://pagespeed.web.dev/
+   - Visit <https://pagespeed.web.dev/>
    - Enter your URL
    - Get detailed performance analysis
 
@@ -265,7 +241,7 @@ You can test the site's performance using Google Lighthouse:
 
 **Khaled Sharif**
 
-- Website: [khaleds.com](https://khaleds.com)
+- Website: [kldsrf.com](https://kldsrf.com)
 - GitHub: [@khaledsharif](https://github.com/khaledsharif)
 
 ## 🙏 Acknowledgments

@@ -51,6 +51,8 @@
     "@types/mocha": "^10.0.10",
     "@types/next": "^8.0.7",
     "autoprefixer": "^10.4.16",
+    "eslint": "8.57.1",
+    "eslint-config-next": "15.4.7",
     "jest": "^30.0.0",
     "jest-environment-jsdom": "^30.0.0",
     "postcss": "^8.4.32",

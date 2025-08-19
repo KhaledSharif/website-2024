@@ -21,7 +21,7 @@ npm run start        # Start production server
 ```bash
 npm test             # Run all tests
 npm run test:watch   # Run tests in watch mode
-npm run test:coverage # Generate coverage report (70% threshold required)
+npm run test:coverage # Generate coverage report (90% threshold for branch cov required)
 ```
 
 ### Code Quality
@@ -101,7 +101,7 @@ When adding new content:
 
 ## Important Notes
 
-- Node.js 18+ required (check `.nvmrc`)
+- Node.js 20.17+ required (check `.nvmrc`)
 - Docker deployment uses standalone Next.js output
 - All new components should have corresponding tests
 - Maintain 70% test coverage threshold
