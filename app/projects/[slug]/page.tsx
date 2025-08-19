@@ -5,6 +5,7 @@ import { getProjectBySlug, getAllProjects } from "@/lib/projects-data";
 import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
+import type { StaticImageData } from "next/image";
 
 export const metadata = defaultMetadata;
 
@@ -58,10 +59,10 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   if (project.hasCarousel && project.carouselItems) {
     const { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } = await import("@/components/ui/carousel");
-    const Image = (await import("next/image")).default;
+    const { default: Image } = await import("next/image");
     
     // Import images dynamically based on slug
-    let imageImports: Record<string, typeof Image> = {};
+    let imageImports: Record<string, StaticImageData> = {};
     if (params.slug === "astrobee") {
       imageImports = {
         FeaturesElement1: (await import("@/public/images/astrobee-001.jpg")).default,

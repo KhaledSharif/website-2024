@@ -19,22 +19,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link 
-          rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Quicksand:wght@300..700&display=swap"
-        />
-        <link 
           href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Quicksand:wght@300..700&display=swap" 
           rel="stylesheet"
-          media="print"
-          onLoad="this.media='all'"
         />
-        <noscript>
-          <link 
-            href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Quicksand:wght@300..700&display=swap" 
-            rel="stylesheet"
-          />
-        </noscript>
         <script
           dangerouslySetInnerHTML={{
             __html: `
