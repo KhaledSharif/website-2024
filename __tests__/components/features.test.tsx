@@ -19,7 +19,7 @@ beforeEach(() => {
 
 // Mock Next.js Image and Link components
 jest.mock('next/image', () => {
-  return function MockImage({ src, alt, ...props }: any) {
+  return function MockImage({ src, alt, priority, sizes, ...props }: any) {
     return <img src={src} alt={alt} {...props} />;
   };
 });

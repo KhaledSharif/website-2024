@@ -38,6 +38,8 @@ export default function ModalVideo({
               width={thumbWidth}
               height={thumbHeight}
               alt={thumbAlt}
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
             />
           </div>
           <button

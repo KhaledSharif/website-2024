@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "standalone"
+    output: "standalone",
+    compiler: {
+        // Remove React testing library attributes in production
+        reactRemoveProperties: process.env.NODE_ENV === "production" ? { properties: ["^data-testid$"] } : false,
+    },
+    experimental: {
+        // Optimize for modern browsers
+        optimizeCss: true,
+    }
 }
 
 module.exports = nextConfig

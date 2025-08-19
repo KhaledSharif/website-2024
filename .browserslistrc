@@ -1,0 +1,6 @@
+# Browsers that we support
+# Target only modern browsers to avoid legacy polyfills
+
+defaults and supports es6-module
+not dead
+not op_mini all

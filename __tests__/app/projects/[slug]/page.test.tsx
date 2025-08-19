@@ -33,7 +33,7 @@ jest.mock('@/components/ui/accordion', () => ({
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt }: { src: string; alt: string }) => <img src={src} alt={alt} data-testid="next-image" />,
+  default: ({ src, alt, priority, sizes }: { src: string; alt: string; priority?: boolean; sizes?: string }) => <img src={src} alt={alt} data-testid="next-image" />,
 }));
 
 // Mock PageLayout component

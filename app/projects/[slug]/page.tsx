@@ -84,9 +84,9 @@ export default async function ProjectPage({ params }: { params: { slug: string }
                   <div className="flex flex-col gap-4 aspect-square items-center justify-center p-0 bg-muted rounded-3xl m-4">
                     <div>
                       {ImageComponent ? (
-                        <Image src={ImageComponent} className="object-cover" alt="robots" />
+                        <Image src={ImageComponent} className="object-cover" alt="robots" sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw" />
                       ) : (
-                        <Image src={item.img} alt={item.desc} className="w-full h-auto" width={500} height={500} />
+                        <Image src={item.img} alt={item.desc} className="w-full h-auto" width={500} height={500} sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw" />
                       )}
                     </div>
                     <div className="text-sm font-medium">{item.desc}</div>

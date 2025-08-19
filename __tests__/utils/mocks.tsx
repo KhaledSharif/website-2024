@@ -3,7 +3,10 @@ import React from 'react';
 // Next.js mocks
 export const nextImageMock = () => ({
   __esModule: true,
-  default: ({ src, alt, ...props }: any) => <img src={src} alt={alt} {...props} />,
+  default: ({ src, alt, priority, sizes, ...props }: any) => {
+    // Filter out Next.js specific props that shouldn't be passed to img element
+    return <img src={src} alt={alt} {...props} />;
+  },
 });
 
 export const nextLinkMock = () => ({
@@ -121,7 +124,7 @@ export const notesDataMock = () => ({
 });
 
 // ResizeObserver mock
-export const resizeObserverMock = jest.fn().mockImplementation((callback) => ({
+export const resizeObserverMock = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),

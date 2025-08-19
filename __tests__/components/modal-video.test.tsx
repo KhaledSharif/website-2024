@@ -6,7 +6,7 @@ import ModalVideo from '@/components/modal-video'
 // Mock Next.js Image component
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, width, height, ...props }: any) => (
+  default: ({ src, alt, width, height, priority, sizes, ...props }: any) => (
     <img src={src} alt={alt} width={width} height={height} {...props} />
   ),
 }))

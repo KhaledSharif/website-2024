@@ -2,6 +2,31 @@ import React from 'react'
 import { render, screen, act } from '@testing-library/react'
 import Hero from '@/components/hero'
 
+// Mock Next.js Image component
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: ({ src, alt, priority, sizes, ...props }: any) => (
+    <img src={src} alt={alt} {...props} />
+  ),
+}))
+
+// Mock @headlessui/react components  
+jest.mock('@headlessui/react', () => ({
+  Transition: Object.assign(
+    ({ children, show }: any) => show ? <>{children}</> : null,
+    { Child: ({ children }: any) => <>{children}</> }
+  ),
+  Dialog: Object.assign(
+    ({ children, open }: any) => open ? <div>{children}</div> : null,
+    { Panel: ({ children }: any) => <div>{children}</div> }
+  ),
+}))
+
+// Mock @phosphor-icons/react
+jest.mock('@phosphor-icons/react', () => ({
+  PlayCircle: () => <span>PlayCircle</span>,
+}))
+
 describe('Hero Component', () => {
   it('should render the hero section', () => {
     render(<Hero />)

@@ -5,7 +5,7 @@ import PageLayout from '@/components/page-layout'
 // Mock Next.js Image component
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, ...props }: any) => (
+  default: ({ src, alt, priority, sizes, ...props }: any) => (
     <img src={src} alt={alt} {...props} />
   ),
 }))
