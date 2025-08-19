@@ -254,4 +254,5 @@ describe('Features', () => {
     fireEvent.click(thirdTab!);
     expect(screen.getByText(/This repository contains quickstart code to train/)).toBeInTheDocument();
   });
+
 });

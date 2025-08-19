@@ -305,4 +305,49 @@ describe('AnimatedBeam', () => {
     
     expect(mockDisconnect).toHaveBeenCalled();
   });
+
+  it('handles when refs are null', () => {
+    const nullContainerRef = createRef<HTMLDivElement>();
+    const nullFromRef = createRef<HTMLDivElement>();
+    const nullToRef = createRef<HTMLDivElement>();
+    
+    // Refs are null (not assigned to any DOM elements)
+    const nullProps = {
+      containerRef: nullContainerRef,
+      fromRef: nullFromRef,
+      toRef: nullToRef,
+    };
+    
+    // Should render without errors even with null refs
+    render(<AnimatedBeam {...nullProps} />);
+    
+    const svg = document.querySelector('svg');
+    expect(svg).toBeInTheDocument();
+    
+    // Path should not be set when refs are null
+    const paths = document.querySelectorAll('path');
+    expect(paths[0].getAttribute('d')).toBe('');
+  });
+
+  it('handles when containerRef is null but other refs exist', () => {
+    const nullContainerRef = createRef<HTMLDivElement>();
+    
+    const propsWithNullContainer = {
+      containerRef: nullContainerRef,
+      fromRef,
+      toRef,
+    };
+    
+    const mockObserve = jest.fn();
+    global.ResizeObserver = jest.fn().mockImplementation(() => ({
+      observe: mockObserve,
+      unobserve: jest.fn(),
+      disconnect: jest.fn(),
+    }));
+    
+    render(<AnimatedBeam {...propsWithNullContainer} />);
+    
+    // ResizeObserver should not observe null container
+    expect(mockObserve).not.toHaveBeenCalled();
+  });
 });

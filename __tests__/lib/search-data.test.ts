@@ -82,6 +82,47 @@ describe('searchItems function', () => {
       }
     }
   })
+
+  it('should sort projects before notes when neither has title match', () => {
+    // Mock searchData to have specific test data
+    const originalSearchData = [...searchData]
+    
+    // Create test data with a project and note that both match in description only
+    const testData = [
+      {
+        id: 'note-test',
+        title: 'Note Item',
+        description: 'contains testquery keyword',
+        url: '/notes/test',
+        category: 'note' as const,
+        tags: [],
+        emoji: '📝'
+      },
+      {
+        id: 'project-test',
+        title: 'Project Item', 
+        description: 'contains testquery keyword',
+        url: '/projects/test',
+        category: 'project' as const,
+        tags: [],
+        emoji: '🚀'
+      }
+    ]
+    
+    // Replace searchData temporarily
+    searchData.length = 0
+    searchData.push(...testData)
+    
+    const results = searchItems('testquery')
+    
+    // Project should come before note when neither has title match
+    expect(results[0].category).toBe('project')
+    expect(results[1].category).toBe('note')
+    
+    // Restore original data
+    searchData.length = 0
+    searchData.push(...originalSearchData)
+  })
 })
 
 describe('searchData structure', () => {

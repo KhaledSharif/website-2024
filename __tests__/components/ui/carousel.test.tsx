@@ -152,6 +152,29 @@ describe('Carousel Components', () => {
       const content = screen.getByText('Item 1').closest('div')
       expect(content).toHaveClass('pt-4')
     })
+
+    it('should handle when api is null', () => {
+      // Mock embla-carousel-react to return null api
+      const useEmblaCarouselMock = require('embla-carousel-react').default
+      useEmblaCarouselMock.mockImplementationOnce(() => [
+        React.createRef() as any,
+        null, // api is null
+      ])
+
+      // This should not throw an error even with null api
+      expect(() => {
+        render(
+          <Carousel>
+            <CarouselContent>
+              <CarouselItem>Item 1</CarouselItem>
+            </CarouselContent>
+          </Carousel>
+        )
+      }).not.toThrow()
+      
+      // Restore the original mock
+      useEmblaCarouselMock.mockImplementation(() => [mockCarouselRef, mockApi])
+    })
   })
 
   describe('CarouselContent', () => {

@@ -335,14 +335,27 @@ describe('SearchSheet Component', () => {
       expect(screen.getByText('First Item')).toBeInTheDocument()
     })
     
-    // Arrow up from first item should stay at first item
+    // The first item should be selected by default (index 0)
+    const firstResult = screen.getByText('First Item').closest('div[class*="bg-muted"]')
+    expect(firstResult).toHaveClass('bg-muted')
+    
+    // Arrow up from first item (index 0) should stay at first item (index 0)
     await act(async () => {
       await user.keyboard('{ArrowUp}')
     })
     
-    // First item should still be selected
-    const firstResult = screen.getByText('First Item').closest('div[class*="bg-muted"]')
-    expect(firstResult).toHaveClass('bg-muted')
+    // First item should still be selected (index stays at 0)
+    const stillFirstResult = screen.getByText('First Item').closest('div[class*="bg-muted"]')
+    expect(stillFirstResult).toHaveClass('bg-muted')
+    
+    // Try ArrowUp again to ensure the branch "prev > 0 ? prev - 1 : 0" returns 0
+    await act(async () => {
+      await user.keyboard('{ArrowUp}')
+    })
+    
+    // Should still be at first item
+    const finalFirstResult = screen.getByText('First Item').closest('div[class*="bg-muted"]')
+    expect(finalFirstResult).toHaveClass('bg-muted')
   })
 
   it('should handle ArrowDown at last result', async () => {
