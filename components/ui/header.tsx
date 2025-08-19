@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  GithubLogo,
-  LinkedinLogo,
-  FilePdf,
-  MagnifyingGlass,
-} from "@phosphor-icons/react";
+import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -20,33 +15,6 @@ import { Button } from "./button";
 import { SearchSheet } from "@/components/search-sheet";
 import { getAllNotes } from "@/lib/notes-data";
 import { getAllProjects } from "@/lib/projects-data";
-
-type componentType = { title: string; href: string; description: string };
-
-const components2: componentType[] = [
-  {
-    title: "🦾 111",
-    href: "/projects/omniverse-gym",
-    description:
-      "Train robots to perform tasks in sim with reinforcement learning",
-  },
-  {
-    title: "🗺️ 222",
-    href: "/projects/ros-vslam",
-    description: "Learn how robots can localize & map unknown worlds visually",
-  },
-  {
-    title: "💭 333",
-    href: "/projects/robot-transformers",
-    description: "Train robots to plan and cooperatively manipulate objects",
-  },
-  {
-    title: "🐝 444",
-    href: "/projects/astrobee",
-    description:
-      "Learn about the code running on free-flying robots on the Space Station",
-  },
-];
 
 function NavigationMenuDemo() {
   const notes = getAllNotes();
@@ -70,11 +38,11 @@ function NavigationMenuDemo() {
               ))}
             </ul>
             <div className="w-full flex items-center justify-center pb-2">
-              <a href="/projects">
+              <Link href="/projects">
                 <Button variant={"ghost"} className="text-sm font-medium">
                   View All Projects
                 </Button>
-              </a>
+              </Link>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -114,11 +82,11 @@ function NavigationMenuDemo() {
               ))}
             </ul>
             <div className="w-full flex items-center justify-center pb-2">
-              <a href="/notes">
+              <Link href="/notes">
                 <Button variant={"ghost"} className="text-sm font-medium">
                   View All Notes
                 </Button>
-              </a>
+              </Link>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -152,6 +120,7 @@ const ListItem = React.forwardRef<
     </li>
   );
 });
+ListItem.displayName = "ListItem";
 
 export default function Header() {
   // Dark mode state and effect
@@ -181,7 +150,7 @@ export default function Header() {
     <header className="fixed w-full z-30 bg-opacity-90 bg-background text-foreground shadow-lg shadow-black/10 backdrop-blur-sm border-b border-border/50">
       <div className="max-w-6xl mx-auto px-1 md:px-5 sm:px-6">
         <div className="flex items-center justify-between h-12 md:h-16 text-foreground">
-          <a href="/" className="">
+          <Link href="/" className="">
             <Button
               variant={"outline"}
               className="bg-muted hover:bg-background gap-1"
@@ -189,7 +158,7 @@ export default function Header() {
               <div>👦🏻</div>
               <div className="text-[0.85rem] hidden sm:block">Khaled S.</div>
             </Button>
-          </a>
+          </Link>
           <div className="flex items-center justify-center">
             <NavigationMenuDemo />
           </div>

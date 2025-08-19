@@ -1,7 +1,6 @@
 "use client";
 
 import { Section, Container } from "@/components/craft";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GithubLogo, LinkedinLogo } from "@phosphor-icons/react";
 

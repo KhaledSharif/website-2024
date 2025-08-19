@@ -21,7 +21,7 @@ async function getMarkdownContent(slug: string) {
   try {
     const fileContent = await fs.promises.readFile(filePath, "utf-8");
     return fileContent;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
     const Image = (await import("next/image")).default;
     
     // Import images dynamically based on slug
-    let imageImports: Record<string, any> = {};
+    let imageImports: Record<string, typeof Image> = {};
     if (params.slug === "astrobee") {
       imageImports = {
         FeaturesElement1: (await import("@/public/images/astrobee-001.jpg")).default,
@@ -86,7 +86,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
                       {ImageComponent ? (
                         <Image src={ImageComponent} className="object-cover" alt="robots" />
                       ) : (
-                        <img src={item.img} alt={item.desc} className="w-full h-auto" />
+                        <Image src={item.img} alt={item.desc} className="w-full h-auto" width={500} height={500} />
                       )}
                     </div>
                     <div className="text-sm font-medium">{item.desc}</div>
@@ -111,13 +111,13 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         <AccordionItem value="item-1">
           <AccordionTrigger>What is Visual SLAM?</AccordionTrigger>
           <AccordionContent>
-            Visual SLAM (Simultaneous Localization and Mapping) is a technique used in robotics and computer vision to construct or update a map of an unknown environment while simultaneously keeping track of an agent's location within it.
+            Visual SLAM (Simultaneous Localization and Mapping) is a technique used in robotics and computer vision to construct or update a map of an unknown environment while simultaneously keeping track of an agent&apos;s location within it.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>How does it work?</AccordionTrigger>
           <AccordionContent>
-            The system uses visual information from cameras to track features in the environment, estimate the camera's motion, and build a 3D map of the surroundings.
+            The system uses visual information from cameras to track features in the environment, estimate the camera&apos;s motion, and build a 3D map of the surroundings.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -137,7 +137,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
       title={project.title}
       titleIcon={project.titleIcon}
       description={project.description}
-      children={children}
+      {...(children && { children })}
       additionalContent={additionalContent}
       markdownContent={mdContent}
     />

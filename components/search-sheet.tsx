@@ -153,7 +153,7 @@ export function SearchSheet() {
           
           {!isLoading && query && results.length === 0 && (
             <div className="text-center py-8 text-muted-foreground">
-              <p>No results found for "{query}"</p>
+              <p>No results found for &ldquo;{query}&rdquo;</p>
               <p className="text-sm mt-2 font-sans">Try different keywords or check spelling</p>
             </div>
           )}

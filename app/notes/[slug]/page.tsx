@@ -20,7 +20,7 @@ async function getMarkdownContent(slug: string) {
   try {
     const fileContent = await fs.promises.readFile(filePath, "utf-8");
     return fileContent;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

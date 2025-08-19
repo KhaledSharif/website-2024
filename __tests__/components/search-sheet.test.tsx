@@ -514,7 +514,10 @@ describe('SearchSheet Component', () => {
     })
     
     await waitFor(() => {
-      expect(screen.getByText('No results found for "nonexistent"')).toBeInTheDocument()
+      const container = document.querySelector('.text-center.py-8.text-muted-foreground')
+      expect(container).toBeInTheDocument()
+      expect(container?.textContent).toContain('No results found for')
+      expect(container?.textContent).toContain('nonexistent')
       expect(screen.getByText('Try different keywords or check spelling')).toBeInTheDocument()
     })
   })

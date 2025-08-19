@@ -29,7 +29,7 @@ interface PageLayoutProps {
   titleIcon?: string;
   description: string;
   headerImage?: {
-    src: any;
+    src: string;
     alt: string;
   };
   markdownContent?: string;

@@ -9,9 +9,9 @@ export default function Hero() {
           <div className="text-center pb-12 md:pb-16">
             <div className="max-w-3xl mx-auto">
               <p className="text-xl text-muted-foreground mb-8 font-sans">
-                Hi there! 👋🏼 I'm Khaled, a robotics engineer at NASA working on
+                Hi there! 👋🏼 I&apos;m Khaled, a robotics engineer at NASA working on
                 Astrobee: a robot currently flying around the International
-                Space Station (ISS) assisting astronauts. I'm passionate about
+                Space Station (ISS) assisting astronauts. I&apos;m passionate about
                 artificial intelligence and autonomous space exploration.
               </p>
             </div>
