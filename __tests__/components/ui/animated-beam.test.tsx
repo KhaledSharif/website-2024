@@ -21,9 +21,9 @@ global.ResizeObserver = jest.fn().mockImplementation((callback) => ({
 }));
 
 describe('AnimatedBeam', () => {
-  let containerRef: RefObject<HTMLDivElement>;
-  let fromRef: RefObject<HTMLDivElement>;
-  let toRef: RefObject<HTMLDivElement>;
+  let containerRef: RefObject<HTMLDivElement | null>;
+  let fromRef: RefObject<HTMLDivElement | null>;
+  let toRef: RefObject<HTMLDivElement | null>;
   let defaultProps: AnimatedBeamProps;
 
   beforeEach(() => {

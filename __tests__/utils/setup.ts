@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 /**
  * Create a mock ref object
  */
-export const createMockRef = <T extends HTMLElement>(): React.RefObject<T> => {
+export const createMockRef = <T extends HTMLElement>(): React.RefObject<T | null> => {
   const element = document.createElement('div') as unknown as T;
   return { current: element };
 };

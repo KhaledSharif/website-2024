@@ -68,9 +68,10 @@ describe('craft utility and components', () => {
         </Layout>
       )
       
-      // Check that HTML element exists in container
-      const htmlElement = container.querySelector('html')
-      expect(htmlElement).toBeInTheDocument()
+      // Check that the Layout component renders its children correctly
+      const testContent = container.querySelector('[data-testid="test-content"]')
+      expect(testContent).toBeInTheDocument()
+      expect(testContent).toHaveTextContent('Test content')
     })
   })
 
