@@ -25,21 +25,22 @@ async function getMarkdownContent(slug: string) {
   }
 }
 
-export default async function NotePage({ params }: { params: { slug: string } }) {
+export default async function NotePage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const note = getNoteBySlug(params.slug);
-  
+
   if (!note) {
     notFound();
   }
 
   const mdContent = await getMarkdownContent(params.slug);
-  
+
   if (!mdContent) {
     notFound();
   }
 
   let headerImage = undefined;
-  
+
   if (note.hasHeaderImage && note.headerImageSrc) {
     headerImage = {
       src: note.headerImageSrc,

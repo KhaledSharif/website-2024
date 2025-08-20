@@ -27,15 +27,16 @@ async function getMarkdownContent(slug: string) {
   }
 }
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const project = getProjectBySlug(params.slug);
-  
+
   if (!project) {
     notFound();
   }
 
   const mdContent = await getMarkdownContent(params.slug);
-  
+
   if (!mdContent) {
     notFound();
   }
