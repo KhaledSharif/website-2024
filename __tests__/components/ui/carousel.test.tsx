@@ -44,11 +44,10 @@ jest.mock('@/components/ui/button', () => ({
   Button: React.forwardRef<HTMLButtonElement, any>(
     ({ children, className, disabled, onClick, ...props }, ref) => (
       <button
-        ref={ref}
         className={className}
         disabled={disabled}
         onClick={onClick}
-        {...props}
+        {...{ ...props, ref }}
       >
         {children}
       </button>

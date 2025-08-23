@@ -13,7 +13,7 @@ import {
 // Mock @radix-ui/react-slot
 jest.mock('@radix-ui/react-slot', () => ({
   Slot: React.forwardRef(({ children, ...props }: any, ref: any) => 
-    React.cloneElement(children, { ...props, ref, 'data-testid': 'radix-slot' })
+    React.cloneElement(children, { ...{ ...props, ref }, 'data-testid': 'radix-slot' })
   ),
 }));
 

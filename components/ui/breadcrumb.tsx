@@ -9,7 +9,7 @@ const Breadcrumb = React.forwardRef<
   React.ComponentPropsWithoutRef<"nav"> & {
     separator?: React.ReactNode
   }
->(({ ...props }, ref) => <nav aria-label="breadcrumb" {...props} ref={ref} />)
+>(({ ...props }, ref) => <nav aria-label="breadcrumb" {...{ ...props, ref }} />)
 Breadcrumb.displayName = "Breadcrumb"
 
 const BreadcrumbList = React.forwardRef<
@@ -21,8 +21,7 @@ const BreadcrumbList = React.forwardRef<
       "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
       className
     )}
-    {...props}
-    ref={ref}
+    {...{ ...props, ref }}
   />
 ))
 BreadcrumbList.displayName = "BreadcrumbList"
@@ -33,8 +32,7 @@ const BreadcrumbItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <li
     className={cn("inline-flex items-center gap-1.5", className)}
-    {...props}
-    ref={ref}
+    {...{ ...props, ref }}
   />
 ))
 BreadcrumbItem.displayName = "BreadcrumbItem"
@@ -50,8 +48,7 @@ const BreadcrumbLink = React.forwardRef<
   return (
     <Comp
       className={cn("transition-colors hover:text-foreground", className)}
-      {...props}
-      ref={ref}
+      {...{ ...props, ref }}
     />
   )
 })
@@ -66,8 +63,7 @@ const BreadcrumbPage = React.forwardRef<
     aria-disabled="true"
     aria-current="page"
     className={cn("font-normal text-foreground", className)}
-    {...props}
-    ref={ref}
+    {...{ ...props, ref }}
   />
 ))
 BreadcrumbPage.displayName = "BreadcrumbPage"
