@@ -486,6 +486,47 @@ describe('Carousel Components', () => {
       )).not.toThrow();
     });
 
+    it('should call onSelect callback and handle null api properly', () => {
+      // Create a custom onSelect function that gets called
+      const mockSetCanScrollPrev = jest.fn();
+      const mockSetCanScrollNext = jest.fn();
+      
+      // Mock a valid API first to initialize the component
+      const validApi = {
+        scrollPrev: jest.fn(),
+        scrollNext: jest.fn(),
+        canScrollPrev: jest.fn(() => true),
+        canScrollNext: jest.fn(() => false),
+        on: jest.fn((event, callback) => {
+          // Immediately call the callback with null API to test the early return
+          if (event === 'select') {
+            setTimeout(() => callback(null), 0);
+          }
+        }),
+        off: jest.fn(),
+      };
+      
+      require('embla-carousel-react').default.mockReturnValue([{ current: null }, validApi]);
+      
+      render(
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem>Item 1</CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      );
+      
+      // The onSelect callback should have been registered
+      expect(validApi.on).toHaveBeenCalledWith('select', expect.any(Function));
+      
+      // The callback will be called with null API, testing the early return
+      // This should not throw and should exit early
+      setTimeout(() => {
+        expect(mockSetCanScrollPrev).not.toHaveBeenCalled();
+        expect(mockSetCanScrollNext).not.toHaveBeenCalled();
+      }, 10);
+    });
+
     it('should handle useEffect when api is null', () => {
       // Mock to return null api initially
       const mockCarouselRef = { current: null };

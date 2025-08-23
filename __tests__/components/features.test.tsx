@@ -33,6 +33,13 @@ jest.mock('next/link', () => {
 // Mock @headlessui/react Transition
 jest.mock('@headlessui/react', () => ({
   Transition: ({ children, show, unmount, appear, beforeEnter, ...props }: any) => {
+    // Call beforeEnter callback when show becomes true
+    React.useEffect(() => {
+      if (show && beforeEnter) {
+        beforeEnter();
+      }
+    }, [show, beforeEnter]);
+    
     // Filter out Transition-specific props that shouldn't be passed to DOM
     const { 
       enter, enterFrom, enterTo, leave, leaveFrom, leaveTo, 
@@ -254,5 +261,6 @@ describe('Features', () => {
     fireEvent.click(thirdTab!);
     expect(screen.getByText(/This repository contains quickstart code to train/)).toBeInTheDocument();
   });
+
 
 });

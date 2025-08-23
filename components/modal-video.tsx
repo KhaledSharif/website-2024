@@ -66,18 +66,20 @@ hover:border-border border-border bg-muted
       >
         <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
           <Transition.Child
-            className="fixed inset-0 z-[99999] bg-background bg-opacity-75 transition-opacity"
             enter="transition ease-out duration-200"
             enterFrom="opacity-0"
             enterTo="opacity-100"
             leave="transition ease-out duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            aria-hidden="true"
-          />
+          >
+            <div 
+              className="fixed inset-0 z-[99999] bg-background bg-opacity-75 transition-opacity"
+              aria-hidden="true"
+            />
+          </Transition.Child>
 
           <Transition.Child
-            className="fixed inset-0 z-[99999] overflow-hidden flex items-center justify-center transform px-4 sm:px-6"
             enter="transition ease-out duration-200"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"
@@ -85,7 +87,8 @@ hover:border-border border-border bg-muted
             leaveFrom="oopacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="max-w-6xl mx-auto h-full flex items-center">
+            <div className="fixed inset-0 z-[99999] overflow-hidden flex items-center justify-center transform px-4 sm:px-6">
+              <div className="max-w-6xl mx-auto h-full flex items-center">
               <Dialog.Panel className="w-full max-h-full aspect-video bg-background overflow-hidden">
                 <video
                   ref={videoRef}
@@ -98,6 +101,7 @@ hover:border-border border-border bg-muted
                   Your browser does not support the video tag.
                 </video>
               </Dialog.Panel>
+              </div>
             </div>
           </Transition.Child>
         </Dialog>

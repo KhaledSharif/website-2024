@@ -233,7 +233,6 @@ export default function Features() {
                     show={tab === i + 1}
                     key={i}
                     appear={true}
-                    className="w-full"
                     enter="transition ease-in-out duration-700 transform order-first"
                     enterFrom="opacity-0 translate-y-16"
                     enterTo="opacity-100 translate-y-0"
@@ -243,7 +242,8 @@ export default function Features() {
                     beforeEnter={() => heightFix()}
                     unmount={false}
                   >
-                    <div className="relative inline-flex flex-col 2xl:w-[38rem] lg:w-[32rem] md:w-[25rem] w-full">
+                    <div className="w-full">
+                      <div className="relative inline-flex flex-col 2xl:w-[38rem] lg:w-[32rem] md:w-[25rem] w-full">
                       <Image
                         className="rounded object-contain"
                         src={x.bg}
@@ -257,6 +257,7 @@ export default function Features() {
                         src={x.fg}
                         style={{ top: "30%" }}
                       />
+                      </div>
                     </div>
                   </Transition>
                 ))}

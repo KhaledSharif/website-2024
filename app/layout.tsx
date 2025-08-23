@@ -1,7 +1,30 @@
 import "./css/style.css";
+import { Domine, Neuton, Quicksand } from "next/font/google";
 
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
+
+const domine = Domine({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-domine",
+  display: "swap",
+});
+
+const neuton = Neuton({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-neuton",
+  display: "swap",
+});
+
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-quicksand",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Khaled Sharif",
@@ -16,12 +39,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Quicksand:wght@300..700&display=swap" 
-          rel="stylesheet"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -44,7 +61,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className={`${domine.variable} ${neuton.variable} ${quicksand.variable}`}>
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
           {children}
