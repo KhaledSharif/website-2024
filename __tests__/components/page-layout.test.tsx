@@ -198,7 +198,7 @@ describe('PageLayout Component', () => {
     
     render(<PageLayout {...propsWithImage} />)
     
-    const image = screen.getByRole('img')
+    const image = screen.getByRole('presentation')
     expect(image).toHaveAttribute('alt', '')
     expect(image).toHaveAttribute('width', '800')
     expect(image).toHaveAttribute('height', '400')

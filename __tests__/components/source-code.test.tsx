@@ -92,7 +92,7 @@ describe('SourceCodeButton Component', () => {
   it('should handle empty URL gracefully', () => {
     render(<SourceCodeButton url="" />)
     
-    const link = screen.getByRole('link', { name: /source code/i })
+    const link = screen.getByText('Source Code').closest('a')
     expect(link).toHaveAttribute('href', '')
   })
 
