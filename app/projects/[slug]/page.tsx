@@ -74,8 +74,8 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
     }
     
     children = (
-      <div className="flex w-full items-center justify-center pb-8">
-        <Carousel className="w-full md:w-5/6 flex items-center justify-center">
+      <div className="flex w-full items-center justify-center pb-8 px-12">
+        <Carousel className="w-full md:w-5/6 flex items-center justify-center relative">
           <CarouselContent>
             {project.carouselItems.map((item, index) => {
               const imageKey = `FeaturesElement${index + 1}`;
@@ -84,23 +84,21 @@ export default async function ProjectPage(props: { params: Promise<{ slug: strin
               return (
                 <CarouselItem key={index}>
                   <div className="flex flex-col gap-4 aspect-square items-center justify-center p-0 bg-muted rounded-3xl m-4">
-                    <div>
+                    <div className="overflow-hidden rounded-lg">
                       {ImageComponent ? (
-                        <Image src={ImageComponent} className="object-cover" alt="robots" sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw" />
+                        <Image src={ImageComponent} className="w-full h-auto object-cover rounded-lg" alt="robots" width={500} height={500} sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw" />
                       ) : (
-                        <Image src={item.img} alt={item.desc} className="w-full h-auto" width={500} height={500} sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw" />
+                        <Image src={item.img} alt={item.desc} className="w-full h-auto object-cover rounded-lg" width={500} height={500} sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw" />
                       )}
                     </div>
-                    <div className="text-sm font-medium">{item.desc}</div>
+                    <div className="text-base font-medium text-center px-2">{item.desc}</div>
                   </div>
                 </CarouselItem>
               );
             })}
           </CarouselContent>
-          <div>
-            <CarouselPrevious />
-            <CarouselNext />
-          </div>
+          <CarouselPrevious className="-left-8" />
+          <CarouselNext className="-right-8" />
         </Carousel>
       </div>
     );

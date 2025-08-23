@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
           <div className="text-center pb-12 md:pb-16">
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-muted-foreground mb-8 font-sans">
+              <p className="text-2xl text-muted-foreground mb-8 font-sans">
                 Hi there! 👋🏼 I&apos;m Khaled, a robotics engineer at NASA working on
                 Astrobee: a robot currently flying around the International
                 Space Station (ISS) assisting astronauts. I&apos;m passionate about

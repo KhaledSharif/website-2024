@@ -97,35 +97,35 @@
   }
 
   .markdown h3 {
-    @apply text-2xl text-left mt-8 font-display
+    @apply text-3xl text-left mt-8 font-display
   }
 
   .markdown h4 {
-    @apply text-xl text-left mt-4 font-display
+    @apply text-2xl text-left mt-4 font-display
   }
 
   .markdown p {
-    @apply text-[1.1rem] text-justify mt-2
+    @apply text-lg text-justify mt-2
   }
 
   .markdown li {
-    @apply text-sm text-justify mt-2 md:ml-2 ml-1
+    @apply text-base text-justify mt-2 md:ml-2 ml-1
   }
 
   .markdown ol {
-    @apply text-sm text-justify md:ml-2 ml-1
+    @apply text-base text-justify md:ml-2 ml-1
   }
 
   .markdown ul {
-    @apply text-sm text-justify md:ml-2 ml-1
+    @apply text-base text-justify md:ml-2 ml-1
   }
 
   .markdown code {
-    @apply text-[0.75rem] tracking-tighter bg-muted mx-1 px-1 py-1 truncate font-accent
+    @apply text-sm tracking-tighter bg-muted mx-1 px-1 py-1 truncate font-accent
   }
 
   .markdown strong {
-    @apply bg-blue-100 bg-opacity-20 rounded-sm px-[0.15rem] py-[0.25rem] font-accent text-[0.85rem]
+    @apply bg-blue-100 bg-opacity-20 rounded-sm px-[0.15rem] py-[0.25rem] font-accent text-base
   }
 
   .markdown hr {
@@ -133,7 +133,7 @@
   }
 
   .markdown table {
-    @apply w-full border-collapse border border-border my-4 text-sm overflow-x-auto
+    @apply w-full border-collapse border border-border my-4 text-base overflow-x-auto
   }
 
   .markdown table {

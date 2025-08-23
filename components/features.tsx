@@ -42,12 +42,12 @@ export default function Features() {
       <div className="relative max-w-none lg:max-w-6xl mx-auto">
         <div className="pt-12 md:pt-20">
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <div className="text-3xl mb-1 font-display">Open source projects 👇🏼</div>
+            <div className="text-4xl mb-1 font-display">Open source projects 👇🏼</div>
             <Link
               href="/projects"
               className={buttonVariants({ variant: "ghost" })}
             >
-              <div className="text-lg underline text-muted-foreground">View All</div>
+              <div className="text-xl underline text-muted-foreground">View All</div>
             </Link>
           </div>
 
@@ -62,16 +62,16 @@ export default function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-lg font-display">
+                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display">
                       Robot Reinforcement Learning
                     </div>
-                    <div className="text-foreground text-md font-sans">
+                    <div className="text-foreground text-lg font-sans">
                       This repo has examples of how to use NVIDIA Omniverse
                       Isaac Simulator to train robots to perform tasks using
                       Reinforcement Learning (RL)
                     </div>
                     {tab === 1 && (
-                      <div className="text-muted-foreground text-sm mt-8 font-sans">
+                      <div className="text-muted-foreground text-base mt-8 font-sans">
                         <div className="font-sans">
                           The NVIDIA Omniverse Isaac Simulator (OIS) is a
                           realistic robotic sim that can be used to train robots
@@ -115,16 +115,16 @@ export default function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-lg font-display">
+                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display">
                       Robot Visual Localization
                     </div>
-                    <div className="text-foreground text-md font-sans">
+                    <div className="text-foreground text-lg font-sans">
                       Quickstart Robot Operating System (ROS) code for running
                       GPU accelerated Simultaneous Localization and Mapping
                       (SLAM) and verifying loop closure in sim
                     </div>
                     {tab === 2 && (
-                      <div className="text-muted-foreground text-sm mt-8 font-sans">
+                      <div className="text-muted-foreground text-base mt-8 font-sans">
                         <div className="font-sans">
                           This repository provides quickstart Robot Operating
                           System (ROS) code for running GPU-accelerated
@@ -168,16 +168,16 @@ export default function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-lg font-display">
+                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display">
                       Robot Cooperative Planning
                     </div>
-                    <div className="text-foreground text-md font-sans">
+                    <div className="text-foreground text-lg font-sans">
                       Train and evaluate a pair of robot arms to cooperatively
                       plan and manipulate multiple objects using an Action
                       Chunking Transformer (ACT)
                     </div>
                     {tab === 3 && (
-                      <div className="text-muted-foreground text-sm mt-8 font-sans">
+                      <div className="text-muted-foreground text-base mt-8 font-sans">
                         <div className="font-sans">
                           This repository contains quickstart code to train and
                           evaluate an Action Chunking Transformer (ACT) to

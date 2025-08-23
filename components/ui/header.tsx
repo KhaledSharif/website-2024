@@ -9,12 +9,21 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { SearchSheet } from "@/components/search-sheet";
 import { getAllNotes } from "@/lib/notes-data";
 import { getAllProjects } from "@/lib/projects-data";
+import { Menu, ChevronRight } from "lucide-react";
 
 function NavigationMenuDemo() {
   const notes = getAllNotes();
@@ -122,6 +131,93 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
+function MobileNavigation() {
+  const notes = getAllNotes();
+  const projects = getAllProjects();
+  
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          className="md:hidden p-2"
+          aria-label="Open navigation menu"
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-[300px]">
+        <SheetHeader>
+          <SheetTitle>Navigation</SheetTitle>
+        </SheetHeader>
+        <nav className="flex flex-col gap-6 mt-6">
+          <div>
+            <h3 className="font-medium text-base text-muted-foreground mb-3 px-3">Projects</h3>
+            <div className="space-y-1">
+              {projects.map((project) => (
+                <SheetClose key={project.slug} asChild>
+                  <Link 
+                    href={`/projects/${project.slug}`}
+                    className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    <span className="text-lg">{project.titleIcon}</span>
+                    <div>
+                      <div className="font-medium text-base">{project.name}</div>
+                      <div className="text-sm text-muted-foreground line-clamp-1">
+                        {project.description}
+                      </div>
+                    </div>
+                  </Link>
+                </SheetClose>
+              ))}
+              <SheetClose asChild>
+                <Link 
+                  href="/projects"
+                  className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors text-base font-medium"
+                >
+                  View All Projects
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              </SheetClose>
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="font-medium text-base text-muted-foreground mb-3 px-3">Notes</h3>
+            <div className="space-y-1">
+              {notes.map((note) => (
+                <SheetClose key={note.slug} asChild>
+                  <Link 
+                    href={`/notes/${note.slug}`}
+                    className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    <span className="text-lg">{note.titleIcon}</span>
+                    <div>
+                      <div className="font-medium text-base">{note.name}</div>
+                      <div className="text-sm text-muted-foreground line-clamp-1">
+                        {note.description}
+                      </div>
+                    </div>
+                  </Link>
+                </SheetClose>
+              ))}
+              <SheetClose asChild>
+                <Link 
+                  href="/notes"
+                  className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors text-base font-medium"
+                >
+                  View All Notes
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              </SheetClose>
+            </div>
+          </div>
+        </nav>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
 export default function Header() {
   // Dark mode state and effect
   const [isDark, setIsDark] = useState(false);
@@ -149,7 +245,7 @@ export default function Header() {
   return (
     <header className="fixed w-full z-30 bg-opacity-90 bg-background text-foreground shadow-lg shadow-black/10 backdrop-blur-sm border-b border-border/50">
       <div className="max-w-6xl mx-auto px-1 md:px-5 sm:px-6">
-        <div className="flex items-center justify-between h-12 md:h-16 text-foreground">
+        <div className="flex items-center justify-between h-16 md:h-20 text-foreground">
           <Link href="/" className="">
             <Button
               variant={"outline"}
@@ -159,10 +255,14 @@ export default function Header() {
               <div className="text-[0.85rem] hidden sm:block">Khaled S.</div>
             </Button>
           </Link>
-          <div className="flex items-center justify-center">
+          {/* Desktop Navigation - Hidden on mobile */}
+          <div className="hidden md:flex items-center justify-center">
             <NavigationMenuDemo />
           </div>
-          <div className="flex gap-4 items-center justify-end">
+          
+          <div className="flex gap-2 md:gap-4 items-center justify-end">
+            {/* Mobile Navigation - Only visible on mobile */}
+            <MobileNavigation />
             <SearchSheet />
             <Button
               variant={"ghost"}

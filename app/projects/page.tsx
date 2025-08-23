@@ -34,14 +34,27 @@ function Project({
   link: string;
 }) {
   return (
-    <Link href={link}>
-      <Card className="pt-4 cursor-pointer hover:bg-background bg-muted">
+    <Link href={link} aria-label={`View project: ${name}`}>
+      <Card 
+        className="pt-4 cursor-pointer hover:bg-background bg-muted hover:shadow-lg transition-all duration-200 hover:scale-[1.02] hover:border-border/50"
+        role="article"
+        aria-labelledby={`project-title-${name.replace(/\s+/g, '-').toLowerCase()}`}
+        aria-describedby={`project-desc-${name.replace(/\s+/g, '-').toLowerCase()}`}
+      >
         <CardContent>
           <div className="space-y-1 text-left">
-            <div className="text-lg font-medium text-foreground font-display">
+            <h3 
+              id={`project-title-${name.replace(/\s+/g, '-').toLowerCase()}`}
+              className="text-xl font-medium text-foreground font-display"
+            >
               {titleIcon} {name}
-            </div>
-            <div className="text-sm text-muted-foreground font-sans">{description}</div>
+            </h3>
+            <p 
+              id={`project-desc-${name.replace(/\s+/g, '-').toLowerCase()}`}
+              className="text-base text-muted-foreground font-sans"
+            >
+              {description}
+            </p>
           </div>
         </CardContent>
       </Card>

@@ -126,10 +126,10 @@ export function SearchSheet() {
           <div className="hidden md:block">Search</div>
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-full sm:max-w-lg">
+      <SheetContent className="w-full sm:max-w-lg" aria-describedby="search-description">
         <SheetHeader className="space-y-4">
           <SheetTitle className="text-left">Search</SheetTitle>
-          <SheetDescription className="text-left">
+          <SheetDescription id="search-description" className="text-left">
             Search through projects, notes, and more
           </SheetDescription>
           <div className="relative">
@@ -140,6 +140,10 @@ export function SearchSheet() {
               value={query}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
               className="pl-10 pr-4"
+              aria-label="Search input"
+              aria-describedby="search-description"
+              role="searchbox"
+              aria-autocomplete="list"
             />
           </div>
         </SheetHeader>
@@ -166,8 +170,8 @@ export function SearchSheet() {
           )}
           
           {!isLoading && results.length > 0 && (
-            <div className="space-y-1">
-              <p className="text-sm text-muted-foreground mb-3 font-sans">
+            <div className="space-y-1" role="listbox" aria-label="Search results">
+              <p className="text-sm text-muted-foreground mb-3 font-sans" aria-live="polite">
                 {results.length} result{results.length !== 1 ? 's' : ''} found
               </p>
               {results.map((item, index) => (
@@ -179,6 +183,10 @@ export function SearchSheet() {
                       : 'hover:bg-muted/50'
                   }`}
                   onClick={() => handleResultClick(item)}
+                  role="option"
+                  aria-selected={index === selectedIndex}
+                  aria-labelledby={`result-title-${item.id}`}
+                  aria-describedby={`result-desc-${item.id}`}
                 >
                   <div className="flex items-start gap-3">
                     <div className="flex-shrink-0">
@@ -188,7 +196,7 @@ export function SearchSheet() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-medium text-foreground truncate font-display">
+                        <h3 id={`result-title-${item.id}`} className="font-medium text-foreground truncate font-display">
                           {item.title}
                         </h3>
                         <div className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -196,7 +204,7 @@ export function SearchSheet() {
                           <span>{getCategoryLabel(item.category)}</span>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground line-clamp-2 font-sans">
+                      <p id={`result-desc-${item.id}`} className="text-sm text-muted-foreground line-clamp-2 font-sans">
                         {item.description}
                       </p>
                       <div className="flex items-center gap-1 mt-2">

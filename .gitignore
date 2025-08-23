@@ -1,5 +1,7 @@
 # custom
 *report.html
+/.swc
+/.playwright*
 
 # dependencies
 /node_modules

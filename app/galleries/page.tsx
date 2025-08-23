@@ -32,7 +32,7 @@ function Project({
 }) {
   return (
     <Link href={link}>
-      <Card className="pt-4 cursor-pointer hover:bg-background bg-muted">
+      <Card className="pt-4 cursor-pointer hover:bg-background bg-muted hover:shadow-lg transition-all duration-200 hover:scale-[1.02] hover:border-border/50">
         <CardContent>
           <div className="space-y-1 text-left">
             <div className="text-lg font-medium text-foreground">{name}</div>
