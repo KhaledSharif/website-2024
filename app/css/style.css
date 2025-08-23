@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 214 88% 35%; /* Deep space blue #1e40af */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -22,15 +22,21 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 262 83% 58%; /* Cosmic purple #7c3aed */
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 43%; /* NASA orange/red #dc2626 */
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 214 88% 35%;
+
+    /* Custom color variables for enhanced palette */
+    --space-blue: 214 88% 35%; /* #1e40af */
+    --nasa-orange: 0 84% 43%; /* #dc2626 */
+    --cosmic-purple: 262 83% 58%; /* #7c3aed */
+    --soft-blue-gray: 215 25% 45%; /* #64748b */
 
     --radius: 0.5rem;
   }
@@ -39,13 +45,13 @@
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 213 27% 13%; /* Dark blue-gray #1e293b */
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 213 27% 13%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 188 95% 42%; /* Bright cyan #06b6d4 */
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -54,15 +60,21 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 271 100% 65%; /* Soft purple #a855f7 */
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 43 96% 56%; /* Warm orange #f59e0b */
+    --destructive-foreground: 222.2 47.4% 11.2%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 188 95% 42%;
+
+    /* Custom dark theme color variables */
+    --bright-cyan: 188 95% 42%; /* #06b6d4 */
+    --warm-orange: 43 96% 56%; /* #f59e0b */
+    --soft-purple: 271 100% 65%; /* #a855f7 */
+    --dark-blue-gray: 213 27% 13%; /* #1e293b */
   }
 }
 
@@ -121,11 +133,11 @@
   }
 
   .markdown code {
-    @apply text-sm tracking-tighter bg-muted mx-1 px-1 py-1 truncate font-accent
+    @apply text-sm tracking-tighter bg-primary/10 text-primary mx-1 px-2 py-1 rounded-md font-accent border border-primary/20
   }
 
   .markdown strong {
-    @apply bg-blue-100 bg-opacity-20 rounded-sm px-[0.15rem] py-[0.25rem] font-accent text-base
+    @apply bg-accent/20 text-accent-foreground rounded-sm px-[0.15rem] py-[0.25rem] font-accent text-base font-semibold border border-accent/30
   }
 
   .markdown hr {
@@ -141,7 +153,7 @@
   }
 
   .markdown th {
-    @apply border border-border bg-muted px-3 py-2 text-left font-medium whitespace-nowrap
+    @apply border border-border bg-primary/10 text-primary px-3 py-2 text-left font-semibold whitespace-nowrap
   }
 
   .markdown td {
@@ -149,11 +161,11 @@
   }
 
   .markdown tr:nth-child(even) {
-    @apply bg-muted/25
+    @apply bg-accent/5
   }
 
   .markdown tr:hover {
-    @apply bg-muted/50
+    @apply bg-accent/10 transition-colors duration-200
   }
 
   /* Table wrapper for horizontal scrolling */

@@ -32,9 +32,9 @@ export default function Features() {
   }, []);
 
   return (
-    <section className="relative">
+    <section className="relative bg-gradient-to-b from-background via-accent/5 to-background">
       <div
-        className="absolute inset-0 bg-background pointer-events-none mb-16"
+        className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-destructive/5 pointer-events-none mb-16"
         aria-hidden="true"
       ></div>
       <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-border transform -translate-y-1/2"></div>
@@ -42,7 +42,7 @@ export default function Features() {
       <div className="relative max-w-none lg:max-w-6xl mx-auto">
         <div className="pt-12 md:pt-20">
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <div className="text-4xl mb-1 font-display">Open source projects 👇🏼</div>
+            <div className="text-4xl mb-1 font-display bg-gradient-to-r from-primary via-accent to-destructive bg-clip-text text-transparent">Open source projects 👇🏼</div>
             <Link
               href="/projects"
               className={buttonVariants({ variant: "ghost" })}
@@ -56,13 +56,13 @@ export default function Features() {
               <div className="mb-8 md:mb-0">
                 <div
                   className={`flex items-center text-md p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 1 ? "bg-background shadow-md border-border hover:shadow-lg cursor-pointer" : "cursor-default bg-background border-border"}`}
+                  ${tab !== 1 ? "bg-card shadow-md border-primary/30 hover:shadow-lg hover:border-primary/50 cursor-pointer" : "cursor-default bg-primary/10 border-primary"}`}
                   onClick={() => {
                     setTab(1);
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display">
+                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display text-primary">
                       Robot Reinforcement Learning
                     </div>
                     <div className="text-foreground text-lg font-sans">
@@ -86,9 +86,8 @@ export default function Features() {
                             href="https://github.com/KhaledSharif/omniverse-gym"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-foreground 
-                            border-border hover:bg-background hover:border-border border bg-muted
-                            flex p-4 items-center justify-center gap-2 rounded-lg
+                            className="bg-primary/10 border-primary/30 hover:bg-primary/20 hover:border-primary text-primary
+                            flex p-4 items-center justify-center gap-2 rounded-lg transition-all duration-300 border
                             "
                           >
                             <GithubLogo size={24} />
@@ -99,7 +98,9 @@ export default function Features() {
                       </div>
                     )}
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-background rounded-full shadow flex-shrink-0 ml-3">
+                  <div className={`flex justify-center items-center w-8 h-8 rounded-full shadow flex-shrink-0 ml-3 transition-colors ${
+                    tab === 1 ? 'bg-primary text-primary-foreground' : 'bg-primary/20 text-primary'
+                  }`}>
                     {tab === 1 ? (
                       <CaretCircleUp size={24} />
                     ) : (
@@ -109,13 +110,13 @@ export default function Features() {
                 </div>
                 <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 2 ? "bg-background shadow-md border-border hover:shadow-lg cursor-pointer" : "cursor-default bg-background border-border"}`}
+                  ${tab !== 2 ? "bg-card shadow-md border-accent/30 hover:shadow-lg hover:border-accent/50 cursor-pointer" : "cursor-default bg-accent/10 border-accent"}`}
                   onClick={() => {
                     setTab(2);
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display">
+                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display text-accent">
                       Robot Visual Localization
                     </div>
                     <div className="text-foreground text-lg font-sans">
@@ -139,9 +140,8 @@ export default function Features() {
                             href="https://github.com/KhaledSharif/ros-vslam"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-foreground 
-                            border-border hover:bg-background hover:border-border border bg-muted
-                            flex p-4 items-center justify-center gap-2 rounded-lg
+                            className="bg-accent/10 border-accent/30 hover:bg-accent/20 hover:border-accent text-accent
+                            flex p-4 items-center justify-center gap-2 rounded-lg transition-all duration-300 border
                             "
                           >
                             <GithubLogo size={24} />
@@ -152,7 +152,9 @@ export default function Features() {
                       </div>
                     )}
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-background rounded-full shadow flex-shrink-0 ml-3">
+                  <div className={`flex justify-center items-center w-8 h-8 rounded-full shadow flex-shrink-0 ml-3 transition-colors ${
+                    tab === 2 ? 'bg-accent text-accent-foreground' : 'bg-accent/20 text-accent'
+                  }`}>
                     {tab === 2 ? (
                       <CaretCircleUp size={24} />
                     ) : (
@@ -162,13 +164,13 @@ export default function Features() {
                 </div>
                 <div
                   className={`flex items-center p-5 rounded border transition duration-300 ease-in-out mb-3 
-                  ${tab !== 3 ? "bg-background shadow-md border-border hover:shadow-lg cursor-pointer" : "cursor-default bg-background border-border"}`}
+                  ${tab !== 3 ? "bg-card shadow-md border-destructive/30 hover:shadow-lg hover:border-destructive/50 cursor-pointer" : "cursor-default bg-destructive/10 border-destructive"}`}
                   onClick={() => {
                     setTab(3);
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display">
+                    <div className="font-bold leading-snug tracking-tight mb-1 text-xl font-display text-destructive">
                       Robot Cooperative Planning
                     </div>
                     <div className="text-foreground text-lg font-sans">
@@ -191,9 +193,8 @@ export default function Features() {
                             href="https://github.com/KhaledSharif/robot-transformers"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-neutral text-foreground 
-                            border-border hover:bg-background hover:border-border border bg-muted
-                            flex p-4 items-center justify-center gap-2 rounded-lg
+                            className="bg-destructive/10 border-destructive/30 hover:bg-destructive/20 hover:border-destructive text-destructive
+                            flex p-4 items-center justify-center gap-2 rounded-lg transition-all duration-300 border
                             "
                           >
                             <GithubLogo size={24} />
@@ -204,7 +205,9 @@ export default function Features() {
                       </div>
                     )}
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-background rounded-full shadow flex-shrink-0 ml-3">
+                  <div className={`flex justify-center items-center w-8 h-8 rounded-full shadow flex-shrink-0 ml-3 transition-colors ${
+                    tab === 3 ? 'bg-destructive text-destructive-foreground' : 'bg-destructive/20 text-destructive'
+                  }`}>
                     {tab === 3 ? (
                       <CaretCircleUp size={24} />
                     ) : (

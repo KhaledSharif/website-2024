@@ -189,7 +189,7 @@ describe('Header Component', () => {
     
     const homeButton = screen.getByText('👦🏻').closest('button')
     expect(homeButton).toHaveClass('button-outline')
-    expect(homeButton).toHaveClass('bg-muted', 'hover:bg-background', 'gap-1')
+    expect(homeButton).toHaveClass('bg-primary/10', 'border-primary/30', 'hover:bg-primary/20', 'gap-1')
   })
 
   it('should have responsive name text', () => {

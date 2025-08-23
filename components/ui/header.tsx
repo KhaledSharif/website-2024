@@ -249,7 +249,7 @@ export default function Header() {
           <Link href="/" className="">
             <Button
               variant={"outline"}
-              className="bg-muted hover:bg-background gap-1"
+              className="bg-primary/10 border-primary/30 hover:bg-primary/20 hover:border-primary text-primary gap-1 transition-all duration-300"
             >
               <div>👦🏻</div>
               <div className="text-[0.85rem] hidden sm:block">Khaled S.</div>
@@ -268,7 +268,7 @@ export default function Header() {
               variant={"ghost"}
               aria-label="Toggle dark mode"
               onClick={toggleTheme}
-              className="text-xl px-2"
+              className="text-xl px-2 hover:bg-accent/20 hover:text-accent transition-all duration-300 hover:scale-110"
             >
               {isDark ? "🌙" : "☀️"}
             </Button>

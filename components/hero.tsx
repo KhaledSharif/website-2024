@@ -3,7 +3,7 @@ import ModalVideo from "@/components/modal-video";
 
 export default function Hero() {
   return (
-    <section className="relative">
+    <section className="relative bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
           <div className="text-center pb-12 md:pb-16">
